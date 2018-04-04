@@ -1,0 +1,19 @@
+<div class="modal-dialog modal-md">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" (click)="close()" >&times;</button>
+      <h4 class="modal-title" align="center">{{title || 'Add Image'}}</h4>
+    </div>
+    <div class="modal-body">
+      <div class="panel-default">
+        <div class="panel-body">
+          <form #addImageForm="ngForm" (ngSubmit)="onImgAdd()">
+            <input id="cin" name="cin" type="file" (change)="fileChangeEvent($event)" class="form-control" placeholder="Upload a file..." multiple required/>
+            <button class="btn btn-success btn-block" type="submit" [disabled]="addImageForm.invalid">Add</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="modal-dialog modal-md">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" (click)="close()" >&times;</button>
+      <h4 class="modal-title" align="center">{{title || 'Add Place'}}</h4>
+    </div>
+    <div class="modal-body">
+      <div class="panel-default">
+        <div class="panel-body">
+          <form #addPlaceForm="ngForm" (ngSubmit)="onAdd(addPlaceForm)">
+            <div class="form-group">
+              <input type="text"
+                     placeholder="Place Name"
+                     name="pName"
+                     required
+                     ngModel
+                     #pName = "ngModel"
+                     class="form-control">
+              <div *ngIf="pName.invalid && (pName.dirty || pName.touched)"
+                   class="alert alert-danger">
+                  Place name is required.
+              </div>
+            </div>
+            <div class="form-group">
+              <textarea rows="4"
+                        placeholder="Place Description"
+                        name="pDesc"
+                        required
+                        ngModel
+                        #pDesc="ngModel"
+                        class="form-control">
+
+              </textarea>
+              <div *ngIf="pDesc.invalid && (pDesc.dirty || pDesc.touched)"
+                   class="alert alert-danger">
+                Place Description is required.
+              </div>
+              </div>
+            <button class="btn btn-success btn-block" type="submit" [disabled]="addPlaceForm.invalid">Next</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
