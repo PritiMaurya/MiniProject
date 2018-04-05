@@ -1,11 +1,12 @@
 <table>
   <tr>
     <td>
-      <select #pageSize class="form-control" style="width: 150px">
-      <option value="5">5</option>
-      <option value="10">10</option>
-      <option value="15">15</option>
-    </select>
+      <select #pageSize class="form-control" (change)="getData(1)" style="width: 150px">
+        <option value="3">3</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+      </select>
     </td>
     <td>
       <b>Record per page</b>
@@ -25,11 +26,16 @@
   <tr>
     <td>{{place.placeName}}</td>
     <td>{{place.placeDescription}}</td>
-    <td><button type="button" class="btn-primary" (click)="displayImages(place.placeId)">Images</button></td>
-    <td><button type="button" class="btn-danger" (click)="delete(place.placeId)">Delete</button></td>
+    <td><button type="button" class="btn btn-primary" (click)="displayImages(place.placeId)">View Images</button></td>
+    <td><button type="button" class="btn btn-danger" (click)="delete(place.placeId)">Delete</button></td>
   </tr>
   </tbody>
+  <br>
+    <div>
+      <button type="button" *ngFor="let btn of totalPage" (click)="getData(btn)" value="{{btn+1}}">{{btn+1}}</button>
+    </div>
 </table>
+
 
 
 <!--<div align="center">-->

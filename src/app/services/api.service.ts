@@ -60,6 +60,15 @@ export class ApiService {
   deletePlace(id) {
     return this.http.get(environment.baseUrl + 'deletePlace?id=' + id);
   }
+
+  // totalRecord() {
+  //   return this.http.get(environment.baseUrl + 'totalRecord');
+  // }
+
+  pageData(pageNo, size) {
+    // http://localhost:3003/page?pageNo=2&size=3
+    return this.http.get(environment.baseUrl + 'page?pageNo=' + pageNo + '&size=' + size);
+  }
 }
 
 // checkToken() {

@@ -10,14 +10,15 @@ import {ConfirmModalComponent} from "../../modals/confirm-modal/confirm-modal.co
   styleUrls: ['./display-place.component.css']
 })
 export class DisplayPlaceComponent implements OnInit {
-  placeData;
+  placeData = [];
+  totalPage = [];
+  size1;
+  data;
   @ViewChild('pageSize') size: ElementRef;
   constructor(private apiService: ApiService, private dialogService: DialogService) { }
-
   ngOnInit() {
-      this.select();
-      const size1 = this.size.nativeElement.value;
-      console.log(size1);
+      this.size1 = this.size.nativeElement.value;
+      this.getData(1);
   }
   displayImages(id) {
     this.apiService.displayImage(id).subscribe(
@@ -34,17 +35,27 @@ export class DisplayPlaceComponent implements OnInit {
         this.apiService.deletePlace(id).subscribe(
           (data1) => {
               console.log(data1);
-              this.select();
+              // this.select();
           }
         );
       }
     );
   }
 
-  select() {
-    this.apiService.displayPlace().subscribe(
+  //
+  getData(page) {
+    let p1;
+    this.size1 = this.size.nativeElement.value;
+    this.apiService.pageData(page, this.size1).subscribe(
       (res) => {
-        this.placeData = res;
+        this.data = res;
+        this.placeData = this.data.message;
+         p1 = this.data.pages;
+        for (let i = 0; i < p1; i++) {
+          this.totalPage[i] = i;
+        }
+        console.log('array', p1);
+        console.log(this.totalPage);
       }
     );
   }
