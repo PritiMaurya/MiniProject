@@ -93,7 +93,7 @@ module.exports={
                     response = {"error" : true,"message" : "Error fetching data"};
                 } else {
                     var totalPages = Math.ceil( totalCount[0].count / size);
-                    response = {"message" : data,"pages": totalPages};
+                    response = {"error" : false,"message" : data,"pages": totalPages};
                 }
                 res.json(response);
             });

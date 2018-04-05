@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, '../ProjectDemo/src/assets/placeImag
 
 
 app.use(function(req, res, next) {
-    console.log('header');
+    // console.log('header');
     res.header('Access-Control-Allow-Origin', "http://localhost:4200");
     res.header('Access-Control-Allow-Credentials', 'true');
     res.header('Access-Control-Expose-Headers',"content-type, cache,X-Custom-header, token");
