@@ -50,6 +50,7 @@ module.exports = (app, passport)=>{
     app.get('/deletePlace', place.deletePlace);
     app.get('/check', userController.checkToken);
     app.get('/page', place.serverPage);
+    app.get('/totalRecord', place.totalRecord);
 };
 
 

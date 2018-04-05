@@ -93,39 +93,43 @@ module.exports={
                     response = {"error" : true,"message" : "Error fetching data"};
                 } else {
                     var totalPages = Math.ceil( totalCount[0].count / size);
-                    // console.log('count', totalCount[0].count);
-                    response = {"error" : false,"message" : data,"pages": totalPages};
+                    response = {"message" : data,"pages": totalPages};
                 }
                 res.json(response);
             });
         });
     },
+    totalRecord: (req,res)=>{
+        let sql = "SELECT count(*) as count FROM `place` WHERE isDelete = 0";
+        con.query(sql, (err, totalCount)=> {
+            if (err) {
+                response = {"error": true, "message": "Error fetching data"}
+            }
+            res.send(totalCount[0]);
+        });
+    }
 }
 
-// serverPaggination: (req,res) => {
-//     var pageNo = parseInt(req.query.pageNo);
-//     var size = parseInt(req.query.size);
-//     var query = {}
-//     if(pageNo < 0 || pageNo === 0) {
-//         response = {"error" : true,"message" : "invalid page number, should start with 1"};
-//         return res.json(response)
+// var pageNo = parseInt(req.query.pageNo);
+// var size = parseInt(req.query.size);
+// if(pageNo < 0 || pageNo === 0) {
+//     response = {"error" : true,"message" : "invalid page number, should start with 1"};
+//     return res.json(response)
+// }
+// let sql = "SELECT count(*) as count FROM `place` WHERE isDelete = 0";
+// con.query(sql, (err, totalCount)=>{
+//     if(err) {
+//         response = {"error" : true,"message" : "Error fetching data"}
 //     }
-//     query.skip = size * (pageNo - 1)
-//     query.limit = size
-//     // Find some documents
-//     mongoOp.count({},function(err,totalCount) {
+//     let sql1 = "select * from place where isDelete = 0 limit ?, ?";
+//     con.query(sql1, [size * (pageNo - 1), size], (err,data)=>{
 //         if(err) {
-//             response = {"error" : true,"message" : "Error fetching data"}
+//             response = {"error" : true,"message" : "Error fetching data"};
+//         } else {
+//             var totalPages = Math.ceil( totalCount[0].count / size);
+//             // console.log('count', totalCount[0].count);
+//             response = {"error" : false,"message" : data,"pages": totalPages};
 //         }
-//         mongoOp.find({},{},query,function(err,data) {
-//             // Mongo command to fetch all data from collection.
-//             if(err) {
-//                 response = {"error" : true,"message" : "Error fetching data"};
-//             } else {
-//                 var totalPages = Math.ceil(totalCount / size)
-//                 response = {"error" : false,"message" : data,"pages": totalPages};
-//             }
-//             res.json(response);
-//         });
-//     })
-// },
+//         res.json(response);
+//     });
+// });
