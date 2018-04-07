@@ -12,7 +12,6 @@ import {AlertModalComponent} from "../../modals/alert-modal/alert-modal.componen
 export class DisplayUserComponent implements OnInit {
   userData; page; size1; totalPage; reverse = false;
   @ViewChild('pageSize') size: ElementRef;
-  key = 'userName';
   constructor(private apiService: ApiService, private dialogService: DialogService) { }
 
   ngOnInit() {
@@ -27,7 +26,7 @@ export class DisplayUserComponent implements OnInit {
                 (res) => {
                   res1 = res;
                   if (res1.error) {
-                      this.dialogService.addDialog(AlertModalComponent, {message: 'Error while deleting user'});
+                      this.dialogService.addDialog(AlertModalComponent, {message: res1.message});
                   } else {
                     this.dialogService.addDialog(AlertModalComponent, {message: 'User detail Deleted successfully'});
                     this.getUserData(this.page);
@@ -44,26 +43,18 @@ export class DisplayUserComponent implements OnInit {
       this.getUserData(this.page);
     } else {
       this.reverse = true;
+      this.getUserData(this.page);
     }
   }
   getUserData(page) {
-    // let data1;
-    // this.apiService.displayUser().subscribe(
-    //   (res) => {
-    //     console.log(res);
-    //     data1 = res;
-    //     this.userData = data1.data;
-    //     console.log(this.userData);
-    //   }
-    // );
     let p1;
     let res1;
     this.page = page;
     const total = [];
     // console.log('delete', this.pageData);
     this.size1 = this.size.nativeElement.value;
-    console.log(this.page, this.size1);
-    this.apiService.displayUser(this.page, this.size1, this.reverse, this.key).subscribe(
+    // console.log(this.page, this.size1);
+    this.apiService.displayUser(this.page, this.size1, this.reverse).subscribe(
       (res) => {
         res1 = res;
         if (res1.error) {

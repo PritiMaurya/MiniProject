@@ -12,15 +12,15 @@ import {ApiService} from "../../services/api.service";
 export class AdminLoginComponent implements OnInit {
 
   constructor(private dialogService: DialogService, private router: Router, private apiService: ApiService) {
+
   }
 
   ngOnInit() {
     // console.log('hello');
-    if (this.apiService.token != null) {
-      this.router.navigate(['/adminHome']);
-    } else {
-      this.dialogService.addDialog(LoginModalComponent,  {title: 'Sign in'});
+    if (this.apiService.token !== null) {
+      this.router.navigate(['/admin/dashboard']);
     }
+    this.dialogService.addDialog(LoginModalComponent,  {title: 'Sign in'});
   }
 
 }

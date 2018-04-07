@@ -19,7 +19,6 @@ export class LoginModalComponent extends DialogComponent<LoginModal, null> imple
 
   onLogin(f) {
     const data = {email: f.value.email, password: f.value.password};
-    debugger;
     this.apiService.signIn(data).subscribe(
       (res) => {
         this.apiService.d = res;

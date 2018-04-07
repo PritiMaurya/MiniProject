@@ -5,12 +5,18 @@ import {Router} from "@angular/router";
 import 'rxjs/Rx';
 @Injectable()
 export class ApiService {
-  errorMsg;
+  errorMsg = false;
   d;
   tokenData;
   token;
-  constructor(private http: HttpClient, private router: Router) {
-    // console.log(environment.baseUrl);
+  constructor(private http: HttpClient) {
+    console.log(environment.baseUrl);
+    // this.checkHello().subscribe(
+    //   (data) => {
+    //     console.log('hello');
+    //     console.log(data);
+    //   }
+    // );
   }
 
   signIn(data) {
@@ -61,17 +67,23 @@ export class ApiService {
     return this.http.get(environment.baseUrl + 'deletePlace?id=' + id);
   }
 
-  pageData(pageNo, size) {
-    return this.http.get(environment.baseUrl + 'page?pageNo=' + pageNo + '&size=' + size);
+  pageData(pageNo, size, reverse) {
+    console.log(pageNo, size, reverse);
+    return this.http.get(environment.baseUrl + 'page?pageNo=' + pageNo + '&size=' + size + '&order=' + JSON.stringify(reverse));
   }
 
-  displayUser(pageNo, size, reverse, key) {
-    console.log(pageNo, size);
-    return this.http.get(environment.baseUrl + 'displayUser?pageNo=' + pageNo + '&size=' + size);
+  displayUser(pageNo, size, reverse) {
+    console.log(pageNo, size, reverse);
+    console.log(typeof JSON.stringify(reverse));
+    return this.http.get(environment.baseUrl + 'displayUser?pageNo=' + pageNo + '&size=' + size + '&order=' + JSON.stringify(reverse));
   }
 
   deleteUser(id) {
     return this.http.delete(environment.baseUrl + 'deleteUser?id=' + id);
+  }
+
+  checkHello() {
+    return this.http.get(environment.baseUrl + 'hello');
   }
 }
 

@@ -16,7 +16,9 @@
 <table class="table table-striped table-responsive">
   <thead>
   <tr>
-    <th>Place</th>
+    <th>Place Name
+      <span class="glyphicon sort-icon" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}" (click)="click()"></span>
+    </th>
     <th>Description</th>
     <th>Image</th>
     <th>Delete</th>

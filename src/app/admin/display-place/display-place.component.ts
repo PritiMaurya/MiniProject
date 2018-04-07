@@ -15,6 +15,7 @@ export class DisplayPlaceComponent implements OnInit {
   totalPage = [];
   size1;
   data;
+  reverse = false;
   page = 1;
   @ViewChild('pageSize') size: ElementRef;
   constructor(private apiService: ApiService, private dialogService: DialogService) { }
@@ -52,15 +53,23 @@ export class DisplayPlaceComponent implements OnInit {
     );
   }
 
-  //
+  click() {
+    if (this.reverse) {
+      this.reverse = false;
+      this.getData(this.page);
+    } else {
+      this.reverse = true;
+      this.getData(this.page);
+    }
+  }
 
   getData(page) {
     let p1;
     this.page = page;
-    let total = [];
+    const total = [];
     // console.log('delete', this.pageData);
     this.size1 = this.size.nativeElement.value;
-    this.apiService.pageData(page, this.size1).subscribe(
+    this.apiService.pageData(page, this.size1, this.reverse).subscribe(
       (res) => {
         this.data = res;
         this.placeData = this.data.message;

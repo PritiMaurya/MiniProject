@@ -15,7 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { UserHeaderComponent } from './user/user-header/user-header.component';
 import { LoginModalComponent } from './modals/login-modal/login-modal.component';
 import {ApiService} from './services/api.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { UserRegistrationComponent } from './modals/user-registration/user-registration.component';
 import { AddPlaceComponent } from './modals/place/add-place/add-place.component';
 import { AddImageComponent } from './modals/place/add-image/add-image.component';
@@ -27,6 +27,7 @@ import { LeftPanelComponent } from './admin/left-panel/left-panel.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { DiplayImagesComponent } from './modals/diplay-images/diplay-images.component';
 import { DisplayUserComponent } from './admin/display-user/display-user.component';
+import {MyInterceptor} from "./interceptors/my-interceptor";
 
 
 
@@ -70,7 +71,11 @@ import { DisplayUserComponent } from './admin/display-user/display-user.componen
     PromptModalComponent,
     DiplayImagesComponent
   ],
-  providers: [ApiService, AdminGuard],
+  providers: [ApiService, AdminGuard,  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: MyInterceptor,
+    multi: true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
