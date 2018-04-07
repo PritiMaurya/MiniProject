@@ -66,12 +66,16 @@ module.exports={
     },
 
     deletePlace: (req,res)=>{
-        var id =  req.query.id;
+        let id =  req.query.id;
+        let response;
         const sql = "update place set isDelete = 1 where placeId=?";
         con.query(sql,[id], (err, data)=>{
-            if(data){
-                res.send(data);
+            if(err){
+                response = {err: true};
+            } else {
+                response = {err: false, data: data};
             }
+            res.send(response);
         });
     },
 

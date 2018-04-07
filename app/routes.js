@@ -1,5 +1,5 @@
 var  main = require('./controllers/main');
-var userController = require('./controllers/user');
+var user = require('./controllers/user');
 var place = require('./controllers/places')
 var multer = require('multer');
 // var express = require('express');
@@ -44,13 +44,14 @@ module.exports = (app, passport)=>{
 
     app.post("/addImg", upload.array("uploads[]", 12), place.addImage);
     app.post('/addPlace', place.addPlace);
-
     app.get('/display', place.displayPlace);
     app.get('/displayImg', place.displayImage);
     app.get('/deletePlace', place.deletePlace);
-    app.get('/check', userController.checkToken);
+    app.get('/check', user.checkToken);
     app.get('/page', place.serverPage);
     app.get('/totalRecord', place.totalRecord);
+    app.get('/displayUser', user.displayUserData);
+    app.delete('/deleteUser', user.deleteUser);
 };
 
 
