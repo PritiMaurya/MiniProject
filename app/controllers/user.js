@@ -74,17 +74,17 @@ module.exports={
             if(err){
                 res.send({error: true, message: 'Unable to fetch Password from database'});
             } else {
-                if(!camparePass(password, data[0].password)){
-                    res.send({error: true, message: 'Old password is Invalid'});
-                } else {
-                    let sql2 = "update user set password = ?";
-                    con.query(sql2, [newPass], (err)=>{
-                       if(err){
-                           res.send({error: true, message: 'Error while updating password'});
-                       } else {
-                           res.send({error: false, message: 'Your Password is successfully Updated'});
-                       }
+                if(camparePass(password, data[0].password)){
+                    let sql2 = "update user set password = ? where token = ?";
+                    con.query(sql2, [hashPass(newPass), token], (err)=>{
+                        if(err){
+                            res.send({error: true, message: 'Error while updating password'});
+                        } else {
+                            res.send({error: false, message: 'Your Password is successfully Updated'});
+                        }
                     });
+                } else {
+                    res.send({error: true, message: 'Old password is Invalid'});
                 }
             }
         })
@@ -93,7 +93,15 @@ module.exports={
 }
 
 function camparePass(password, userPass) {
+    console.log('compare',bcrypt.compareSync(password, userPass));
+    console.log(password);
+    console.log(userPass);
     return bcrypt.compareSync(password, userPass);
+}
+
+function hashPass(newPass) {
+    // console.log(bcrypt.hashSync('admin@12', bcrypt.genSaltSync(10)));
+    return bcrypt.hashSync(newPass, bcrypt.genSaltSync(10));
 }
 
 
