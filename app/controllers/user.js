@@ -65,11 +65,35 @@ module.exports={
         });
     },
 
-    hello: (req,res)=>{
+    chagePassword: (req,res)=>{
+        let password = req.body.password;
+        let newPass = req.body.newPass;
         let token = req.header('token');
-        console.log(token);
-        res.send({token: token});
+        let sql = "select password from user where role = 'admin' && token = ?";
+        con.query(sql, [token],(err, data)=>{
+            if(err){
+                res.send({error: true, message: 'Unable to fetch Password from database'});
+            } else {
+                if(!camparePass(password, data[0].password)){
+                    res.send({error: true, message: 'Old password is Invalid'});
+                } else {
+                    let sql2 = "update user set password = ?";
+                    con.query(sql2, [newPass], (err)=>{
+                       if(err){
+                           res.send({error: true, message: 'Error while updating password'});
+                       } else {
+                           res.send({error: false, message: 'Your Password is successfully Updated'});
+                       }
+                    });
+                }
+            }
+        })
     }
+
+}
+
+function camparePass(password, userPass) {
+    return bcrypt.compareSync(password, userPass);
 }
 
 
