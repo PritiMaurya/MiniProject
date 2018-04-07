@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { environment } from '../config/environment';
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import 'rxjs/Rx'
+import 'rxjs/Rx';
 @Injectable()
 export class ApiService {
   errorMsg;
   d;
   tokenData;
-  loginStatus;
+  token;
   constructor(private http: HttpClient, private router: Router) {
     // console.log(environment.baseUrl);
   }
@@ -26,11 +26,11 @@ export class ApiService {
   }
 
   checkToken() {
-    const token = localStorage.getItem('token');
-    if (token == null){
+    this.token = localStorage.getItem('token');
+    if (this.token == null) {
       return false;
     } else {
-      return this.http.get(environment.baseUrl + 'check?token=' + token).subscribe(
+      return this.http.get(environment.baseUrl + 'check?token=' + this.token).subscribe(
         (res) => {
           this.tokenData = res[0];
           if (this.tokenData == null) {
@@ -38,7 +38,7 @@ export class ApiService {
             return false;
           } else {
             console.log('token', this.tokenData.token);
-            if ( token === this.tokenData.token) {
+            if ( this.token === this.tokenData.token) {
               return true;
             } else {
               return false;
@@ -61,13 +61,17 @@ export class ApiService {
     return this.http.get(environment.baseUrl + 'deletePlace?id=' + id);
   }
 
-  // totalRecord() {
-  //   return this.http.get(environment.baseUrl + 'totalRecord');
-  // }
-
   pageData(pageNo, size) {
-    // http://localhost:3003/page?pageNo=2&size=3
     return this.http.get(environment.baseUrl + 'page?pageNo=' + pageNo + '&size=' + size);
+  }
+
+  displayUser(pageNo, size, reverse, key) {
+    console.log(pageNo, size);
+    return this.http.get(environment.baseUrl + 'displayUser?pageNo=' + pageNo + '&size=' + size);
+  }
+
+  deleteUser(id) {
+    return this.http.delete(environment.baseUrl + 'deleteUser?id=' + id);
   }
 }
 

@@ -11,11 +11,13 @@ import {AddPlaceComponent} from "../modals/place/add-place/add-place.component";
 import {HeaderComponent} from "../admin/header/header.component";
 import {LeftPanelComponent} from "../admin/left-panel/left-panel.component";
 import {AdminHomeComponent} from "../admin/admin-home/admin-home.component";
+import {DashBodyComponent} from "../admin/dash-body/dash-body.component";
+import {DisplayUserComponent} from "../admin/display-user/display-user.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'admin', component: AdminLoginComponent},
-  {path: 'admin/dashboard', component: DashboardComponent, canActivate: [AdminGuard]},
+  {path: 'admin/dashboard', component: DashBodyComponent, canActivate: [AdminGuard]},
   {path: 'home', component: HomeComponent},
   {path: 'displayPlace', component: DisplayPlaceComponent, canActivate: [AdminGuard]},
   {path: 'addImage', component: AddImageComponent, canActivate: [AdminGuard]},
@@ -23,7 +25,8 @@ const appRoutes: Routes = [
   {path: 'adminHeader', component: HeaderComponent, canActivate: [AdminGuard]},
   {path: 'adminLeftPane', component: LeftPanelComponent, canActivate: [AdminGuard]},
   {path: 'adminBody', component: DashboardComponent, canActivate: [AdminGuard]},
-  {path: 'adminHome', component: AdminHomeComponent, canActivate: [AdminGuard]}];
+  {path: 'adminHome', component: AdminHomeComponent, canActivate: [AdminGuard]},
+  {path: 'displayUser', component: DisplayUserComponent, canActivate: [AdminGuard]}];
 
 @NgModule({
   imports: [

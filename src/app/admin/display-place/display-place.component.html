@@ -32,19 +32,10 @@
   </tbody>
   <br>
     <div>
-      <button type="button" *ngFor="let btn of totalPage" (click)="getData(btn)" value="{{btn+1}}">{{btn+1}}</button>
+      <button type="button" *ngFor="let btn of totalPage" (click)="getData(btn+1)" value="{{btn+1}}">{{btn+1}}</button>
     </div>
 </table>
 
 
 
-<!--<div align="center">-->
-  <!--<div class="col-3">-->
-    <!--<select id="pagecount" (click)="pcount()" class="form-control">-->
-      <!--<option value="3">3</option>-->
-      <!--<option value="5">5</option>-->
-      <!--<option value="7">7</option>-->
-    <!--</select>-->
-    <!--<button type="button" (click)="page(btn*pageinterval)" *ngFor="let btn of btns" >{{btn+1}} </button> </div>-->
-<!--</div>-->
 

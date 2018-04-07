@@ -30,14 +30,14 @@ export class AddImageComponent extends DialogComponent<AddImageModal, null> impl
 
   onImgAdd() {
     console.log('on Image');
-    console.log(this.data);
+    // console.log(this.data);
     const formData: any = new FormData();
     const files: Array<File> = this.filesToUpload;
     console.log(files);
     for (let i = 0; i < files.length; i++) {
       formData.append('uploads[]', files[i], files[i]['name']);
     }
-    console.log(formData);
+    console.log('formData', formData);
     this.apiService.addImage(formData, this.data.placeId).subscribe(
       (res) => {
         console.log(res);

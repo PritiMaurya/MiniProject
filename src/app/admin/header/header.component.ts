@@ -10,12 +10,12 @@ import {Router} from "@angular/router";
 })
 export class HeaderComponent implements OnInit {
   constructor(private router: Router) { }
-
   ngOnInit() {
   }
+
   logout() {
     localStorage.removeItem('token');
-    console.log('logout');
+    // localStorage.removeItem('login');
     this.router.navigate(['/admin']);
   }
 

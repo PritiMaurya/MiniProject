@@ -8,10 +8,11 @@ import {ApiService} from "../../services/api.service";
 })
 
 export class AdminHomeComponent implements OnInit {
-
+  token;
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+    this.token = localStorage.getItem('token');
   }
 
 }

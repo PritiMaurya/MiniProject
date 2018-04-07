@@ -26,6 +26,7 @@ import {AdminGuard} from './guards/admin.guard';
 import { LeftPanelComponent } from './admin/left-panel/left-panel.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { DiplayImagesComponent } from './modals/diplay-images/diplay-images.component';
+import { DisplayUserComponent } from './admin/display-user/display-user.component';
 
 
 
@@ -48,7 +49,8 @@ import { DiplayImagesComponent } from './modals/diplay-images/diplay-images.comp
     AlertModalComponent,
     LeftPanelComponent,
     AdminHomeComponent,
-    DiplayImagesComponent
+    DiplayImagesComponent,
+    DisplayUserComponent
   ],
   imports: [
     BrowserModule,
