@@ -82,16 +82,24 @@ module.exports={
     serverPage: (req,res) => {
         var pageNo = parseInt(req.query.pageNo);
         var size = parseInt(req.query.size);
+        let reverse = JSON.parse(req.query.order);
+        let sql1;
+        let response;
+        console.log(reverse);
         if(pageNo < 0 || pageNo === 0) {
             response = {"error" : true,"message" : "invalid page number, should start with 1"};
-            return res.json(response)
+            return res.json(response);
         }
         let sql = "SELECT count(*) as count FROM `place` WHERE isDelete = 0";
         con.query(sql, (err, totalCount)=>{
             if(err) {
                 response = {"error" : true,"message" : "Error fetching data"}
             }
-            let sql1 = "select * from place where isDelete = 0 limit ?, ?";
+            if(reverse) {
+                sql1 = "select * from place where isDelete = 0 order by placeName desc limit ?, ?";
+            } else {
+                sql1 = "select * from place where isDelete = 0 order by placeName limit ?, ?";
+            }
             con.query(sql1, [size * (pageNo - 1), size], (err,data)=>{
                 if(err) {
                     response = {"error" : true,"message" : "Error fetching data"};

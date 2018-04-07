@@ -1,6 +1,7 @@
 var  main = require('./controllers/main');
 var user = require('./controllers/user');
-var place = require('./controllers/places')
+var place = require('./controllers/places');
+var auth = require('./middleware/auth');
 var multer = require('multer');
 // var express = require('express');
 // var app1 = express();
@@ -9,7 +10,6 @@ var multer = require('multer');
 
 
 var storage = multer.diskStorage({
-    // destination
     destination: function (req, file, cb) {
         cb(null, '../ProjectDemo/src/assets/placeImages')
     },
@@ -42,16 +42,18 @@ module.exports = (app, passport)=>{
         res.header('token', req.session.passport.user.token).send( req.session.passport.user);
     });
 
-    app.post("/addImg", upload.array("uploads[]", 12), place.addImage);
-    app.post('/addPlace', place.addPlace);
-    app.get('/display', place.displayPlace);
-    app.get('/displayImg', place.displayImage);
-    app.get('/deletePlace', place.deletePlace);
+    app.post("/addImg",auth, upload.array("uploads[]", 12), place.addImage);
+    app.post('/addPlace', auth, place.addPlace);
+    app.get('/display',auth, place.displayPlace);
+    app.get('/displayImg',auth, place.displayImage);
+    app.get('/deletePlace',auth, place.deletePlace);
     app.get('/check', user.checkToken);
-    app.get('/page', place.serverPage);
-    app.get('/totalRecord', place.totalRecord);
-    app.get('/displayUser', user.displayUserData);
-    app.delete('/deleteUser', user.deleteUser);
+    app.get('/page', auth, place.serverPage);
+    app.get('/totalRecord', auth, place.totalRecord);
+    app.get('/displayUser', auth, user.displayUserData);
+    app.delete('/deleteUser', auth, user.deleteUser);
+
+    app.get('/hello', auth ,user.hello);
 };
 
 

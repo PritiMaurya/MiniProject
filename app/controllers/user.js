@@ -14,19 +14,6 @@ module.exports={
             }
         });
     },
-    displayUser: (req,res)=>{
-        let response;
-        let sql = "select * from user where isDelete = 0 && role like 'user'";
-        con.query(sql, (err,data)=>{
-            if(err){
-                response = {err: true};
-            } else {
-                response = {err: false, data: data};
-            }
-            res.send(response);
-        });
-
-    },
 
     deleteUser: (req,res)=>{
         let response;
@@ -41,12 +28,13 @@ module.exports={
             res.send(response);
         });
     },
+
     displayUserData: (req,res) => {
         let response;
         let pageNo = parseInt(req.query.pageNo);
         let size = parseInt(req.query.size);
         let reverse = JSON.parse(req.query.order);
-        let key = req.query.key;
+        // console.log('reverse ' + reverse);
         let sql1;
         if(pageNo < 0 || pageNo === 0) {
             response = {"error" : true,"message" : "invalid page number, should start with 1"};
@@ -58,11 +46,14 @@ module.exports={
                 response = {"error" : true,"message" : "Error fetching data1"}
             }
             if (reverse){
-                sql1 = "select * from user where isDelete = 0 && role = 'user' order by ? desc LIMIT ?, ?"
-            } else {
-                sql1 = "select * from user where isDelete = 0 && role = 'user' order by ? limit ?, ?";
+                // console.log(reverse, 'true');
+                // console.log('true');
+                sql1 = "select * from user where isDelete = 0 && role = 'user' order by userName desc LIMIT ?, ?"
+            } else{
+                console.log('false');
+                sql1 = "select * from user where isDelete = 0 && role = 'user' order by userName limit ?, ?";
             }
-            con.query(sql1, [key, size * (pageNo - 1), size], (err,data)=>{
+            con.query(sql1, [size * (pageNo - 1), size], (err,data)=>{
                 if(err) {
                     response = {"error" : true,"message" : "Error fetching data2"};
                 } else {
@@ -73,6 +64,12 @@ module.exports={
             });
         });
     },
+
+    hello: (req,res)=>{
+        let token = req.header('token');
+        console.log(token);
+        res.send({token: token});
+    }
 }
 
 

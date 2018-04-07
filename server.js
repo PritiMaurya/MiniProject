@@ -21,17 +21,14 @@ app.use(express.static(path.join(__dirname, '../ProjectDemo/src/assets/placeImag
 app.use(function(req, res, next) {
     // console.log('header');
     res.header('Access-Control-Allow-Origin', "http://localhost:4200");
-    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Credentials', true);
     res.header('Access-Control-Expose-Headers',"content-type, cache,X-Custom-header, token");
     res.header("AccessControlAllowMethods", "POST, GET, PUT, DELETE, OPTIONS");
     res.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers,Origin,Access-Control-Expose-Headers, X-Requested-With, Content-Type, Accept,token");
     next();
 });
-// const corsOptions = {
-//     origin: 'http://localhost:4200',
-//     credentials: 'include',
-// }
-// app.use(cors(corsOptions));
+//app.use(cors({credentials: true, origin: 'http://localhost:4200'}));
+
 
 app.use(cors());
 
