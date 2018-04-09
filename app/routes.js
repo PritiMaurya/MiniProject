@@ -52,7 +52,7 @@ module.exports = (app, passport)=>{
     app.get('/totalRecord', auth, place.totalRecord);
     app.get('/displayUser', auth, user.displayUserData);
     app.delete('/deleteUser', auth, user.deleteUser);
-    app.post('/checkPassword', auth, user.chagePassword);
+    app.post('/changePassword', auth, user.chagePassword);
     //app.get('/hello', auth ,user.hello);
 };
 

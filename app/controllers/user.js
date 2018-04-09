@@ -69,6 +69,7 @@ module.exports={
         let password = req.body.password;
         let newPass = req.body.newPass;
         let token = req.header('token');
+        console.log('password', newPass);
         let sql = "select password from user where role = 'admin' && token = ?";
         con.query(sql, [token],(err, data)=>{
             if(err){
@@ -93,15 +94,13 @@ module.exports={
 }
 
 function camparePass(password, userPass) {
-    console.log('compare',bcrypt.compareSync(password, userPass));
-    console.log(password);
-    console.log(userPass);
     return bcrypt.compareSync(password, userPass);
 }
 
 function hashPass(newPass) {
     // console.log(bcrypt.hashSync('admin@12', bcrypt.genSaltSync(10)));
-    return bcrypt.hashSync(newPass, bcrypt.genSaltSync(10));
+    console.log('at hash password', newPass);
+    return bcrypt.hashSync(newPass, bcrypt.genSaltSync(10), null);
 }
 
 
