@@ -10,13 +10,7 @@ export class ApiService {
   tokenData;
   token;
   constructor(private http: HttpClient) {
-    console.log(environment.baseUrl);
-    // this.checkHello().subscribe(
-    //   (data) => {
-    //     console.log('hello');
-    //     console.log(data);
-    //   }
-    // );
+    // console.log(environment.baseUrl);
   }
 
   signIn(data) {
@@ -82,8 +76,8 @@ export class ApiService {
     return this.http.delete(environment.baseUrl + 'deleteUser?id=' + id);
   }
 
-  checkHello() {
-    return this.http.get(environment.baseUrl + 'hello');
+  changePassword(changeData){
+    return this.http.post(environment.baseUrl + 'changePassword', changeData);
   }
 }
 

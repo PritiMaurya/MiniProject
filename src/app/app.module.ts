@@ -28,6 +28,9 @@ import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { DiplayImagesComponent } from './modals/diplay-images/diplay-images.component';
 import { DisplayUserComponent } from './admin/display-user/display-user.component';
 import {MyInterceptor} from "./interceptors/my-interceptor";
+import { ChangePasswordComponent } from './admin/change-password/change-password.component';
+import { DisplayHotelsComponent } from './admin/display-hotels/display-hotels.component';
+import { AddHotelComponent } from './modals/hotel/add-hotel/add-hotel.component';
 
 
 
@@ -51,7 +54,10 @@ import {MyInterceptor} from "./interceptors/my-interceptor";
     LeftPanelComponent,
     AdminHomeComponent,
     DiplayImagesComponent,
-    DisplayUserComponent
+    DisplayUserComponent,
+    ChangePasswordComponent,
+    DisplayHotelsComponent,
+    AddHotelComponent
   ],
   imports: [
     BrowserModule,

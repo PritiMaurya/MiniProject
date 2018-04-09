@@ -13,6 +13,7 @@ import {LeftPanelComponent} from "../admin/left-panel/left-panel.component";
 import {AdminHomeComponent} from "../admin/admin-home/admin-home.component";
 import {DashBodyComponent} from "../admin/dash-body/dash-body.component";
 import {DisplayUserComponent} from "../admin/display-user/display-user.component";
+import {ChangePasswordComponent} from "../admin/change-password/change-password.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -26,7 +27,8 @@ const appRoutes: Routes = [
   {path: 'adminLeftPane', component: LeftPanelComponent, canActivate: [AdminGuard]},
   {path: 'adminBody', component: DashboardComponent, canActivate: [AdminGuard]},
   {path: 'adminHome', component: AdminHomeComponent, canActivate: [AdminGuard]},
-  {path: 'displayUser', component: DisplayUserComponent, canActivate: [AdminGuard]}];
+  {path: 'displayUser', component: DisplayUserComponent, canActivate: [AdminGuard]},
+  {path: 'changePass', component: ChangePasswordComponent, canActivate: [AdminGuard]}];
 
 @NgModule({
   imports: [
