@@ -12,8 +12,8 @@ module.exports={
                 res.send({"error":"failed"})
             }
             if(data){
-                var s = "select * from place where placeName = ?";
-                s = mysql.format(s, req.body.pName);
+                var s = "select * from place where placeId = ?";
+                s = mysql.format(s, data.insertId);
                 con.query(s, (err, place)=>{
                     if(place){
                         res.send(place);

@@ -1,6 +1,7 @@
 var  main = require('./controllers/main');
 var user = require('./controllers/user');
 var place = require('./controllers/places');
+var hotel = require('./controllers/hotels');
 var auth = require('./middleware/auth');
 var multer = require('multer');
 // var express = require('express');
@@ -20,6 +21,17 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 
+var storage1 = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, '../ProjectDemo/src/assets/HotelImg')
+    },
+    filename: function (req, file, cb) {
+        cb(null, 'img'+Date.now()+file.originalname);
+    }
+});
+var uploadImg = multer({ storage: storage1 });
+
+
 module.exports = (app, passport)=>{
     app.get('/', main.hello);
 
@@ -27,12 +39,12 @@ module.exports = (app, passport)=>{
         failureRedirect:'/fail'
     }),(req,res)=>{
         console.log('sucess user ');
-        console.log(req.session.passport.user.token)
+        // console.log(req.session.passport.user.token)
         res.header('token', req.session.passport.user.token).send(req.session.passport.user);
     });
     app.get('/fail',(req,res)=>{
         console.log("in fail");
-        res.send({"error":"failed"});
+        res.send({"error":true});
     });
     app.post('/signUp' , passport.authenticate('signUp',{
         failureRedirect:'/fail'
@@ -54,6 +66,11 @@ module.exports = (app, passport)=>{
     app.delete('/deleteUser', auth, user.deleteUser);
     app.post('/changePassword', auth, user.chagePassword);
     //app.get('/hello', auth ,user.hello);
+
+    app.get('/state', hotel.selectState);
+    app.get('/city', hotel.selectCity);
+    app.post('/addHotel', hotel.addHotel);
+
 };
 
 
