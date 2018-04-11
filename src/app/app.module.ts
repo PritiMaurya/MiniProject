@@ -31,6 +31,9 @@ import {MyInterceptor} from "./interceptors/my-interceptor";
 import { ChangePasswordComponent } from './admin/change-password/change-password.component';
 import { DisplayHotelsComponent } from './admin/display-hotels/display-hotels.component';
 import { AddHotelComponent } from './modals/hotel/add-hotel/add-hotel.component';
+import { DemoComponent } from './demo/demo.component';
+import { AddHotelImgComponent } from './modals/hotel/add-hotel-img/add-hotel-img.component';
+import { ChangeTextDirective } from './change-text.directive';
 
 
 
@@ -57,7 +60,10 @@ import { AddHotelComponent } from './modals/hotel/add-hotel/add-hotel.component'
     DisplayUserComponent,
     ChangePasswordComponent,
     DisplayHotelsComponent,
-    AddHotelComponent
+    AddHotelComponent,
+    DemoComponent,
+    AddHotelImgComponent,
+    ChangeTextDirective
   ],
   imports: [
     BrowserModule,
@@ -75,7 +81,8 @@ import { AddHotelComponent } from './modals/hotel/add-hotel/add-hotel.component'
     AddImageComponent,
     AlertModalComponent,
     PromptModalComponent,
-    DiplayImagesComponent
+    DiplayImagesComponent,
+    UserRegistrationComponent
   ],
   providers: [ApiService, AdminGuard,  {
     provide: HTTP_INTERCEPTORS,

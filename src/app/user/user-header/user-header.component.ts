@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {DialogService} from "ng2-bootstrap-modal";
+import {LoginModalComponent} from "../../modals/login-modal/login-modal.component";
+import {UserRegistrationComponent} from "../../modals/user-registration/user-registration.component";
 
 @Component({
   selector: 'app-user-header',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialogService: DialogService) { }
 
   ngOnInit() {
+  }
+
+  addSignIn() {
+    this.dialogService.addDialog(LoginModalComponent);
+  }
+
+  addSignUp() {
+    this.dialogService.addDialog(UserRegistrationComponent);
   }
 
 }

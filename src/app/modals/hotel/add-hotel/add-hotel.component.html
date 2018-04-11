@@ -2,15 +2,15 @@
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" (click)="close()" >&times;</button>
-      <h4 class="modal-title" align="center">{{title || 'Login'}}</h4>
+      <h4 class="modal-title" align="center">{{title || 'Add Hotel'}}</h4>
     </div>
     <div class="modal-body">
       <div class="panel-default">
         <div class="panel-body">
           <form #addHotel="ngForm" (ngSubmit)="onAddHotel(addHotel)">
             <div class="form-group">
+              <label>Hotel Name:</label>
               <input type="text"
-                     placeholder="Hotel Name"
                      name="hotelName"
                      required
                      ngModel
@@ -22,7 +22,8 @@
               </div>
             </div>
             <div class="form-group">
-              <textarea placeholder="Hotel Address"
+              <label>Address</label>
+              <textarea
                         name="hotelAdd"
                         required
                         ngModel
@@ -33,11 +34,11 @@
                                    class="alert alert-danger">
                   Hotel Address is required
                 </div>
-                 </textarea>
+                </textarea>
             </div>
             <div class="form-group">
+              <label>Contact Number</label>
               <input type="text"
-                     placeholder="Contact Number"
                      name="contact"
                      required
                      ngModel
@@ -52,6 +53,46 @@
                 </div>
                 <div *ngIf="contact.errors.pattern">
                   Please Enter Valid Contact no.
+                </div>
+              </div>
+              <div class="form-group">
+                <label>State</label>
+                <select name="state" class="form-control" #state (change)="getCity(state.value)">
+                  <option *ngFor="let s of states" [value]="s.state">{{s.state}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>City</label>
+                <select name="city" class="form-control" #city>
+                  <option *ngFor="let c of cities" [value]="c.city">{{c.city}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Hotel Type</label>
+                <select name="hotelType" class="form-control" #hotelType [(ngModel)]="type">
+                  <option value="Seven Star">Seven Star</option>
+                  <option value="Five Star">Five Star</option>
+                  <option value="Three Star">Three Star</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Total no of Rooms</label>
+                <input type="text"
+                       name="totRoom"
+                       required
+                       ngModel
+                       #totRoom = "ngModel"
+                       class="form-control"
+                       pattern="[0-9]*"
+                >
+                <div *ngIf="totRoom.invalid && (totRoom.dirty || totRoom.touched)"
+                     class="alert alert-danger">
+                  <div *ngIf="totRoom.errors.required">
+                    Total no of Rooms is required.
+                  </div>
+                  <div *ngIf="totRoom.errors.pattern">
+                    Please Enter Number.
+                  </div>
                 </div>
               </div>
             </div>

@@ -17,10 +17,11 @@ export class AdminLoginComponent implements OnInit {
 
   ngOnInit() {
     // console.log('hello');
-    if (this.apiService.token !== null) {
+    if (this.apiService.token === null) {
+      this.dialogService.addDialog(LoginModalComponent,  {title: 'Sign in'});
+    } else {
       this.router.navigate(['/admin/dashboard']);
     }
-    this.dialogService.addDialog(LoginModalComponent,  {title: 'Sign in'});
   }
 
 }

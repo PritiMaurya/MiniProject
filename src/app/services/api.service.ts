@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../config/environment';
 import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
 import 'rxjs/Rx';
 @Injectable()
 export class ApiService {
@@ -78,6 +77,14 @@ export class ApiService {
 
   changePassword(changeData){
     return this.http.post(environment.baseUrl + 'changePassword', changeData);
+  }
+
+  signUpUser(data) {
+    return this.http.post(environment.baseUrl + 'signUp', data);
+  }
+
+  addHotel(data) {
+    return this.http.post(environment.baseUrl + 'addHotel', data);
   }
 }
 
