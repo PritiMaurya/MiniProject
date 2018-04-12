@@ -7,7 +7,7 @@
     <div class="modal-body">
       <div class="panel-default">
         <div class="panel-body">
-          <form #addHotel="ngForm" (ngSubmit)="onAddHotel(addHotel)">
+          <form #addHotelForm="ngForm" (ngSubmit)="onAddHotel(addHotelForm)">
             <div class="form-group">
               <label>Hotel Name:</label>
               <input type="text"
@@ -30,7 +30,7 @@
                         #hotelAdd = "ngModel"
                         class="form-control"
                         >
-                <div *ngIf="hotelName.invalid && (hotelName.dirty || hotelName.touched)"
+                <div *ngIf="hotelAdd.invalid && (hotelAdd.dirty || hotelAdd.touched)"
                                    class="alert alert-danger">
                   Hotel Address is required
                 </div>
@@ -57,13 +57,13 @@
               </div>
               <div class="form-group">
                 <label>State</label>
-                <select name="state" class="form-control" #state (change)="getCity(state.value)">
+                <select name="state" class="form-control" #state (change)="getCity(state.value)" ngModel>
                   <option *ngFor="let s of states" [value]="s.state">{{s.state}}</option>
                 </select>
               </div>
               <div class="form-group">
                 <label>City</label>
-                <select name="city" class="form-control" #city>
+                <select name="city" class="form-control" #city ngModel>
                   <option *ngFor="let c of cities" [value]="c.city">{{c.city}}</option>
                 </select>
               </div>
@@ -96,7 +96,7 @@
                 </div>
               </div>
             </div>
-            <button class="btn btn-success btn-block" type="submit" [disabled]="addHotel.invalid">Next</button>
+            <button class="btn btn-success btn-block" type="submit" [disabled]="addHotelForm.invalid">Next</button>
           </form>
         </div>
       </div>

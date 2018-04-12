@@ -16,7 +16,7 @@ export interface DisplayImg {
 
 // export class ConfirmModalComponent extends DialogComponent<ConfirmModel, null> implements ConfirmModel {
 
-export class DiplayImagesComponent extends DialogComponent<DisplayImg, null>implements OnInit {
+export class DiplayImagesComponent extends DialogComponent<DisplayImg, null>implements DisplayImg, OnInit {
   title: String;
   imgData;
   id: String;

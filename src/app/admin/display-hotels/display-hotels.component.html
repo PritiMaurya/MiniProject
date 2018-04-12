@@ -1,3 +1,56 @@
-<p>
-  display-hotels works!
-</p>
+<table>
+  <tr>
+    <td>
+      <select #pageSize class="form-control" (change)="getHotelData(1)" style="width: 150px">
+        <option value="3">3</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+      </select>
+    </td>
+    <td>
+      <b>Record per page</b>
+    </td>
+  </tr>
+</table>
+<table class="table table-striped table-responsive">
+  <thead>
+  <tr>
+    <th>Hotel Name
+      <span class="glyphicon sort-icon" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}" (click)="click()"></span>
+    </th>
+    <th>Address</th>
+    <th>Contact no</th>
+    <th>State</th>
+    <th>City</th>
+    <th>Hotel Type</th>
+    <th>Total Room</th>
+    <th>View Images</th>
+    <th>Delete</th>
+    <th>Add Room</th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let hotel of hotelsData">
+  <tr>
+    <td>{{hotel.hotelName}}</td>
+    <td>{{hotel.hotelAdd}}</td>
+    <td>{{hotel.contactNo}}</td>
+    <td>{{hotel.state}}</td>
+    <td>{{hotel.city}}</td>
+    <td>{{hotel.hotelType}}</td>
+    <td>{{hotel.totalNoRoom}}</td>
+    <td><button type="button" class="btn btn-primary" (click)="displayHotelImages(hotel.hotelId)">View Images</button></td>
+    <td><button type="button" class="btn btn-danger" (click)="delete(hotel.hotelId)"><span class="glyphicon glyphicon-trash"></span>
+    </button></td>
+    <td><button type="button" class="btn btn-primary" (click)="addHotelDialog(hotel.hotelId)">Add Room Detail</button></td>
+  </tr>
+  </tbody>
+  <br>
+  <div>
+    <button type="button" *ngFor="let btn of totalPage" (click)="getHotelData(btn+1)" value="{{btn+1}}">{{btn+1}}</button>
+  </div>
+</table>
+
+
+
+

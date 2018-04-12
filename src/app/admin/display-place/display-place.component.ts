@@ -27,7 +27,7 @@ export class DisplayPlaceComponent implements OnInit {
   displayImages(id) {
     this.apiService.displayImage(id).subscribe(
       (res) => {
-        this.dialogService.addDialog(DiplayImagesComponent, {title: 'Place Images', imgData: res, id: id});
+        this.dialogService.addDialog(DiplayImagesComponent, {title: 'Hotel Images', imgData: res, id: id});
       }
     );
   }
@@ -66,7 +66,7 @@ export class DisplayPlaceComponent implements OnInit {
     }
   }
 
-  getData(page) {
+    getData(page) {
     let p1;
     this.page = page;
     const total = [];

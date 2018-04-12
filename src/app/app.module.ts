@@ -34,6 +34,8 @@ import { AddHotelComponent } from './modals/hotel/add-hotel/add-hotel.component'
 import { DemoComponent } from './demo/demo.component';
 import { AddHotelImgComponent } from './modals/hotel/add-hotel-img/add-hotel-img.component';
 import { ChangeTextDirective } from './change-text.directive';
+import {ManageHotelService} from "./services/manage-hotel.service";
+import { DisplayImgComponent } from './modals/hotel/display-img/display-img.component';
 
 
 
@@ -63,7 +65,8 @@ import { ChangeTextDirective } from './change-text.directive';
     AddHotelComponent,
     DemoComponent,
     AddHotelImgComponent,
-    ChangeTextDirective
+    ChangeTextDirective,
+    DisplayImgComponent
   ],
   imports: [
     BrowserModule,
@@ -82,9 +85,11 @@ import { ChangeTextDirective } from './change-text.directive';
     AlertModalComponent,
     PromptModalComponent,
     DiplayImagesComponent,
-    UserRegistrationComponent
+    UserRegistrationComponent,
+    AddHotelImgComponent,
+    DisplayImgComponent
   ],
-  providers: [ApiService, AdminGuard,  {
+  providers: [ApiService, ManageHotelService, AdminGuard,  {
     provide: HTTP_INTERCEPTORS,
     useClass: MyInterceptor,
     multi: true,

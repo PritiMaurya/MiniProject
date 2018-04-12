@@ -82,10 +82,6 @@ export class ApiService {
   signUpUser(data) {
     return this.http.post(environment.baseUrl + 'signUp', data);
   }
-
-  addHotel(data) {
-    return this.http.post(environment.baseUrl + 'addHotel', data);
-  }
 }
 
 // checkToken() {

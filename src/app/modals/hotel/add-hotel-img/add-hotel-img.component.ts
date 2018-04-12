@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AlertModalComponent} from "../../alert-modal/alert-modal.component";
 import {DialogComponent, DialogService} from "ng2-bootstrap-modal";
-import {ApiService} from "../../../services/api.service";
 import {Router} from "@angular/router";
+import {ManageHotelService} from "../../../services/manage-hotel.service";
 export interface AddHotelImgModal{
   title: String;
   data;
@@ -19,15 +19,15 @@ export class AddHotelImgComponent extends DialogComponent<AddHotelImgModal, null
 
   filesToUpload: Array<File> = [];
 
-  constructor(dialogService: DialogService, private apiService: ApiService, private router: Router) {
+  constructor(dialogService: DialogService, private hotelService: ManageHotelService, private router: Router) {
     super(dialogService);
   }
-  fileChangeEvent(fileInput: any) {
+  fileChangeEvent1(fileInput: any) {
     this.filesToUpload = <Array<File>>fileInput.target.files;
     // this.product.photo = fileInput.target.files[0]['name'];
   }
 
-  onImgAdd() {
+  onHotelImgAdd() {
     console.log('on Image');
     // console.log(this.data);
     const formData: any = new FormData();
@@ -37,13 +37,13 @@ export class AddHotelImgComponent extends DialogComponent<AddHotelImgModal, null
       formData.append('uploads[]', files[i], files[i]['name']);
     }
     console.log('formData', formData);
-    this.apiService.addImage(formData, this.data.placeId).subscribe(
+    this.hotelService.addHotelImage(formData, this.data.hotelId).subscribe(
       (res) => {
         console.log(res);
         this.close();
-        this.dialogService.addDialog(AlertModalComponent, { message: 'Place is successfully added'}).subscribe(
+        this.dialogService.addDialog(AlertModalComponent, { message: 'Hotel is successfully added'}).subscribe(
           (data) => {
-            this.router.navigate(['/displayPlace']);
+            this.router.navigate(['/displayHotel']);
           }
         );
       });

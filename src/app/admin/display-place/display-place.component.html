@@ -29,7 +29,7 @@
     <td>{{place.placeName}}</td>
     <td>{{place.placeDescription}}</td>
     <td><button type="button" class="btn btn-primary" (click)="displayImages(place.placeId)">View Images</button></td>
-    <td><button type="button" class="btn btn-danger" (click)="delete(place.placeId)">Delete</button></td>
+    <td><button type="button" class="btn btn-danger" (click)="delete(place.placeId)"><span class="glyphicon glyphicon-trash"></span></button></td>
     <td><button type="button" class="btn btn-primary" (click)="addHotelDialog(place.placeId)">Add Hotel</button></td>
   </tr>
   </tbody>
