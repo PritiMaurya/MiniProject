@@ -11,7 +11,7 @@ module.exports = {
             } else {
                 var sql = "select * from hotel where  hotelId= ?";
                 con.query(sql, [data.insertId],(err, data1)=>{
-                    res.send({error: false, message: 'Hotel successfully added', data: data1});
+                    res.send({error: false, message: 'Hotel successfully added', data: data1[0]});
                 });
 
             }
@@ -38,12 +38,12 @@ module.exports = {
             }
         })
     },
-    addImage: (req,res)=>{
+    addHotelImage: (req,res)=>{
         // console.log('files', req.files);
-        var id =  req.query.id;
+        let id =  req.query.id;
         let errFlag;
         for(let i=0; i < req.files.length; i++){
-            var sql = "insert into hotelImg(hotelId, image) values(?, ?)";
+            let sql = "insert into hotelImg(hotelId, image, imageName) values(?, ?, ?)";
             // sql = mysql.format(id, );
             console.log(req.files[i]);
             con.query(sql,[id, req.files[i].path, req.files[i].filename], (err, response)=>{
@@ -60,5 +60,59 @@ module.exports = {
         }
         console.log({data: 'data'});
         res.send({data: 'data'});
-    }
+    },
+    displayHotel: (req,res) => {
+        var pageNo = parseInt(req.query.pageNo);
+        var size = parseInt(req.query.size);
+        let reverse = JSON.parse(req.query.order);
+        let sql1;
+        let response;
+        console.log(reverse);
+        if(pageNo < 0 || pageNo === 0) {
+            response = {"error" : true,"message" : "invalid page number, should start with 1"};
+            return res.json(response);
+        }
+        let sql = "SELECT count(*) as count FROM `hotel` WHERE isDelete = 0";
+        con.query(sql, (err, totalCount)=>{
+            if(err) {
+                response = {"error" : true,"message" : "Error fetching data"}
+            }
+            if(reverse) {
+                sql1 = "select * from hotel where isDelete = 0 order by hotelName desc limit ?, ?";
+            } else {
+                sql1 = "select * from hotel where isDelete = 0 order by hotelName limit ?, ?";
+            }
+            con.query(sql1, [size * (pageNo - 1), size], (err,data)=>{
+                if(err) {
+                    response = {"error" : true,"message" : "Error fetching data"};
+                } else {
+                    var totalPages = Math.ceil( totalCount[0].count / size);
+                    response = {"error" : false,"message" : data,"pages": totalPages};
+                }
+                res.json(response);
+            });
+        });
+    },
+    deleteHotel: (req,res)=>{
+        let id =  req.query.id;
+        let response;
+        const sql = "update hotel set isDelete = 1 where hotelId=?";
+        con.query(sql,[id], (err, data)=>{
+            if(err){
+                response = {err: true};
+            } else {
+                response = {err: false, data: data};
+            }
+            res.send(response);
+        });
+    },
+    displayImg: (req,res)=>{
+        var id =  req.query.id;
+        const sql = "select * from hotelImg where isDelete = 0 && hotelId=?";
+        con.query(sql,[id], (err, data)=>{
+            if(data){
+                res.send(data);
+            }
+        });
+    },
 }

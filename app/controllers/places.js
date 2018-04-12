@@ -84,6 +84,7 @@ module.exports={
         var size = parseInt(req.query.size);
         let reverse = JSON.parse(req.query.order);
         let sql1;
+        const key = req.query.key;
         let response;
         console.log(reverse);
         if(pageNo < 0 || pageNo === 0) {
@@ -119,7 +120,19 @@ module.exports={
             }
             res.send(totalCount[0]);
         });
-    }
+    },
+    displayPlaceDateWise: (req,res)=>{
+        const key = req.query.key;
+        console.log('key', key);
+        let sql = "SELECT * FROM `place` order by "+key+" limit 5,10";
+        console.log(sql);
+        con.query(sql, (err, data)=> {
+            if (err) {
+                response = {"error": true, "message": "Error fetching data"}
+            }
+            res.send(data);
+        });
+    },
 }
 
 // var pageNo = parseInt(req.query.pageNo);
