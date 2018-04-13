@@ -8,12 +8,15 @@
       <div class="panel-default">
         <div class="panel-body">
           <form #addImageForm="ngForm" (ngSubmit)="onImgAdd()">
-            <input id="cin" name="cin" type="file" (change)="fileChangeEvent($event)" class="form-control" placeholder="Upload a file..." multiple required/>
-            <button class="btn btn-success btn-block" type="submit" [disabled]="addImageForm.invalid">Add</button>
+            <div class="form-group">
+              <input id="cin" name="cin" type="file" (change)="fileChangeEvent($event)" class="form-control" placeholder="Upload a file..." multiple required/>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-success btn-block" type="submit" [disabled]="addImageForm.invalid">Add</button>
+            </div>
           </form>
         </div>
       </div>
-
     </div>
   </div>
 </div>

@@ -16,8 +16,9 @@ export class ManageHotelService {
     return this.http.post(environment.baseUrl + 'addHotelImg?id=' + id, formData);
   }
 
-  displayHotel(pageNo, size, reverse) {
-    return this.http.get(environment.baseUrl + 'displayHotel?pageNo=' + pageNo + '&size=' + size + '&order=' + JSON.stringify(reverse));
+  displayHotel(pageNo, size, reverse, key) {
+    return this.http.get(environment.baseUrl + 'displayHotel?pageNo=' +
+      pageNo + '&size=' + size + '&order=' + JSON.stringify(reverse) + '&key=' + key);
   }
 
   displayHotelImages(id) {
@@ -27,5 +28,8 @@ export class ManageHotelService {
     return this.http.get(environment.baseUrl + 'deleteHotel?id=' + id);
   }
 
-
+  findHotel(id) {
+    console.log(id);
+    return this.http.get(environment.baseUrl + 'findHotel?id=' + id);
+  }
 }

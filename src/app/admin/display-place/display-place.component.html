@@ -1,3 +1,4 @@
+<h1>Place</h1>
 <table>
   <tr>
     <td>
@@ -13,11 +14,13 @@
     </td>
   </tr>
 </table>
-<table class="table table-striped table-responsive">
+
+
+<table class="table table-striped table-responsive" *ngIf="placeData.length >= 1">
   <thead>
   <tr>
     <th>Place Name
-      <span class="glyphicon sort-icon" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}" (click)="click()"></span>
+      <span class="glyphicon sort-icon" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}" (click)="click('placeName')"></span>
     </th>
     <th>Description</th>
     <th>Image</th>
@@ -28,9 +31,9 @@
   <tr>
     <td>{{place.placeName}}</td>
     <td>{{place.placeDescription}}</td>
-    <td><button type="button" class="btn btn-primary" (click)="displayImages(place.placeId)">View Images</button></td>
+    <td><button type="button" class="btn btn-primary" (click)="displayImages(place.placeId, place.placeName)">View Images</button></td>
     <td><button type="button" class="btn btn-danger" (click)="delete(place.placeId)"><span class="glyphicon glyphicon-trash"></span></button></td>
-    <td><button type="button" class="btn btn-primary" (click)="addHotelDialog(place.placeId)">Add Hotel</button></td>
+    <td><button type="button" class="btn btn-primary" (click)="addHotelDialog(place.placeId, place.placeName)">Add Hotel</button></td>
   </tr>
   </tbody>
   <br>

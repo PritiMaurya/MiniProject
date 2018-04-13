@@ -24,7 +24,7 @@ export class AddPlaceComponent extends DialogComponent<AddPlaceModal, null> impl
         const d = res[0];
         console.log('place');
         console.log(res);
-        this.dialogService.addDialog(AddImageComponent, {title: 'Add Image', data: d});
+        this.dialogService.addDialog(AddImageComponent, {title: 'Add Image for ' + f.value.pName , data: d, des: 'add'});
         this.close();
       }
     );

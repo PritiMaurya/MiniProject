@@ -16,17 +16,20 @@ export class DisplayHotelsComponent implements OnInit {
   totalPage = [];
   size1;
   data;
-  reverse = false;
+  reverse;
   page = 1;
+  key = 'date';
   @ViewChild('pageSize') size: ElementRef;
 
   constructor(private hotelService: ManageHotelService, private dialogService: DialogService) { }
 
   ngOnInit() {
     this.size1 = this.size.nativeElement.value;
+    this.reverse = true;
     this.getHotelData(this.page);
   }
   click() {
+    this.key = 'hotelName';
     if (this.reverse) {
       this.reverse = false;
       this.getHotelData(this.page);
@@ -70,7 +73,7 @@ export class DisplayHotelsComponent implements OnInit {
     const total = [];
     // console.log('delete', this.pageData);
     this.size1 = this.size.nativeElement.value;
-    this.hotelService.displayHotel(page, this.size1, this.reverse).subscribe(
+    this.hotelService.displayHotel(page, this.size1, this.reverse, this.key).subscribe(
       (res) => {
         this.data = res;
         console.log(res);

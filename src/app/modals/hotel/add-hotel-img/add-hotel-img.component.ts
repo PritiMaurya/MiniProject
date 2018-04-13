@@ -3,9 +3,11 @@ import {AlertModalComponent} from "../../alert-modal/alert-modal.component";
 import {DialogComponent, DialogService} from "ng2-bootstrap-modal";
 import {Router} from "@angular/router";
 import {ManageHotelService} from "../../../services/manage-hotel.service";
+import {DisplayImgComponent} from "../display-img/display-img.component";
 export interface AddHotelImgModal{
   title: String;
   data;
+  des;
 }
 @Component({
   selector: 'app-add-hotel-img',
@@ -16,7 +18,7 @@ export class AddHotelImgComponent extends DialogComponent<AddHotelImgModal, null
 
   title: String;
   data;
-
+  des;
   filesToUpload: Array<File> = [];
 
   constructor(dialogService: DialogService, private hotelService: ManageHotelService, private router: Router) {
@@ -39,13 +41,26 @@ export class AddHotelImgComponent extends DialogComponent<AddHotelImgModal, null
     console.log('formData', formData);
     this.hotelService.addHotelImage(formData, this.data.hotelId).subscribe(
       (res) => {
-        console.log(res);
+        // console.log(res);
         this.close();
-        this.dialogService.addDialog(AlertModalComponent, { message: 'Hotel is successfully added'}).subscribe(
-          (data) => {
-            this.router.navigate(['/displayHotel']);
-          }
-        );
+        if (this.des === 'add') {
+          this.dialogService.addDialog(AlertModalComponent, { message: 'Hotel detail successfully added'}).subscribe(
+            (data) => {
+              this.router.navigate(['/displayHotel']);
+            }
+          );
+        } else {
+          this.dialogService.addDialog(AlertModalComponent, { message: 'Place Images successfully added'}).subscribe(
+            (data) => {
+              this.hotelService.displayHotelImages(this.data.hotelId).subscribe(
+                (resdata) => {
+                  this.dialogService.addDialog(DisplayImgComponent,
+                    {title: 'Picture of ' + this.data.hotelName, imgData: resdata, id: this.data.hotelId});
+                }
+              );
+            }
+          );
+        }
       });
   }
 

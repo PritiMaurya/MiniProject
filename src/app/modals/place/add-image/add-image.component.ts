@@ -3,9 +3,11 @@ import {DialogComponent, DialogService} from 'ng2-bootstrap-modal';
 import {ApiService} from '../../../services/api.service';
 import {Router} from "@angular/router";
 import {AlertModalComponent} from "../../alert-modal/alert-modal.component";
+import {DiplayImagesComponent} from "../../diplay-images/diplay-images.component";
 export interface AddImageModal{
   title: String;
   data;
+  des;
 }
 
 
@@ -17,6 +19,7 @@ export interface AddImageModal{
 export class AddImageComponent extends DialogComponent<AddImageModal, null> implements AddImageModal {
   title: String;
   data;
+  des;
 
   filesToUpload: Array<File> = [];
 
@@ -38,15 +41,29 @@ export class AddImageComponent extends DialogComponent<AddImageModal, null> impl
       formData.append('uploads[]', files[i], files[i]['name']);
     }
     console.log('formData', formData);
+    console.log('data', this.data);
     this.apiService.addImage(formData, this.data.placeId).subscribe(
       (res) => {
         console.log(res);
         this.close();
-        this.dialogService.addDialog(AlertModalComponent, { message: 'Place is successfully added'}).subscribe(
-          (data) => {
-            this.router.navigate(['/displayPlace']);
-          }
-        );
+        if (this.des === 'add') {
+          this.dialogService.addDialog(AlertModalComponent, { message: 'Place detail successfully added'}).subscribe(
+            (data) => {
+              this.router.navigate(['/displayPlace']);
+            }
+          );
+        } else {
+          this.dialogService.addDialog(AlertModalComponent, { message: 'Place Images successfully added'}).subscribe(
+            (data) => {
+              this.apiService.displayImage(this.data.placeId).subscribe(
+                (resdata) => {
+                  this.dialogService.addDialog(DiplayImagesComponent,
+                    {title: 'Picture of ' + this.data.placeName, imgData: resdata, id: this.data.placeId});
+                }
+              );
+            }
+          );
+        }
       });
   }
 }

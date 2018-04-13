@@ -59,10 +59,13 @@ export class ApiService {
   deletePlace(id) {
     return this.http.get(environment.baseUrl + 'deletePlace?id=' + id);
   }
-
-  pageData(pageNo, size, reverse) {
+  findPlace(id) {
+    return this.http.get(environment.baseUrl + 'findById?id=' + id);
+  }
+  pageData(pageNo, size, reverse, key) {
     console.log(pageNo, size, reverse);
-    return this.http.get(environment.baseUrl + 'page?pageNo=' + pageNo + '&size=' + size + '&order=' + JSON.stringify(reverse));
+    return this.http.get(environment.baseUrl +
+      'page?pageNo=' + pageNo + '&size=' + size + '&order=' + JSON.stringify(reverse) + '&key=' + key);
   }
 
   displayUser(pageNo, size, reverse) {

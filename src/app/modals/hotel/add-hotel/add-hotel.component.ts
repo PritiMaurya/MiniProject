@@ -7,6 +7,7 @@ import {AddHotelImgComponent} from "../add-hotel-img/add-hotel-img.component";
 export interface AddHotelModel {
   title: String;
   placeId;
+  placeName;
 }
 
 @Component({
@@ -17,11 +18,14 @@ export interface AddHotelModel {
 export class AddHotelComponent extends DialogComponent<AddHotelModel, null> implements OnInit, AddHotelModel{
   title: String;
   placeId;
+  placeName;
   constructor(private http: HttpClient, public dialogService: DialogService, private hotelService: ManageHotelService) {
     super(dialogService);
   }
   states;
   cities;
+  state1 = 'Gujarat';
+  city1 = 'Surat';
   type = 'Seven Star';
   ngOnInit() {
     this.getState();
@@ -43,7 +47,7 @@ export class AddHotelComponent extends DialogComponent<AddHotelModel, null> impl
       (res) => {
         res1 = res;
           this.close();
-          this.dialogService.addDialog(AddHotelImgComponent, {title: 'Add Image', data: res1.data});
+          this.dialogService.addDialog(AddHotelImgComponent, {title: 'Add Image', data: res1.data, des: 'add'});
       }
     );
   }
@@ -72,8 +76,7 @@ export class AddHotelComponent extends DialogComponent<AddHotelModel, null> impl
           console.log(res1.message);
         } else {
           this.cities = res1.city;
-          console.log('city');
-          console.log(this.cities);
+          this.city1 = this.cities[0].city;
         }
       }
     );

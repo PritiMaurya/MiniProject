@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DialogComponent, DialogService} from 'ng2-bootstrap-modal';
+import {AddImageComponent} from "../place/add-image/add-image.component";
+import {ApiService} from "../../services/api.service";
 
 
 export interface DisplayImg {
@@ -20,11 +22,23 @@ export class DiplayImagesComponent extends DialogComponent<DisplayImg, null>impl
   title: String;
   imgData;
   id: String;
-  constructor(dialogService: DialogService) {
+  constructor(dialogService: DialogService, private apiService: ApiService) {
     super(dialogService);
   }
 
   ngOnInit() {
   }
 
+  addMoreImage() {
+    let res1;
+    // console.log(this.id, this.imgData[1].placeId);
+    this.close();
+    this.apiService.findPlace(this.id).subscribe(
+      (res) => {
+        res1 = res;
+        console.log(res1);
+        this.dialogService.addDialog(AddImageComponent, {title: 'Add Image for ' + res1.placeName , data: res1, des: 'add more'});
+      }
+    );
+  }
 }

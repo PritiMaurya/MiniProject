@@ -9,6 +9,14 @@
         <div class="panel-body">
           <form #addHotelForm="ngForm" (ngSubmit)="onAddHotel(addHotelForm)">
             <div class="form-group">
+              <label>Place Name:</label>
+              <input type="text"
+                     name="placeName"
+                     [value]="placeName"
+                     readonly
+                     class="form-control">
+            </div>
+            <div class="form-group">
               <label>Hotel Name:</label>
               <input type="text"
                      name="hotelName"
@@ -43,9 +51,10 @@
                      required
                      ngModel
                      #contact = "ngModel"
+                     placeholder="9998882001"
                      class="form-control"
-                      pattern="[0-9]*"
-              >
+                     pattern="[7|8|9][0-9]{9}">
+              <!--<a (click)="removeValidation(contact)">help<span class="glyphicon glyphicon-info-sign" style="margin-left: 510px"></span></a>-->
               <div *ngIf="contact.invalid && (contact.dirty || contact.touched)"
                    class="alert alert-danger">
                 <div *ngIf="contact.errors.required">
@@ -57,13 +66,13 @@
               </div>
               <div class="form-group">
                 <label>State</label>
-                <select name="state" class="form-control" #state (change)="getCity(state.value)" ngModel>
+                <select name="state" class="form-control" #state (change)="getCity(state.value)" [(ngModel)]="state1">
                   <option *ngFor="let s of states" [value]="s.state">{{s.state}}</option>
                 </select>
               </div>
               <div class="form-group">
                 <label>City</label>
-                <select name="city" class="form-control" #city ngModel>
+                <select name="city" class="form-control" #city [(ngModel)]="city1">
                   <option *ngFor="let c of cities" [value]="c.city">{{c.city}}</option>
                 </select>
               </div>
@@ -83,7 +92,7 @@
                        ngModel
                        #totRoom = "ngModel"
                        class="form-control"
-                       pattern="[0-9]*"
+                       pattern="[1-9]*"
                 >
                 <div *ngIf="totRoom.invalid && (totRoom.dirty || totRoom.touched)"
                      class="alert alert-danger">
@@ -102,8 +111,5 @@
       </div>
 
     </div>
-    <!--<div class="modal-footer">-->
-    <!---->
-    <!--</div>-->
   </div>
 </div>

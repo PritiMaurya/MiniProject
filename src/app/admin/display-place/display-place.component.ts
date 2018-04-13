@@ -16,18 +16,20 @@ export class DisplayPlaceComponent implements OnInit {
   totalPage = [];
   size1;
   data;
-  reverse = false;
+  key;
+  reverse = true;
   page = 1;
   @ViewChild('pageSize') size: ElementRef;
   constructor(private apiService: ApiService, private dialogService: DialogService) { }
   ngOnInit() {
       this.size1 = this.size.nativeElement.value;
+      this.key = 'date';
       this.getData(this.page);
   }
-  displayImages(id) {
+  displayImages(id, name) {
     this.apiService.displayImage(id).subscribe(
       (res) => {
-        this.dialogService.addDialog(DiplayImagesComponent, {title: 'Hotel Images', imgData: res, id: id});
+        this.dialogService.addDialog(DiplayImagesComponent, {title: 'Picture of ' + name, imgData: res, id: id});
       }
     );
   }
@@ -53,10 +55,11 @@ export class DisplayPlaceComponent implements OnInit {
       }
     );
   }
-  addHotelDialog(id) {
-    this.dialogService.addDialog(AddHotelComponent, {title: 'Add Hotel', placeId: id});
+  addHotelDialog(id, placeName) {
+    this.dialogService.addDialog(AddHotelComponent, {title: 'Add Hotel', placeId: id, placeName: placeName});
   }
-  click() {
+  click(key) {
+    this.key = key;
     if (this.reverse) {
       this.reverse = false;
       this.getData(this.page);
@@ -72,7 +75,7 @@ export class DisplayPlaceComponent implements OnInit {
     const total = [];
     // console.log('delete', this.pageData);
     this.size1 = this.size.nativeElement.value;
-    this.apiService.pageData(page, this.size1, this.reverse).subscribe(
+    this.apiService.pageData(page, this.size1, this.reverse, this.key).subscribe(
       (res) => {
         this.data = res;
         this.placeData = this.data.message;
