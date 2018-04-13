@@ -4,8 +4,8 @@ var mysql = require('mysql');
 
 module.exports={
     addPlace: (req,res)=>{
-        var sql = "insert into place(placeName, placeDescription) values(?, ?)";
-        con.query(sql, [req.body.pName, req.body.pDesc], (err, data)=>{
+        var sql = "insert into place(placeName, placeDescription, date) values(?, ?, ?)";
+        con.query(sql, [req.body.pName, req.body.pDesc, new Date()], (err, data)=>{
             if(err){
                 console.log('err');
                 console.log(err);
@@ -42,7 +42,7 @@ module.exports={
             });
             console.log(req.files[i].path);
         }
-        console.log({data: 'data'});
+        //console.log({data: 'data'});
         res.send({data: 'data'});
     },
 
@@ -97,10 +97,11 @@ module.exports={
                 response = {"error" : true,"message" : "Error fetching data"}
             }
             if(reverse) {
-                sql1 = "select * from place where isDelete = 0 order by placeName desc limit ?, ?";
+                sql1 = "select * from place where isDelete = 0 order by "+key+" desc limit ?, ?";
             } else {
-                sql1 = "select * from place where isDelete = 0 order by placeName limit ?, ?";
+                sql1 = "select * from place where isDelete = 0 order by "+key+" limit ?, ?";
             }
+            console.log(sql1);
             con.query(sql1, [size * (pageNo - 1), size], (err,data)=>{
                 if(err) {
                     response = {"error" : true,"message" : "Error fetching data"};
@@ -133,6 +134,17 @@ module.exports={
             res.send(data);
         });
     },
+    findPlaceById: (req,res)=>{
+        let id = req.query.id;
+        let sql = "select * from place where placeId =?";
+        console.log(sql);
+        con.query(sql,[id], (err, data)=> {
+            if (err) {
+                response = {"error": true, "message": "Error fetching data"}
+            }
+            res.send(data[0]);
+        });
+    }
 }
 
 // var pageNo = parseInt(req.query.pageNo);

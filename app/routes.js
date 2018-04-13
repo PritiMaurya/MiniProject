@@ -4,10 +4,6 @@ var place = require('./controllers/places');
 var hotel = require('./controllers/hotels');
 var auth = require('./middleware/auth');
 var multer = require('multer');
-// var express = require('express');
-// var app1 = express();
-//
-// app1.use(express.static(path.join(__dirname, '../../ProjectDemo/src/assets/placeImages')));
 
 
 var storage = multer.diskStorage({
@@ -63,12 +59,11 @@ module.exports = (app, passport)=>{
     app.get('/page', auth, place.serverPage);
     app.get('/totalRecord', auth, place.totalRecord);
     app.post('/date', place.displayPlaceDateWise);
-
+    app.get('/findById', auth, place.findPlaceById);
 
     app.get('/displayUser', auth, user.displayUserData);
     app.delete('/deleteUser', auth, user.deleteUser);
     app.post('/changePassword', auth, user.chagePassword);
-    //app.get('/hello', auth ,user.hello);
 
     app.get('/state', hotel.selectState);
     app.get('/city', hotel.selectCity);
@@ -77,6 +72,7 @@ module.exports = (app, passport)=>{
     app.get('/displayHotel', hotel.displayHotel);
     app.get('/displayHotelImg',auth, hotel.displayImg);
     app.get('/deleteHotel',auth, hotel.deleteHotel);
+    app.get('/findHotel', auth, hotel.findHotelById);
 };
 
 

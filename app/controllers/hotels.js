@@ -65,6 +65,7 @@ module.exports = {
         var pageNo = parseInt(req.query.pageNo);
         var size = parseInt(req.query.size);
         let reverse = JSON.parse(req.query.order);
+        let key = req.query.key;
         let sql1;
         let response;
         console.log(reverse);
@@ -78,9 +79,9 @@ module.exports = {
                 response = {"error" : true,"message" : "Error fetching data"}
             }
             if(reverse) {
-                sql1 = "select * from hotel where isDelete = 0 order by hotelName desc limit ?, ?";
+                sql1 = "select * from hotel where isDelete = 0 order by "+key+" desc limit ?, ?";
             } else {
-                sql1 = "select * from hotel where isDelete = 0 order by hotelName limit ?, ?";
+                sql1 = "select * from hotel where isDelete = 0 order by "+key+" limit ?, ?";
             }
             con.query(sql1, [size * (pageNo - 1), size], (err,data)=>{
                 if(err) {
@@ -115,4 +116,15 @@ module.exports = {
             }
         });
     },
+    findHotelById: (req,res)=>{
+        let id = req.query.id;
+        let sql = "select * from hotel where hotelId =?";
+        console.log(sql);
+        con.query(sql,[id], (err, data)=> {
+            if (err) {
+                response = {"error": true, "message": "Error fetching data"}
+            }
+            res.send(data[0]);
+        });
+    }
 }
