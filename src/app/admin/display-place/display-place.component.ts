@@ -5,6 +5,7 @@ import {DiplayImagesComponent} from "../../modals/diplay-images/diplay-images.co
 import {ConfirmModalComponent} from "../../modals/confirm-modal/confirm-modal.component";
 import {AlertModalComponent} from "../../modals/alert-modal/alert-modal.component";
 import {AddHotelComponent} from "../../modals/hotel/add-hotel/add-hotel.component";
+import {AddPlaceComponent} from "../../modals/place/add-place/add-place.component";
 
 @Component({
   selector: 'app-display-place',
@@ -86,5 +87,9 @@ export class DisplayPlaceComponent implements OnInit {
         this.totalPage = total;
       }
     );
+  }
+
+  addForm() {
+    this.dialogService.addDialog(AddPlaceComponent, {title: 'Add Place'});
   }
 }

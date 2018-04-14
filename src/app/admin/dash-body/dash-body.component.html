@@ -1,10 +1,10 @@
 <div class="col-md-9">
   <div class="col-md-3">
     <div class="r3_counter_box">
-      <!--<i class="pull-left fa fa-dollar icon-rounded"></i>-->
       <div class="stats">
-        <h5><strong>$452</strong></h5>
-        <span>Total Users</span>
+        <h5><strong style="margin-left: 20px">{{userCount}}</strong>
+        <span class="glyphicon glyphicon-user"></span></h5>
+        <span>Total no of User</span>
       </div>
     </div>
   </div>
@@ -12,8 +12,8 @@
     <div class="r3_counter_box">
       <!--<i class="pull-left fa fa-laptop user1 icon-rounded"></i>-->
       <div class="stats">
-        <h5><strong>$1019</strong></h5>
-        <span>Total Hotels</span>
+        <h5><strong style="margin-left: 20px">{{hotelCount}}</strong></h5>
+        <span>Total no of Hotel</span>
       </div>
     </div>
   </div>
@@ -21,10 +21,22 @@
     <div class="r3_counter_box">
       <!--<i class="pull-left fa fa-money user2 icon-rounded"></i>-->
       <div class="stats">
-        <h5><strong>$1012</strong></h5>
-        <span></span>
+        <h5><strong style="margin-left: 20px">{{placeCount}}</strong></h5>
+        <span>Total no of Place</span>
       </div>
     </div>
   </div>
   <div class="clearfix"> </div>
+</div>
+<div class="col-md-9">
+  <div class="col-md-6">
+    <fusioncharts
+      [id]="id"
+      [width]="width"
+      [height]="height"
+      [type]="type"
+      [dataFormat]="dataFormat"
+      [dataSource]="dataSource"
+    ></fusioncharts>
+  </div>
 </div>

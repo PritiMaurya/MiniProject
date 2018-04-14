@@ -36,7 +36,14 @@ import { AddHotelImgComponent } from './modals/hotel/add-hotel-img/add-hotel-img
 import { ChangeTextDirective } from './change-text.directive';
 import {ManageHotelService} from "./services/manage-hotel.service";
 import { DisplayImgComponent } from './modals/hotel/display-img/display-img.component';
+import { DashboardChartComponent } from './admin/dashboard-chart/dashboard-chart.component';
 
+import * as FusionCharts from 'fusioncharts';
+import * as Charts from 'fusioncharts/fusioncharts.charts';
+import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
+import {FusionChartsModule} from 'angular4-fusioncharts';
+
+FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 
 
 @NgModule({
@@ -66,7 +73,8 @@ import { DisplayImgComponent } from './modals/hotel/display-img/display-img.comp
     DemoComponent,
     AddHotelImgComponent,
     ChangeTextDirective,
-    DisplayImgComponent
+    DisplayImgComponent,
+    DashboardChartComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +83,8 @@ import { DisplayImgComponent } from './modals/hotel/display-img/display-img.comp
     BootstrapModalModule,
     BootstrapModalModule.forRoot({container: document.body}),
     RoutesModule,
-    HttpClientModule
+    HttpClientModule,
+    FusionChartsModule
   ],
   entryComponents: [
     ConfirmModalComponent,

@@ -3,17 +3,17 @@
     <div class="navbar-header">
       <a class="navbar-brand">Star Trip</a>
     </div>
-    <ul class="">
-      <li class="dropdown">
-        <a class="dropdown-toggle " data-toggle="dropdown" style="cursor: pointer;">
-          <img src="../../../assets/download.jpg" height="30" width="30" class="settingImg" />
-        </a>
-        <ul class="dropdown-menu" id="m">
-          <li><a style="font-size: 15px;">Edit Profile</a></li>
-          <li><a style="font-size: 15px;" routerLink="/changePass">change Password</a></li>
-          <li><a style="font-size: 15px;" (click)="logout()">Logout</a></li>
-        </ul>
-      </li>
-    </ul>
+    <div class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" style="cursor: pointer;">
+        <img src="../../../assets/download.jpg" height="30" width="30" class="settingImg" />
+      </a>
+      <ul class="dropdown-menu" id="m">
+        <li class="dropdown-header"></li>
+        <li><b style="margin-left: 30px"><span class="fa fa-user"></span> Maurya Priti</b></li>
+        <li class="divider"></li>
+        <li><a style="font-size: 15px;" routerLink="/changePass">change Password</a></li>
+        <li><a style="font-size: 15px;" (click)="logout()">Logout</a></li>
+      </ul>
+    </div>
   </div>
 </nav>

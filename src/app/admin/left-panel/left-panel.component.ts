@@ -11,7 +11,5 @@ import {AddPlaceComponent} from "../../modals/place/add-place/add-place.componen
 export class LeftPanelComponent {
 
   constructor(private dialogService: DialogService, private router: Router) {}
-  addFrom() {
-    this.dialogService.addDialog(AddPlaceComponent, {title: 'Add Place'});
-  }
+
 }
