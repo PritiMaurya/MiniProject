@@ -126,5 +126,14 @@ module.exports = {
             }
             res.send(data[0]);
         });
-    }
+    },
+    totalRecord: (req,res)=>{
+        let sql = "SELECT count(*) as count FROM hotel WHERE isDelete = 0";
+        con.query(sql, (err, totalCount)=> {
+            if (err) {
+                response = {"error": true, "message": "Error fetching data"}
+            }
+            res.send(totalCount[0]);
+        });
+    },
 }

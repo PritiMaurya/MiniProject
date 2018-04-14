@@ -89,7 +89,16 @@ module.exports={
                 }
             }
         })
-    }
+    },
+    totalRecord: (req,res)=>{
+        let sql = "SELECT count(*) as count FROM user WHERE isDelete = 0";
+        con.query(sql, (err, totalCount)=> {
+            if (err) {
+                response = {"error": true, "message": "Error fetching data"}
+            }
+            res.send(totalCount[0]);
+        });
+    },
 
 }
 

@@ -73,6 +73,10 @@ module.exports = (app, passport)=>{
     app.get('/displayHotelImg',auth, hotel.displayImg);
     app.get('/deleteHotel',auth, hotel.deleteHotel);
     app.get('/findHotel', auth, hotel.findHotelById);
+
+    app.get('/countUser', user.totalRecord);
+    app.get('/counthotel', hotel.totalRecord);
+    app.get('/countPlace', place.totalRecord);
 };
 
 
