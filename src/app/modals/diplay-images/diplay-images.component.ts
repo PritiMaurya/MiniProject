@@ -27,6 +27,7 @@ export class DiplayImagesComponent extends DialogComponent<DisplayImg, null>impl
   }
 
   ngOnInit() {
+    console.log('place', this.imgData);
   }
 
   addMoreImage() {

@@ -32,4 +32,7 @@ export class ManageHotelService {
     console.log(id);
     return this.http.get(environment.baseUrl + 'findHotel?id=' + id);
   }
+  addRoom(data, id) {
+    return this.http.post(environment.baseUrl + 'addRoom?id=' + id, data);
+  }
 }

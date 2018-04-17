@@ -1,20 +1,20 @@
 <div class="row">
-  <div class="container-fluid">
-    <nav class="navbar navbar-inverse">
-      <div class="col-md-12">
-        <div class="navbar-header">
-          <a class="navbar-brand"></a>
-        </div>
-        <ul class="nav navbar-nav">
-          <li><a>Home</a></li>
-          <li><a (click)="addSignIn()">SignIn</a></li>
-          <li><a (click)="addSignUp()">SignUp</a></li>
-        </ul>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Star Trip</a>
       </div>
-    </nav>
-  </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a>Home</a></li>
+        <li><a>Page 1</a></li>
+        <li><a>Page 2</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a (click)="addSignIn()"><span class="glyphicon glyphicon-user"></span> Sign In</a></li>
+        <li><a (click)="addSignUp()"><span class="glyphicon glyphicon-log-in"></span> Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
 </div>
-
-
 
 

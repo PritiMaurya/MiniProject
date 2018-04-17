@@ -8,8 +8,7 @@
       "root": "src",
       "outDir": "dist",
       "assets": [
-        "assets",
-        "favicon.ico"
+        "assets"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -20,8 +19,7 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "../node_modules/select-picker/dist/picker.min.css"
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
       ],
       "scripts": ["../node_modules/select-picker/src/picker.js"],
       "environmentSource": "environments/environment.ts",

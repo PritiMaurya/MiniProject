@@ -5,6 +5,7 @@ import {ConfirmModalComponent} from "../../modals/confirm-modal/confirm-modal.co
 import {AlertModalComponent} from "../../modals/alert-modal/alert-modal.component";
 import {DisplayImg} from "../../modals/diplay-images/diplay-images.component";
 import {DisplayImgComponent} from "../../modals/hotel/display-img/display-img.component";
+import {AddRoomComponent} from "../../modals/hotel/add-room/add-room.component";
 
 @Component({
   selector: 'app-display-hotels',
@@ -28,8 +29,8 @@ export class DisplayHotelsComponent implements OnInit {
     this.reverse = true;
     this.getHotelData(this.page);
   }
-  click() {
-    this.key = 'hotelName';
+  click(key) {
+    this.key = key;
     if (this.reverse) {
       this.reverse = false;
       this.getHotelData(this.page);
@@ -71,19 +72,29 @@ export class DisplayHotelsComponent implements OnInit {
     let p1;
     this.page = page;
     const total = [];
-    // console.log('delete', this.pageData);
-    this.size1 = this.size.nativeElement.value;
-    this.hotelService.displayHotel(page, this.size1, this.reverse, this.key).subscribe(
-      (res) => {
-        this.data = res;
-        console.log(res);
-        this.hotelsData = this.data.message;
-        p1 = this.data.pages;
-        for (let i = 0; i < p1; i++) {
-          total[i] = i;
+    console.log('page', this.page,  this.totalPage.length);
+
+    if (this.page <= 0) {
+      this.page = 1;
+    } else {
+      this.size1 = this.size.nativeElement.value;
+      this.hotelService.displayHotel(page, this.size1, this.reverse, this.key).subscribe(
+        (res) => {
+          this.data = res;
+          console.log(res);
+          this.hotelsData = this.data.message;
+          p1 = this.data.pages;
+          for (let i = 0; i < p1; i++) {
+            total[i] = i;
+          }
+          this.totalPage = total;
         }
-        this.totalPage = total;
-      }
-    );
+      );
+    }
+    // console.log('delete', this.pageData);
+  }
+
+  addRoomDialog(hotelId, hotelName) {
+    this.dialogService.addDialog(AddRoomComponent, {title: 'Add Room Detail', hotelId: hotelId, hotelName: hotelName});
   }
 }

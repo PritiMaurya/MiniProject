@@ -1,0 +1,75 @@
+<div class="modal-dialog modal-md">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" (click)="close()" >&times;</button>
+      <h4 class="modal-title" align="center">{{title }}</h4>
+    </div>
+    <div class="modal-body">
+      <div class="panel-default">
+        <div class="panel-body">
+          <form #addRoomForm="ngForm" (ngSubmit)="onAddRoom(addRoomForm)">
+            <div class="form-group">
+              <label>Hotel Name:</label>
+              <input type="text"
+                     name="hotelName"
+                     [value]="hotelName"
+                     readonly
+                     class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Room Number</label>
+              <input type="text"
+                     name="num"
+                     required
+                     ngModel
+                     #num = "ngModel"
+                     class="form-control"
+                     pattern="[1-9][0-9]*"
+              >
+              <div *ngIf="num.invalid && (num.dirty || num.touched)"
+                   class="alert alert-danger">
+                <div *ngIf="num.errors.required">
+                  Total no of Rooms is required.
+                </div>
+                <div *ngIf="num.errors.pattern">
+                  Please Enter Number.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+                <label>Room Type</label>
+                <select name="roomType" class="form-control" #roomType (change)="selectType(roomType.value)" ngModel>
+                  <option value="Single">Single</option>
+                  <option value="Double">Double</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Rate</label>
+                <input type="text"
+                       name="rate"
+                       required
+                       ngModel
+                       #rate = "ngModel"
+                       class="form-control"
+                       pattern="[1-9][0-9]*"
+                       [(ngModel)]="rate1"
+                >
+                <div *ngIf="rate.invalid && (rate.dirty || rate.touched)"
+                     class="alert alert-danger">
+                  <div *ngIf="rate.errors.required">
+                    Total no of Rooms is required.
+                  </div>
+                  <div *ngIf="rate.errors.pattern">
+                    Please Enter valid Number.
+                  </div>
+                </div>
+              </div>
+            <button class="btn btn-success btn-block" type="submit" [disabled]="addRoomForm.invalid">Add</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -17,13 +17,12 @@ import {ChangePasswordComponent} from "../admin/change-password/change-password.
 import {AddHotelComponent} from "../modals/hotel/add-hotel/add-hotel.component";
 import {DemoComponent} from "../demo/demo.component";
 import {DisplayHotelsComponent} from "../admin/display-hotels/display-hotels.component";
-import {DisplayImgComponent} from "../modals/hotel/display-img/display-img.component";
 import {DiplayImagesComponent} from "../modals/diplay-images/diplay-images.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'demo', component: DemoComponent},
-  {path: 'admin', component: AdminLoginComponent},
+  {path: 'login', component: AdminLoginComponent},
   {path: 'admin/dashboard', component: DashBodyComponent, canActivate: [AdminGuard]},
   {path: 'home', component: HomeComponent},
   {path: 'displayPlace', component: DisplayPlaceComponent, canActivate: [AdminGuard]},

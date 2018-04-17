@@ -8,9 +8,6 @@ export class ApiService {
   d;
   tokenData;
   token;
-  hotelCount;
-  placeCount;
-  userCount;
   constructor(private http: HttpClient) {
     // console.log(environment.baseUrl);
   }

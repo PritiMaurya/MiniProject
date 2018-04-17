@@ -9,7 +9,6 @@ import {ApiService} from "../../services/api.service";
 export class DashboardChartComponent implements OnInit {
 
   ngOnInit() {
-    console.log(this.apiService.hotelCount);
   }
 
   constructor(private apiService: ApiService) {

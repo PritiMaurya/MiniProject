@@ -42,6 +42,8 @@ import * as FusionCharts from 'fusioncharts';
 import * as Charts from 'fusioncharts/fusioncharts.charts';
 import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
 import {FusionChartsModule} from 'angular4-fusioncharts';
+import { AddRoomComponent } from './modals/hotel/add-room/add-room.component';
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 
@@ -74,7 +76,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     AddHotelImgComponent,
     ChangeTextDirective,
     DisplayImgComponent,
-    DashboardChartComponent
+    DashboardChartComponent,
+    AddRoomComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,7 +87,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     BootstrapModalModule.forRoot({container: document.body}),
     RoutesModule,
     HttpClientModule,
-    FusionChartsModule
+    FusionChartsModule,
+    Ng2SearchPipeModule
   ],
   entryComponents: [
     ConfirmModalComponent,
@@ -96,7 +100,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     DiplayImagesComponent,
     UserRegistrationComponent,
     AddHotelImgComponent,
-    DisplayImgComponent
+    DisplayImgComponent,
+    AddRoomComponent
   ],
   providers: [ApiService, ManageHotelService, AdminGuard,  {
     provide: HTTP_INTERCEPTORS,

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../config/environment";
 import {ApiService} from "../../services/api.service";
@@ -16,7 +16,7 @@ export class DashBodyComponent implements OnInit {
   dataFormat = 'json';
   dataSource;
   userCount; hotelCount; placeCount
-  constructor(private http: HttpClient, private apiService: ApiService) {
+  constructor(private http: HttpClient) {
 
   }
 

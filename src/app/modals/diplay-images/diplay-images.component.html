@@ -10,14 +10,13 @@
         </div>
         <ng-template #dataBlock>
           <div class="col-md-3" *ngFor="let image of imgData" >
-            <img src="../../../assets/placeImages/{{image.imgName}}" height="80" width="100"/> <br><br>
+            <img src="http://localhost:3003/static1/{{image.imgName}}" height="80" width="100"/> <br><br>
           </div>
         </ng-template>
         <ng-template #infoBlock>
           <div class="col-md-7">Place Picture is not Available you can add it by clicking Add Picture</div>
         </ng-template>
       </div>
-
     </div>
     <div class="modal-footer">
       <button class="btn btn-primary" (click)="addMoreImage()">Add Images</button>

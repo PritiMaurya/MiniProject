@@ -10,7 +10,7 @@ import {AlertModalComponent} from "../../modals/alert-modal/alert-modal.componen
   styleUrls: ['./display-user.component.css']
 })
 export class DisplayUserComponent implements OnInit {
-  userData; page; size1; totalPage; reverse = false;
+  userData = []; page; size1; totalPage; reverse = false; i1;
   @ViewChild('pageSize') size: ElementRef;
   constructor(private apiService: ApiService, private dialogService: DialogService) { }
 
@@ -36,6 +36,9 @@ export class DisplayUserComponent implements OnInit {
           }
       }
     );
+  }
+  setIndex(i) {
+    console.log('i ', i);
   }
   click() {
     if (this.reverse) {
