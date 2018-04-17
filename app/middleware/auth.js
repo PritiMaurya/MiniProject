@@ -6,7 +6,7 @@ module.exports = (req,res, next)=>{
     let response;
     console.log('header', token);
     if(token){
-        jwt.verify(token, environment.secret, (err, t)=>{
+        jwt.verify(token, environment.secret, (err)=>{
             if(err){
                 response = {error: true, message: 'token invalid'};
                 res.send(response);

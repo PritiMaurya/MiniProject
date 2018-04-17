@@ -5,7 +5,8 @@ var con = mysql.createConnection({
     host: environment.host,
     user: environment.user,
     password: "",
-    database: environment.db
+    database: environment.db,
+    port: 3306
 });
 
 con.connect((err,res)=>{

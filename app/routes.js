@@ -5,10 +5,9 @@ var hotel = require('./controllers/hotels');
 var auth = require('./middleware/auth');
 var multer = require('multer');
 
-
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, '../ProjectDemo/src/assets/placeImages')
+        cb(null, './uploadsPlace/')
     },
     filename: function (req, file, cb) {
         cb(null, 'img'+Date.now()+file.originalname);
@@ -19,7 +18,7 @@ var upload = multer({ storage: storage });
 
 var storage1 = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, '../ProjectDemo/src/assets/HotelImg')
+        cb(null, "./uploads/")
     },
     filename: function (req, file, cb) {
         cb(null, 'img'+Date.now()+file.originalname);
@@ -34,7 +33,7 @@ module.exports = (app, passport)=>{
     app.post('/login' , passport.authenticate('signIn',{
         failureRedirect:'/fail'
     }),(req,res)=>{
-        console.log('sucess user ');
+        console.log('success user ');
         // console.log(req.session.passport.user.token)
         res.header('token', req.session.passport.user.token).send(req.session.passport.user);
     });
@@ -45,7 +44,7 @@ module.exports = (app, passport)=>{
     app.post('/signUp' , passport.authenticate('signUp',{
         failureRedirect:'/fail'
     }),(req,res)=>{
-        console.log('sucess user ');
+        console.log('success user ');
         console.log(req.session.passport.user.token);
         res.header('token', req.session.passport.user.token).send( req.session.passport.user);
     });
@@ -68,11 +67,14 @@ module.exports = (app, passport)=>{
     app.get('/state', hotel.selectState);
     app.get('/city', hotel.selectCity);
     app.post('/addHotel', hotel.addHotel);
+    //app.post("/addHotelImg", multer({dest: "./uploads/"}).array("uploads[]", 12), function(req, res) {});
+
     app.post("/addHotelImg",auth, uploadImg.array("uploads[]", 12), hotel.addHotelImage);
     app.get('/displayHotel', hotel.displayHotel);
     app.get('/displayHotelImg',auth, hotel.displayImg);
     app.get('/deleteHotel',auth, hotel.deleteHotel);
     app.get('/findHotel', auth, hotel.findHotelById);
+    app.post('/addRoom', hotel.addRoom);
 
     app.get('/countUser', user.totalRecord);
     app.get('/counthotel', hotel.totalRecord);

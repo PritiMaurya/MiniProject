@@ -14,7 +14,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static(path.join(__dirname, '../ProjectDemo/src/assets/placeImages')));
+// app.use(express.static(path.join(__dirname, '../ProjectDemo/src/assets/placeImages')));
+app.use('/static', express.static(path.join(__dirname, 'uploads')));
+app.use('/static1', express.static(path.join(__dirname, 'uploadsPlace')));
 
 
 

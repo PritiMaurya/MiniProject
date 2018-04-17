@@ -68,7 +68,7 @@ module.exports = {
         let key = req.query.key;
         let sql1;
         let response;
-        console.log(reverse);
+        // console.log(reverse);
         if(pageNo < 0 || pageNo === 0) {
             response = {"error" : true,"message" : "invalid page number, should start with 1"};
             return res.json(response);
@@ -136,4 +136,17 @@ module.exports = {
             res.send(totalCount[0]);
         });
     },
+    addRoom: (req,res)=>{
+        let hotelId = req.query.id;
+        let sql = "insert into hotelRoom (roomNumber, hotelId, rate, roomType) values(?, ?, ?, ?)";
+        con.query(sql, [req.body.no, hotelId, req.body.rate, req.body.roomType], (err)=>{
+            if(err) {
+                console.log(err);
+                res.send({"error": true, "message": "Error While inserting data"});
+            } else {
+                res.send({"error": false, "message": "Room detail successfully added"});
+            }
+        });
+    }
 }
+
