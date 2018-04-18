@@ -4,7 +4,7 @@
     <table>
       <tr>
         <td>
-          <select #pageSize class="form-control" (change)="getData(1)" style="width: 65px">
+          <select #pageSize class="form-control" (change)="getData(1)"  style="width: 65px; height: 38px">
             <option value="3">3</option>
             <option value="5">5</option>
             <option value="10">10</option>
@@ -12,7 +12,7 @@
           </select>
         </td>
         <td>
-          <b>Row per page</b>
+          <b style="margin-left: 15px">Row per page</b>
         </td>
       </tr>
     </table>
@@ -21,7 +21,7 @@
     <button class="btn btn-primary" style="margin-right: 150px" (click)="addForm()">Add</button>
   </div>
   <div class="col-md-3">
-    <input type="text" class="form-control" name="searchText" placeholder="Search" [(ngModel)]="searchText">
+    <input type="text" class="form-control" name="searchText" placeholder="Search" [(ngModel)]="searchText" style="height: 41px">
   </div>
 </div>
 

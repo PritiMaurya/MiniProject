@@ -25,13 +25,10 @@ export class LoginModalComponent extends DialogComponent<LoginModal, null> imple
         console.log(res);
         if (this.apiService.d.error) {
           this.apiService.errorMsg = true;
-          localStorage.setItem('login', 'false');
         } else {
           this.apiService.errorMsg = false;
-          console.log(this.apiService.d.token);
           const token = this.apiService.d.token;
           localStorage.setItem('token', token);
-          localStorage.setItem('login', 'true');
           if (this.apiService.d.role === 'user') {
             this.router.navigate(['/home']);
           } else {

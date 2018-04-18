@@ -18,6 +18,7 @@ import {AddHotelComponent} from "../modals/hotel/add-hotel/add-hotel.component";
 import {DemoComponent} from "../demo/demo.component";
 import {DisplayHotelsComponent} from "../admin/display-hotels/display-hotels.component";
 import {DiplayImagesComponent} from "../modals/diplay-images/diplay-images.component";
+import {UnauthComponent} from "../unauth/unauth.component";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
   {path: 'changePass', component: ChangePasswordComponent, canActivate: [AdminGuard]},
   {path: 'addHotel', component: AddHotelComponent, canActivate: [AdminGuard]},
   {path: 'displayHotel', component: DisplayHotelsComponent, canActivate: [AdminGuard]},
-  {path: 'displayPlaceImage', component: DiplayImagesComponent, canActivate: [AdminGuard]}];
+  {path: 'displayPlaceImage', component: DiplayImagesComponent, canActivate: [AdminGuard]},
+  {path: 'notAccess', component: UnauthComponent}];
 
 @NgModule({
   imports: [

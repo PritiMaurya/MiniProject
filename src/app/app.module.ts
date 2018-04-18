@@ -44,6 +44,8 @@ import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
 import {FusionChartsModule} from 'angular4-fusioncharts';
 import { AddRoomComponent } from './modals/hotel/add-room/add-room.component';
 import {Ng2SearchPipeModule} from "ng2-search-filter";
+import { UnauthComponent } from './unauth/unauth.component';
+import {AngularMultiSelectModule} from "angular2-multiselect-dropdown";
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 
@@ -78,6 +80,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     DisplayImgComponent,
     DashboardChartComponent,
     AddRoomComponent,
+    UnauthComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,7 +91,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     RoutesModule,
     HttpClientModule,
     FusionChartsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    AngularMultiSelectModule
   ],
   entryComponents: [
     ConfirmModalComponent,

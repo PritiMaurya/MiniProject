@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
+    "angular2-multiselect-dropdown": "^2.8.0",
     "angular4-carousel": "^3.1.8",
     "angular4-fusioncharts": "^1.0.0",
     "bootstrap": "^3.3.7",

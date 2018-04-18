@@ -10,7 +10,8 @@ import {AlertModalComponent} from "../../modals/alert-modal/alert-modal.componen
   styleUrls: ['./display-user.component.css']
 })
 export class DisplayUserComponent implements OnInit {
-  userData = []; page; size1; totalPage; reverse = false; i1;
+  userData = []; page; size1; totalPage; reverse = false;
+  key = 'date';
   @ViewChild('pageSize') size: ElementRef;
   constructor(private apiService: ApiService, private dialogService: DialogService) { }
 
@@ -37,10 +38,8 @@ export class DisplayUserComponent implements OnInit {
       }
     );
   }
-  setIndex(i) {
-    console.log('i ', i);
-  }
-  click() {
+  click(key) {
+    this.key = key;
     if (this.reverse) {
       this.reverse = false;
       this.getUserData(this.page);
@@ -57,7 +56,7 @@ export class DisplayUserComponent implements OnInit {
     // console.log('delete', this.pageData);
     this.size1 = this.size.nativeElement.value;
     // console.log(this.page, this.size1);
-    this.apiService.displayUser(this.page, this.size1, this.reverse).subscribe(
+    this.apiService.displayUser(this.page, this.size1, this.reverse, this.key).subscribe(
       (res) => {
         res1 = res;
         if (res1.error) {

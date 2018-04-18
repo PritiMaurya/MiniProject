@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { environment } from '../config/environment';
 import {HttpClient} from "@angular/common/http";
 import 'rxjs/Rx';
+import {async} from "@angular/core/testing";
 @Injectable()
 export class ApiService {
   errorMsg = false;
   d;
-  tokenData;
   token;
   constructor(private http: HttpClient) {
     // console.log(environment.baseUrl);
@@ -25,29 +25,27 @@ export class ApiService {
   }
 
   checkToken() {
+    let res1;
     this.token = localStorage.getItem('token');
-    if (this.token == null) {
+    if (this.token === null) {
       return false;
     } else {
-      return this.http.get(environment.baseUrl + 'check?token=' + this.token).subscribe(
+       return this.http.get(environment.baseUrl + 'check?token=' + this.token).subscribe(
         (res) => {
-          this.tokenData = res[0];
-          if (this.tokenData == null) {
+          console.log('res ', res);
+          res1 = res;
+          // console.log('res1', res1, 'err', res1.error);
+          console.log('err ', res1.error);
+          if (res1.error) {
             console.log('false');
             return false;
           } else {
-            console.log('token', this.tokenData.token);
-            if ( this.token === this.tokenData.token) {
-              return true;
-            } else {
-              return false;
-            }
+            return true;
           }
         }
       );
     }
   }
-
   displayPlace() {
     return this.http.get(environment.baseUrl + 'display');
   }
@@ -68,10 +66,10 @@ export class ApiService {
       'page?pageNo=' + pageNo + '&size=' + size + '&order=' + JSON.stringify(reverse) + '&key=' + key);
   }
 
-  displayUser(pageNo, size, reverse) {
+  displayUser(pageNo, size, reverse, key) {
     console.log(pageNo, size, reverse);
     console.log(typeof JSON.stringify(reverse));
-    return this.http.get(environment.baseUrl + 'displayUser?pageNo=' + pageNo + '&size=' + size + '&order=' + JSON.stringify(reverse));
+    return this.http.get(environment.baseUrl + 'displayUser?pageNo=' + pageNo + '&size=' + size + '&order=' + JSON.stringify(reverse) + '&key=' + key);
   }
 
   deleteUser(id) {

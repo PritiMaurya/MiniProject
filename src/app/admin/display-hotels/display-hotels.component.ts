@@ -13,13 +13,10 @@ import {AddRoomComponent} from "../../modals/hotel/add-room/add-room.component";
   styleUrls: ['./display-hotels.component.css']
 })
 export class DisplayHotelsComponent implements OnInit {
-  hotelsData = [];
-  totalPage = [];
-  size1;
-  data;
-  reverse;
-  page = 1;
-  key = 'date';
+  hotelsData = []; totalPage = []; size1;
+  data; reverse; page = 1; key = 'date'; dropdownList = []; selectedItems = [];
+  dropdownSettings = {};
+  hideState = true; hideCity = true; hideType = true; hideView = true; hideDelete = true; hideRoom = true; hideTotal = true;
   @ViewChild('pageSize') size: ElementRef;
 
   constructor(private hotelService: ManageHotelService, private dialogService: DialogService) { }
@@ -28,6 +25,32 @@ export class DisplayHotelsComponent implements OnInit {
     this.size1 = this.size.nativeElement.value;
     this.reverse = true;
     this.getHotelData(this.page);
+    this.dropdownList = [
+      {'id': 1, 'itemName': 'State'},
+      {'id': 2, 'itemName': 'City'},
+      {'id': 3, 'itemName': 'Hotel Type'},
+      {'id': 4, 'itemName': 'View Images'},
+      {'id': 5, 'itemName': 'Delete'},
+      {'id': 6, 'itemName': 'Add Room'},
+      {'id': 7, 'itemName': 'Total Room'}
+    ];
+    this.selectedItems = [
+      {'id': 1, 'itemName': 'State'},
+      {'id': 2, 'itemName': 'City'},
+      {'id': 3, 'itemName': 'Hotel Type'},
+      {'id': 4, 'itemName': 'View Images'},
+      {'id': 5, 'itemName': 'Delete'},
+      {'id': 6, 'itemName': 'Add Room'},
+      {'id': 7, 'itemName': 'Total Room'}
+    ];
+    this.dropdownSettings = {
+      singleSelection: false,
+      text: 'Select Column',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      enableSearchFilter: true,
+      classes: 'myclass custom-class'
+    };
   }
   click(key) {
     this.key = key;
@@ -96,5 +119,74 @@ export class DisplayHotelsComponent implements OnInit {
 
   addRoomDialog(hotelId, hotelName) {
     this.dialogService.addDialog(AddRoomComponent, {title: 'Add Room Detail', hotelId: hotelId, hotelName: hotelName});
+  }
+  onItemSelect(item: any) {
+    console.log('onSelect  ', item);
+    if (item.itemName === this.dropdownList[0].itemName) {
+      this.hideState = true;
+    }
+    if (item.itemName === this.dropdownList[1].itemName) {
+      this.hideCity = true;
+    }
+    if (item.itemName === this.dropdownList[2].itemName) {
+      this.hideType = true;
+    }
+    if (item.itemName === this.dropdownList[3].itemName) {
+      this.hideView = true;
+    }
+    if (item.itemName === this.dropdownList[4].itemName) {
+      this.hideDelete = true;
+    }
+    if (item.itemName === this.dropdownList[5].itemName) {
+      this.hideRoom = true;
+    }
+    if (item.itemName === this.dropdownList[6].itemName) {
+      this.hideTotal = true;
+    }
+    console.log(this.selectedItems);
+  }
+  OnItemDeSelect(item: any) {
+    console.log(item);
+    console.log(this.selectedItems);
+
+    if (item.itemName === this.dropdownList[0].itemName) {
+      this.hideState = false;
+    }
+    if (item.itemName === this.dropdownList[1].itemName) {
+      this.hideCity = false;
+    }
+    if (item.itemName === this.dropdownList[2].itemName) {
+      this.hideType = false;
+    }
+    if (item.itemName === this.dropdownList[3].itemName) {
+      this.hideView = false;
+    }
+    if (item.itemName === this.dropdownList[4].itemName) {
+      this.hideDelete = false;
+    }
+    if (item.itemName === this.dropdownList[5].itemName) {
+      this.hideRoom = false;
+    }
+    if (item.itemName === this.dropdownList[6].itemName) {
+      this.hideTotal = false;
+    }
+  }
+  onSelectAll(items: any) {
+    this.hideTotal = true;
+    this.hideRoom = true;
+    this.hideDelete = true;
+    this.hideState = true;
+    this.hideCity = true;
+    this.hideView = true;
+    this.hideType = true;
+  }
+  onDeSelectAll(items: any) {
+    this.hideTotal = false;
+    this.hideRoom = false;
+    this.hideDelete = false;
+    this.hideState = false;
+    this.hideCity = false;
+    this.hideView = false;
+    this.hideType = false;
   }
 }

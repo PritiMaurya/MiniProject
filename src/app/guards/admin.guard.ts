@@ -18,7 +18,7 @@ export class AdminGuard implements CanActivate {
       console.log('check token');
       console.log(this.apiService.checkToken());
       console.log('false');
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/notAccess']);
       return false;
     }
   }

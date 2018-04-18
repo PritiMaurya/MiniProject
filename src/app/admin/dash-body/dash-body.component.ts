@@ -62,7 +62,6 @@ export class DashBodyComponent implements OnInit {
           console.log(res);
           this.dataSource = {
             'chart': {
-              'caption': 'Data',
               'subCaption': 'Information',
               'theme': 'fint'
             },
