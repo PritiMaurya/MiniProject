@@ -4,13 +4,17 @@ var mysql = require('mysql');
 module.exports={
     checkToken: (req,res)=>{
         var token = req.query.token;
-        let sql = "select token from user where token =?";
+        let sql = "select token from user where token =? && role like 'admin'";
         con.query(sql, [token],(err,data)=>{
             if(data){
                 console.log('check token');
-                res.send(data);
+                if(data.length > 0) {
+                    res.send({error: false, data: data[0]});
+                } else {
+                    res.send({error: true, message: 'Unauthorized access'});
+                }
             } else{
-                res.send(err);
+                res.send({error: true, message: 'Unable to check token'});
             }
         });
     },
@@ -34,6 +38,7 @@ module.exports={
         let pageNo = parseInt(req.query.pageNo);
         let size = parseInt(req.query.size);
         let reverse = JSON.parse(req.query.order);
+        let key = req.query.key;
         // console.log('reverse ' + reverse);
         let sql1;
         if(pageNo < 0 || pageNo === 0) {
@@ -48,10 +53,10 @@ module.exports={
             if (reverse){
                 // console.log(reverse, 'true');
                 // console.log('true');
-                sql1 = "select * from user where isDelete = 0 && role = 'user' order by userName desc LIMIT ?, ?"
+                sql1 = "select * from user where isDelete = 0 && role = 'user' order by "+key+" desc LIMIT ?, ?"
             } else{
                 console.log('false');
-                sql1 = "select * from user where isDelete = 0 && role = 'user' order by userName limit ?, ?";
+                sql1 = "select * from user where isDelete = 0 && role = 'user' order by "+key+" limit ?, ?";
             }
             con.query(sql1, [size * (pageNo - 1), size], (err,data)=>{
                 if(err) {

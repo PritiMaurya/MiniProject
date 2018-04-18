@@ -54,12 +54,12 @@ module.exports = (app, passport)=>{
     app.get('/display',auth, place.displayPlace);
     app.get('/displayImg',auth, place.displayImage);
     app.get('/deletePlace',auth, place.deletePlace);
-    app.get('/check', user.checkToken);
     app.get('/page', auth, place.serverPage);
     app.get('/totalRecord', auth, place.totalRecord);
     app.post('/date', place.displayPlaceDateWise);
     app.get('/findById', auth, place.findPlaceById);
 
+    app.get('/check', user.checkToken);
     app.get('/displayUser', auth, user.displayUserData);
     app.delete('/deleteUser', auth, user.deleteUser);
     app.post('/changePassword', auth, user.chagePassword);
@@ -67,7 +67,6 @@ module.exports = (app, passport)=>{
     app.get('/state', hotel.selectState);
     app.get('/city', hotel.selectCity);
     app.post('/addHotel', hotel.addHotel);
-    //app.post("/addHotelImg", multer({dest: "./uploads/"}).array("uploads[]", 12), function(req, res) {});
 
     app.post("/addHotelImg",auth, uploadImg.array("uploads[]", 12), hotel.addHotelImage);
     app.get('/displayHotel', hotel.displayHotel);
