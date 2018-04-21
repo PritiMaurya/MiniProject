@@ -46,6 +46,7 @@ import { AddRoomComponent } from './modals/hotel/add-room/add-room.component';
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import { UnauthComponent } from './unauth/unauth.component';
 import {AngularMultiSelectModule} from "angular2-multiselect-dropdown";
+import {JwtHelper} from "angular2-jwt";
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 

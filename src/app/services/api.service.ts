@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../config/environment';
-import {HttpClient} from "@angular/common/http";
-import 'rxjs/Rx';
-import {async} from "@angular/core/testing";
+import {HttpClient} from '@angular/common/http';
+
 @Injectable()
 export class ApiService {
   errorMsg = false;
@@ -32,9 +31,9 @@ export class ApiService {
     } else {
        return this.http.get(environment.baseUrl + 'check?token=' + this.token).subscribe(
         (res) => {
-          console.log('res ', res);
+          // console.log('res ', res);
           res1 = res;
-          // console.log('res1', res1, 'err', res1.error);
+          console.log('res1', res1, 'err', res1.error);
           console.log('err ', res1.error);
           if (res1.error) {
             console.log('false');
@@ -61,22 +60,21 @@ export class ApiService {
     return this.http.get(environment.baseUrl + 'findById?id=' + id);
   }
   pageData(pageNo, size, reverse, key) {
-    console.log(pageNo, size, reverse);
+    // console.log(pageNo, size, reverse);
     return this.http.get(environment.baseUrl +
       'page?pageNo=' + pageNo + '&size=' + size + '&order=' + JSON.stringify(reverse) + '&key=' + key);
   }
 
   displayUser(pageNo, size, reverse, key) {
-    console.log(pageNo, size, reverse);
-    console.log(typeof JSON.stringify(reverse));
-    return this.http.get(environment.baseUrl + 'displayUser?pageNo=' + pageNo + '&size=' + size + '&order=' + JSON.stringify(reverse) + '&key=' + key);
+    return this.http.get(environment.baseUrl + 'displayUser?pageNo=' +
+      pageNo + '&size=' + size + '&order=' + JSON.stringify(reverse) + '&key=' + key);
   }
 
   deleteUser(id) {
     return this.http.delete(environment.baseUrl + 'deleteUser?id=' + id);
   }
 
-  changePassword(changeData){
+  changePassword(changeData) {
     return this.http.post(environment.baseUrl + 'changePassword', changeData);
   }
 

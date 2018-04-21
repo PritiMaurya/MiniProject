@@ -10,10 +10,10 @@ export class MyInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token: string = localStorage.getItem('token');
-    console.log('token Interceptor', token);
+    // console.log('token Interceptor', token);
     if (token) {
         req = req.clone({ headers: req.headers.set('token', token) });
-        console.log('intercepter');
+        // console.log('intercepter');
     }
     return next.handle(req);
   }
