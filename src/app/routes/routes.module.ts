@@ -19,12 +19,15 @@ import {DemoComponent} from "../demo/demo.component";
 import {DisplayHotelsComponent} from "../admin/display-hotels/display-hotels.component";
 import {DiplayImagesComponent} from "../modals/diplay-images/diplay-images.component";
 import {UnauthComponent} from "../unauth/unauth.component";
+import {UserBodyComponent} from "../user/user-body/user-body.component";
+import {DetailsComponent} from "../user/details/details.component";
 
 const appRoutes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', component: UserBodyComponent},
+  {path: 'detail/:id', component: DetailsComponent},
   {path: 'demo', component: DemoComponent},
   {path: 'login', component: AdminLoginComponent},
-  {path: 'admin/dashboard', component: DashBodyComponent, canActivate: [AdminGuard]},
+  {path: 'admin/dashboard', component: AdminHomeComponent, canActivate: [AdminGuard]},
   {path: 'home', component: HomeComponent},
   {path: 'displayPlace', component: DisplayPlaceComponent, canActivate: [AdminGuard]},
   {path: 'addImage', component: AddImageComponent, canActivate: [AdminGuard]},

@@ -1,0 +1,12 @@
+<app-user-header></app-user-header>
+<div class="row" >
+  <div class="container-fluid">
+    <div class="col-md-3" *ngFor="let data of result">
+      <div style="height: 400px; width: auto; border: 1px solid black">
+        <a  [routerLink]="['/detail', data.hotelId]"><img src="http://localhost:3003/static/{{data.imageName}}" class="img-rounded" /><br></a>
+        <h3 style="color: green; margin-left: 10px">{{data.hotelName}}</h3>
+        <a class="btn btn-primary" style="margin: 10px; border: none; font-size: 20px">Book Now</a>
+      </div><br><br>
+    </div>
+  </div>
+</div>

@@ -46,7 +46,11 @@ import { AddRoomComponent } from './modals/hotel/add-room/add-room.component';
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import { UnauthComponent } from './unauth/unauth.component';
 import {AngularMultiSelectModule} from "angular2-multiselect-dropdown";
-import {JwtHelper} from "angular2-jwt";
+import { UserBodyComponent } from './user/user-body/user-body.component';
+import {UserDataService} from "./services/user-data.service";
+import { DetailsComponent } from './user/details/details.component';
+import { Ng2CarouselamosModule } from 'ng2-carouselamos';
+
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 
@@ -82,6 +86,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     DashboardChartComponent,
     AddRoomComponent,
     UnauthComponent,
+    UserBodyComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,7 +99,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     HttpClientModule,
     FusionChartsModule,
     Ng2SearchPipeModule,
-    AngularMultiSelectModule
+    AngularMultiSelectModule,
+    Ng2CarouselamosModule
   ],
   entryComponents: [
     ConfirmModalComponent,
@@ -108,7 +115,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     DisplayImgComponent,
     AddRoomComponent
   ],
-  providers: [ApiService, ManageHotelService, AdminGuard,  {
+  providers: [ApiService, ManageHotelService, UserDataService, AdminGuard,  {
     provide: HTTP_INTERCEPTORS,
     useClass: MyInterceptor,
     multi: true,

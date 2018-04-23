@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../config/environment';
 import {HttpClient} from '@angular/common/http';
+// import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class ApiService {
@@ -8,7 +9,7 @@ export class ApiService {
   d;
   token;
   constructor(private http: HttpClient) {
-    // console.log(environment.baseUrl);
+    // console.log('check expire ', tokenNotExpired());
   }
 
   signIn(data) {

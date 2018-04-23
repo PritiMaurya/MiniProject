@@ -1,79 +1,88 @@
-<h1>Place</h1>
-<div class="row">
-  <div class="col-md-3">
-    <table>
-      <tr>
-        <td>
-          <select #pageSize class="form-control" (change)="getData(1)"  style="width: 65px; height: 38px">
-            <option value="3">3</option>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-          </select>
-        </td>
-        <td>
-          <b style="margin-left: 15px">Row per page</b>
-        </td>
-      </tr>
-    </table>
-  </div>
-  <div class="col-md-6" align="left">
-    <button class="btn btn-primary" style="margin-right: 150px" (click)="addForm()">Add</button>
-  </div>
-  <div class="col-md-3">
-    <input type="text" class="form-control" name="searchText" placeholder="Search" [(ngModel)]="searchText" style="height: 41px">
+<app-header *ngIf="apiService.token != null"></app-header>
+<div class="container-fluid">
+  <div class="row content">
+    <app-left-panel *ngIf="apiService.token != null"></app-left-panel>
+    <div class="col-sm-9">
+      <h1>Place</h1>
+      <div class="row">
+        <div class="col-md-3">
+          <table>
+            <tr>
+              <td>
+                <select #pageSize class="form-control" (change)="getData(1)"  style="width: 65px; height: 38px">
+                  <option value="3">3</option>
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                </select>
+              </td>
+              <td>
+                <b style="margin-left: 15px">Row per page</b>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-md-6" align="left">
+          <button class="btn btn-primary" style="margin-right: 150px" (click)="addForm()">Add</button>
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control" name="searchText" placeholder="Search" [(ngModel)]="searchText" style="height: 41px">
+        </div>
+      </div>
+
+
+
+      <table class="table table-striped table-responsive" *ngIf="placeData.length >= 1">
+        <thead>
+        <tr>
+          <th>Place Name
+            <span class="glyphicon sort-icon" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}" (click)="click('placeName')"></span>
+          </th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr >
+          <div *ngIf="(placeData | filter:searchText).length===0">
+            No Record Found
+          </div>
+        </tr>
+        <tr *ngFor="let place of placeData | filter: searchText">
+          <td>{{place.placeName}}</td>
+          <td>{{place.placeDescription}}</td>
+          <td><button type="button" class="btn btn-primary" (click)="displayImages(place.placeId, place.placeName)">View Images</button></td>
+          <td><button type="button" class="btn btn-danger" (click)="delete(place.placeId)"><span class="glyphicon glyphicon-trash"></span></button></td>
+          <td><button type="button" class="btn btn-primary" (click)="addHotelDialog(place.placeId, place.placeName)">Add Hotel</button></td>
+        </tr>
+        </tbody>
+        <br>
+        <!--<div>-->
+        <!--<button type="button" *ngFor="let btn of totalPage" (click)="getData(btn+1)" value="{{btn+1}}">{{btn+1}}</button>-->
+        <!--</div>-->
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item" [ngClass]="{'disabled':page-1 === 0}">
+              <a class="page-link" aria-label="Previous" tabindex="-1" (click)="getData(page-1)">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" *ngFor="let btn of totalPage" (click)="getData(btn+1)">{{btn+1}}</a></li>
+            <li class="page-item" [ngClass]="{'disabled':page >= totalPage.length}" >
+              <a class="page-link" aria-label="Next" (click)="getData(page+1)" >
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </table>
+
+    </div>
   </div>
 </div>
-
-
-
-<table class="table table-striped table-responsive" *ngIf="placeData.length >= 1">
-  <thead>
-  <tr>
-    <th>Place Name
-      <span class="glyphicon sort-icon" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}" (click)="click('placeName')"></span>
-    </th>
-    <th>Description</th>
-    <th>Image</th>
-    <th>Delete</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr >
-    <div *ngIf="(placeData | filter:searchText).length===0">
-      No Record Found
-    </div>
-  </tr>
-  <tr *ngFor="let place of placeData | filter: searchText">
-    <td>{{place.placeName}}</td>
-    <td>{{place.placeDescription}}</td>
-    <td><button type="button" class="btn btn-primary" (click)="displayImages(place.placeId, place.placeName)">View Images</button></td>
-    <td><button type="button" class="btn btn-danger" (click)="delete(place.placeId)"><span class="glyphicon glyphicon-trash"></span></button></td>
-    <td><button type="button" class="btn btn-primary" (click)="addHotelDialog(place.placeId, place.placeName)">Add Hotel</button></td>
-  </tr>
-  </tbody>
-  <br>
-    <!--<div>-->
-      <!--<button type="button" *ngFor="let btn of totalPage" (click)="getData(btn+1)" value="{{btn+1}}">{{btn+1}}</button>-->
-    <!--</div>-->
-  <nav aria-label="Page navigation example">
-    <ul class="pagination">
-      <li class="page-item" [ngClass]="{'disabled':page-1 === 0}">
-        <a class="page-link" aria-label="Previous" tabindex="-1" (click)="getData(page-1)">
-          <span aria-hidden="true">&laquo;</span>
-          <span class="sr-only">Previous</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link" *ngFor="let btn of totalPage" (click)="getData(btn+1)">{{btn+1}}</a></li>
-      <li class="page-item" [ngClass]="{'disabled':page >= totalPage.length}" >
-        <a class="page-link" aria-label="Next" (click)="getData(page+1)" >
-          <span aria-hidden="true">&raquo;</span>
-          <span class="sr-only">Next</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-</table>
 
 
 

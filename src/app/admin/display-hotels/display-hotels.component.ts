@@ -6,6 +6,7 @@ import {AlertModalComponent} from "../../modals/alert-modal/alert-modal.componen
 import {DisplayImg} from "../../modals/diplay-images/diplay-images.component";
 import {DisplayImgComponent} from "../../modals/hotel/display-img/display-img.component";
 import {AddRoomComponent} from "../../modals/hotel/add-room/add-room.component";
+import {ApiService} from "../../services/api.service";
 
 @Component({
   selector: 'app-display-hotels',
@@ -19,7 +20,7 @@ export class DisplayHotelsComponent implements OnInit {
   hideState = true; hideCity = true; hideType = true; hideView = true; hideDelete = true; hideRoom = true; hideTotal = true;
   @ViewChild('pageSize') size: ElementRef;
 
-  constructor(private hotelService: ManageHotelService, private dialogService: DialogService) { }
+  constructor(private hotelService: ManageHotelService, private dialogService: DialogService, private apiService: ApiService) { }
 
   ngOnInit() {
     this.size1 = this.size.nativeElement.value;
