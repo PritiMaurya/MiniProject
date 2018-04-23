@@ -78,6 +78,8 @@ module.exports = (app, passport)=>{
     app.get('/countUser', user.totalRecord);
     app.get('/counthotel', hotel.totalRecord);
     app.get('/countPlace', place.totalRecord);
+
+    app.get('/getHotels', hotel.getHotels);
 };
 
 

@@ -147,6 +147,41 @@ module.exports = {
                 res.send({"error": false, "message": "Room detail successfully added"});
             }
         });
+    },
+    getHotels: (req,res)=>{
+        let sql =  "SELECT * FROM hotelImg, hotel where hotel.hotelId = hotelImg.hotelId GROUP by hotelImg.hotelId";
+        con.query(sql, (err, data)=>{
+            if(err) {
+                console.log(err);
+                res.send({"error": true, "message": "Error While fetching data"});
+            } else {
+                res.send({"error": false, "data": data});
+            }
+        });
     }
 }
 
+// getHotels: (req,res)=>{
+//     let sql =  "select * from hotel where isDelete = 0";
+//     var displayData = [];
+//     con.query(sql, (err, data)=>{
+//         if(err) {
+//             console.log(err);
+//             res.send({"error": true, "message": "Error While inserting data"});
+//         } else {
+//             data.map( d=>{
+//                 const sql1 = "select * from hotelImg where hotelId=? limit 1";
+//                 con.query(sql1,[d.hotelId], (err, data1)=>{
+//                     if(err){
+//                         console.log(err);
+//                     } else {
+//                         displayData.push(data1);
+//                     }
+//                 });
+//             });
+//             console.log('dassass ',displayData);
+//             if(displayData.length>0){
+//                 res.send(displayData);
+//             }
+//         }
+//     })
