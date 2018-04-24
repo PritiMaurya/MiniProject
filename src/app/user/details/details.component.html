@@ -12,8 +12,6 @@
       [$item]="item"
     >
     </div>
-
-
     <ng-template #prev>
       <img src="../../../assets/arrow_left_48px-128.png" height="50" width="50"/>
     </ng-template>
@@ -26,10 +24,5 @@
         <img src="http://localhost:3003/static/{{item.imageName}}" width="900"/>
       </div>
     </ng-template>
-  </div>
-  <div class="container">
-    <div class="col-md-1" *ngFor="let i of items; ">
-      <img src="http://localhost:3003/static/{{i.imageName}}" height="200" width="150"/>
-    </div>
   </div>
 </div>

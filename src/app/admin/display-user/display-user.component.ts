@@ -10,10 +10,12 @@ import {AlertModalComponent} from "../../modals/alert-modal/alert-modal.componen
   styleUrls: ['./display-user.component.css']
 })
 export class DisplayUserComponent implements OnInit {
-  userData = []; page; size1; totalPage; reverse = false;
+  userData = []; page; size1; totalPage; reverse = false; token;
   key = 'date';
   @ViewChild('pageSize') size: ElementRef;
-  constructor(private apiService: ApiService, private dialogService: DialogService) { }
+  constructor(private apiService: ApiService, private dialogService: DialogService) {
+    this.token = localStorage.getItem('token');
+  }
 
   ngOnInit() {
     this.getUserData(1);

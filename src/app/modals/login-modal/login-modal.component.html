@@ -31,13 +31,16 @@
                      ngModel
                      #password="ngModel"
                      class="form-control"
-                      minlength="6"
+                     minlength="6"
                      pattern="[A-z]*[@#*$][A-z0-9]*">
               <div *ngIf="password.invalid && (password.dirty || password.touched)"
                          class="alert alert-danger">
               <div *ngIf="password.errors.required">
                 Password is required.
               </div>
+                <div *ngIf="password.errors.minlength">
+                  Password length must be 6.
+                </div>
               <div *ngIf="password.errors.pattern">
                 Password must contain at least one special character and number
               </div>
@@ -47,7 +50,6 @@
           </form>
         </div>
       </div>
-
     </div>
     <!--<div class="modal-footer">-->
      <!---->

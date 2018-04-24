@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {DialogComponent, DialogService} from "ng2-bootstrap-modal";
 import {ApiService} from "../../services/api.service";
 import {Router} from "@angular/router";
+import jwt = require('angular2-jwt-simple');
+import {environment} from "../../config/environment";
 
 export interface LoginModal {
   title: String;
@@ -13,8 +15,10 @@ export interface LoginModal {
 })
 export class LoginModalComponent extends DialogComponent<LoginModal, null> implements LoginModal {
   title: String;
+  role: String;
   constructor(dialogService: DialogService, private apiService: ApiService, private router: Router) {
     super(dialogService);
+    apiService.errorMsg = false;
   }
 
   onLogin(f) {
@@ -29,8 +33,10 @@ export class LoginModalComponent extends DialogComponent<LoginModal, null> imple
           this.apiService.errorMsg = false;
           const token = this.apiService.d.token;
           localStorage.setItem('token', token);
+          const role = jwt.encode(this.apiService.d.role, environment.secret);
+          localStorage.setItem('role', role);
           if (this.apiService.d.role === 'user') {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/']);
           } else {
             this.router.navigate(['/admin/dashboard']);
           }

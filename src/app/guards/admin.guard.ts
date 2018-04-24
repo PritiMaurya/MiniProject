@@ -2,16 +2,17 @@ import { Injectable } from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import {ApiService} from '../services/api.service';
+import {AuthService} from "../services/auth.service";
 
 @Injectable()
 export class AdminGuard implements CanActivate {
-  constructor(private apiService: ApiService, private router: Router) {
+  constructor(private auth: AuthService, private router: Router) {
   }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.apiService.checkToken()) {
+    if (this.auth.isAuthenticate()) {
       return true;
     } else {
       this.router.navigate(['/notAccess']);

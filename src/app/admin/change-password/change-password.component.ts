@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DialogService} from "ng2-bootstrap-modal";
 import {AlertModalComponent} from "../../modals/alert-modal/alert-modal.component";
-import {ApiService} from "../../services/api.service";
+import {ApiService} from '../../services/api.service';
 
 @Component({
   selector: 'app-change-password',
@@ -9,10 +9,11 @@ import {ApiService} from "../../services/api.service";
   styleUrls: ['./change-password.component.css']
 })
 export class ChangePasswordComponent implements OnInit {
-
+  token;
   constructor(private dialogService: DialogService, private apiService: ApiService) { }
 
   ngOnInit() {
+    this.token = localStorage.getItem('token');
   }
 
   onClickChange(f) {
@@ -34,5 +35,4 @@ export class ChangePasswordComponent implements OnInit {
       f.reset();
     }
   }
-
 }

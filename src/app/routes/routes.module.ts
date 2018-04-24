@@ -21,26 +21,27 @@ import {DiplayImagesComponent} from "../modals/diplay-images/diplay-images.compo
 import {UnauthComponent} from "../unauth/unauth.component";
 import {UserBodyComponent} from "../user/user-body/user-body.component";
 import {DetailsComponent} from "../user/details/details.component";
+import {RoleGuard} from "../guards/role.guard";
 
 const appRoutes: Routes = [
-  {path: '', component: UserBodyComponent},
+  {path: 'home', component: HomeComponent},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'detail/:id', component: DetailsComponent},
   {path: 'demo', component: DemoComponent},
   {path: 'login', component: AdminLoginComponent},
-  {path: 'admin/dashboard', component: AdminHomeComponent, canActivate: [AdminGuard]},
-  {path: 'home', component: HomeComponent},
-  {path: 'displayPlace', component: DisplayPlaceComponent, canActivate: [AdminGuard]},
-  {path: 'addImage', component: AddImageComponent, canActivate: [AdminGuard]},
-  {path: 'addPlace', component: AddPlaceComponent, canActivate: [AdminGuard]},
-  {path: 'adminHeader', component: HeaderComponent, canActivate: [AdminGuard]},
-  {path: 'adminLeftPane', component: LeftPanelComponent, canActivate: [AdminGuard]},
-  {path: 'adminBody', component: DashboardComponent, canActivate: [AdminGuard]},
-  {path: 'adminHome', component: AdminHomeComponent, canActivate: [AdminGuard]},
-  {path: 'displayUser', component: DisplayUserComponent, canActivate: [AdminGuard]},
-  {path: 'changePass', component: ChangePasswordComponent, canActivate: [AdminGuard]},
-  {path: 'addHotel', component: AddHotelComponent, canActivate: [AdminGuard]},
-  {path: 'displayHotel', component: DisplayHotelsComponent, canActivate: [AdminGuard]},
-  {path: 'displayPlaceImage', component: DiplayImagesComponent, canActivate: [AdminGuard]},
+  {path: 'admin/dashboard', component: AdminHomeComponent, canActivate: [RoleGuard], data: { expectedRole: 'admin'}},
+  {path: 'displayPlace', component: DisplayPlaceComponent, canActivate: [RoleGuard], data: { expectedRole: 'admin'}},
+  {path: 'addImage', component: AddImageComponent, canActivate: [RoleGuard], data: { expectedRole: 'admin'}},
+  {path: 'addPlace', component: AddPlaceComponent, canActivate: [RoleGuard], data: { expectedRole: 'admin'}},
+  {path: 'adminHeader', component: HeaderComponent, canActivate: [RoleGuard], data: { expectedRole: 'admin'}},
+  {path: 'adminLeftPane', component: LeftPanelComponent, canActivate: [RoleGuard], data: { expectedRole: 'admin'}},
+  {path: 'adminBody', component: DashboardComponent, canActivate: [RoleGuard], data: { expectedRole: 'admin'}},
+  {path: 'adminHome', component: AdminHomeComponent, canActivate: [RoleGuard], data: { expectedRole: 'admin'}},
+  {path: 'displayUser', component: DisplayUserComponent, canActivate: [RoleGuard], data: { expectedRole: 'admin'}},
+  {path: 'changePass', component: ChangePasswordComponent, canActivate: [RoleGuard], data: { expectedRole: 'admin'}},
+  {path: 'addHotel', component: AddHotelComponent, canActivate: [RoleGuard], data: { expectedRole: 'admin'}},
+  {path: 'displayHotel', component: DisplayHotelsComponent, canActivate: [RoleGuard], data: { expectedRole: 'admin'}},
+  {path: 'displayPlaceImage', component: DiplayImagesComponent, canActivate: [RoleGuard], data: { expectedRole: 'admin'}},
   {path: 'notAccess', component: UnauthComponent}];
 
 @NgModule({

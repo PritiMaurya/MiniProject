@@ -10,14 +10,14 @@ import {ApiService} from "../../services/api.service";
   styleUrls: ['./admin-login.component.css']
 })
 export class AdminLoginComponent implements OnInit {
-
+  token;
   constructor(private dialogService: DialogService, private router: Router, private apiService: ApiService) {
-
+    this.token = localStorage.getItem('token');
   }
 
   ngOnInit() {
     // console.log('hello');
-    if (this.apiService.token === null) {
+    if (this.token === null) {
       this.dialogService.addDialog(LoginModalComponent,  {title: 'Sign in'});
     } else {
       this.router.navigate(['/admin/dashboard']);

@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../config/environment';
 import {HttpClient} from '@angular/common/http';
-// import { tokenNotExpired } from 'angular2-jwt';
 
 @Injectable()
 export class ApiService {
-  errorMsg = false;
+  errorMsg;
   d;
-  token;
+  token; blur;
   constructor(private http: HttpClient) {
     // console.log('check expire ', tokenNotExpired());
   }
@@ -24,28 +23,6 @@ export class ApiService {
     return this.http.post(environment.baseUrl + 'addImg?id=' + id, formData);
   }
 
-  checkToken() {
-    let res1;
-    this.token = localStorage.getItem('token');
-    if (this.token === null) {
-      return false;
-    } else {
-       return this.http.get(environment.baseUrl + 'check?token=' + this.token).subscribe(
-        (res) => {
-          // console.log('res ', res);
-          res1 = res;
-          console.log('res1', res1, 'err', res1.error);
-          console.log('err ', res1.error);
-          if (res1.error) {
-            console.log('false');
-            return false;
-          } else {
-            return true;
-          }
-        }
-      );
-    }
-  }
   displayPlace() {
     return this.http.get(environment.baseUrl + 'display');
   }
@@ -84,19 +61,4 @@ export class ApiService {
   }
 }
 
-// checkToken() {
-//   const token = localStorage.getItem('token');
-//   console.log(token);
-//   return this.http.get(this.baseUrl + '/check?token=' + token).subscribe(
-//     (res) => {
-//       this.data = res[0];
-//       console.log('auth');
-//       console.log(this.data);
-//       if (token === this.data.token) {
-//         return true;
-//       } else {
-//         return false;
-//       }
-//     }
-//   );
 

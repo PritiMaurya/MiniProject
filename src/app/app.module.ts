@@ -50,6 +50,8 @@ import { UserBodyComponent } from './user/user-body/user-body.component';
 import {UserDataService} from "./services/user-data.service";
 import { DetailsComponent } from './user/details/details.component';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
+import {AuthService} from "./services/auth.service";
+import {RoleGuard} from "./guards/role.guard";
 
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
@@ -115,7 +117,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     DisplayImgComponent,
     AddRoomComponent
   ],
-  providers: [ApiService, ManageHotelService, UserDataService, AdminGuard,  {
+  providers: [ApiService, AuthService, ManageHotelService, UserDataService, AdminGuard, RoleGuard, {
     provide: HTTP_INTERCEPTORS,
     useClass: MyInterceptor,
     multi: true,

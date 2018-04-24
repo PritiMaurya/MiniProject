@@ -16,11 +16,13 @@ import {ApiService} from "../../services/api.service";
 export class DisplayHotelsComponent implements OnInit {
   hotelsData = []; totalPage = []; size1;
   data; reverse; page = 1; key = 'date'; dropdownList = []; selectedItems = [];
-  dropdownSettings = {};
+  dropdownSettings = {}; token;
   hideState = true; hideCity = true; hideType = true; hideView = true; hideDelete = true; hideRoom = true; hideTotal = true;
   @ViewChild('pageSize') size: ElementRef;
 
-  constructor(private hotelService: ManageHotelService, private dialogService: DialogService, private apiService: ApiService) { }
+  constructor(private hotelService: ManageHotelService, private dialogService: DialogService) {
+    this.token = localStorage.getItem('token');
+  }
 
   ngOnInit() {
     this.size1 = this.size.nativeElement.value;

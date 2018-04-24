@@ -24,6 +24,7 @@ export class ManageHotelService {
   displayHotelImages(id) {
     return this.http.get(environment.baseUrl + 'displayHotelImg?id=' + id);
   }
+
   deleteHotel(id) {
     return this.http.get(environment.baseUrl + 'deleteHotel?id=' + id);
   }

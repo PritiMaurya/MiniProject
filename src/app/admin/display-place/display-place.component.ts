@@ -17,12 +17,13 @@ export class DisplayPlaceComponent implements OnInit {
   totalPage = [];
   size1;
   data;
-  key;
+  key; token;
   reverse = true;
   page = 1;
   @ViewChild('pageSize') size: ElementRef;
   constructor(private apiService: ApiService, private dialogService: DialogService) { }
   ngOnInit() {
+      this.token = localStorage.getItem('token');
       this.size1 = this.size.nativeElement.value;
       this.key = 'date';
       this.getData(this.page);
