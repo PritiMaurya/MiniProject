@@ -69,8 +69,8 @@ module.exports = (app, passport)=>{
     app.post('/addHotel', hotel.addHotel);
 
     app.post("/addHotelImg",auth, uploadImg.array("uploads[]", 12), hotel.addHotelImage);
-    app.get('/displayHotel', hotel.displayHotel);
-    app.get('/displayHotelImg',auth, hotel.displayImg);
+    app.get('/displayHotel',auth, hotel.displayHotel);
+    app.get('/displayHotelImg', hotel.displayImg);
     app.get('/deleteHotel',auth, hotel.deleteHotel);
     app.get('/findHotel', auth, hotel.findHotelById);
     app.post('/addRoom', hotel.addRoom);

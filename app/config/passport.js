@@ -67,8 +67,8 @@ module.exports=(passport)=>{
                 done(null, false);
             } else {
                 var pass =hashPassword(password);
-                var sql = "insert into user(userName,email,password,role,userMobile) values(?, ?, ?, ?, ?)";
-                con.query(sql, [req.body.name, email, pass, req.body.role, req.body.mobile], (err, user)=>{
+                var sql = "insert into user(userName,email,password,role,userMobile,date) values(?, ?, ?, ?, ?, ?)";
+                con.query(sql, [req.body.name, email, pass, req.body.role, req.body.mobile, new Date()], (err, user)=>{
                     if(err){
                         console.log('err');
                         console.log(err);
