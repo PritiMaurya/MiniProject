@@ -53,6 +53,8 @@ import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 import {AuthService} from "./services/auth.service";
 import {RoleGuard} from "./guards/role.guard";
 
+import { LoadingModule } from 'ngx-loading';
+import { UserHomeComponent } from './user/user-home/user-home.component';
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 
@@ -90,6 +92,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     UnauthComponent,
     UserBodyComponent,
     DetailsComponent,
+    UserHomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,7 +105,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     FusionChartsModule,
     Ng2SearchPipeModule,
     AngularMultiSelectModule,
-    Ng2CarouselamosModule
+    Ng2CarouselamosModule,
+    LoadingModule
   ],
   entryComponents: [
     ConfirmModalComponent,

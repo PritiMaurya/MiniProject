@@ -22,10 +22,12 @@ import {UnauthComponent} from "../unauth/unauth.component";
 import {UserBodyComponent} from "../user/user-body/user-body.component";
 import {DetailsComponent} from "../user/details/details.component";
 import {RoleGuard} from "../guards/role.guard";
+import {UserHomeComponent} from "../user/user-home/user-home.component";
 
 const appRoutes: Routes = [
-  {path: 'home', component: HomeComponent},
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'userHome', component: HomeComponent},
+  {path: '', redirectTo: 'userHome', pathMatch: 'full'},
+  {path: 'home', component: UserHomeComponent},
   {path: 'detail/:id', component: DetailsComponent},
   {path: 'demo', component: DemoComponent},
   {path: 'login', component: AdminLoginComponent},

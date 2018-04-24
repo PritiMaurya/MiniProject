@@ -4,7 +4,7 @@
         <a class="navbar-brand">Star Trip</a>
       </div>
       <ul class="nav navbar-nav">
-        <li class="active"><a>Home</a></li>
+        <li class="active" routerLink="/home"><a>Home</a></li>
         <!--<li><a>Page 1</a></li>-->
         <!--<li><a>Page 2</a></li>-->
       </ul>
@@ -13,7 +13,7 @@
           <li><a (click)="addSignIn()"><span class="glyphicon glyphicon-user"></span> Sign In</a></li>
           <li><a (click)="addSignUp()"><span class="glyphicon glyphicon-log-in"></span> Sign Up</a></li>
         </ng-template>
-        <li *ngIf="token!= null && role === 'user'; else headerData"><a (click)="logout()">logout</a></li>
+        <li *ngIf="token != null && role === 'user'; else headerData"><a (click)="logout()">logout</a></li>
       </ul>
     </div>
 </nav>

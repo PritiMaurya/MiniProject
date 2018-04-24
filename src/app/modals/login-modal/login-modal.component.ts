@@ -16,6 +16,7 @@ export interface LoginModal {
 export class LoginModalComponent extends DialogComponent<LoginModal, null> implements LoginModal {
   title: String;
   role: String;
+  loading = false;
   constructor(dialogService: DialogService, private apiService: ApiService, private router: Router) {
     super(dialogService);
     apiService.errorMsg = false;
@@ -23,12 +24,14 @@ export class LoginModalComponent extends DialogComponent<LoginModal, null> imple
 
   onLogin(f) {
     const data = {email: f.value.email, password: f.value.password};
+    this.loading = true;
     this.apiService.signIn(data).subscribe(
       (res) => {
         this.apiService.d = res;
         console.log(res);
         if (this.apiService.d.error) {
           this.apiService.errorMsg = true;
+          this.loading = false;
         } else {
           this.apiService.errorMsg = false;
           const token = this.apiService.d.token;
@@ -36,7 +39,8 @@ export class LoginModalComponent extends DialogComponent<LoginModal, null> imple
           const role = jwt.encode(this.apiService.d.role, environment.secret);
           localStorage.setItem('role', role);
           if (this.apiService.d.role === 'user') {
-            this.router.navigate(['/']);
+            this.loading = false;
+            this.router.navigate(['/home']);
           } else {
             this.router.navigate(['/admin/dashboard']);
           }

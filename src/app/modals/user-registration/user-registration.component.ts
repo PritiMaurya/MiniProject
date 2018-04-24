@@ -31,7 +31,7 @@ export class UserRegistrationComponent extends DialogComponent<RegisterModel, nu
         } else {
           console.log(res);
           localStorage.setItem('token', res1.token);
-          const role = jwt.encode(res1.token, environment.secret);
+          const role = jwt.encode(res1.role, environment.secret);
           localStorage.setItem('role', role);
           this.dialogService.addDialog(AlertModalComponent, {message: 'Registration Successful'});
           this.close();

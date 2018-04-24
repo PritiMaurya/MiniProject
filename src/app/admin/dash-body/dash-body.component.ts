@@ -15,7 +15,7 @@ export class DashBodyComponent implements OnInit {
   type = 'column2d';
   dataFormat = 'json';
   dataSource;
-  userCount; hotelCount; placeCount
+  userCount; hotelCount; placeCount; loading = false;
   constructor(private http: HttpClient) {
 
   }
@@ -55,6 +55,7 @@ export class DashBodyComponent implements OnInit {
   }
   countPlace() {
     let res1;
+    this.loading = true;
     this.http.get(environment.baseUrl + 'countPlace').subscribe(
         (res) => {
           res1 = res;
@@ -79,7 +80,9 @@ export class DashBodyComponent implements OnInit {
                 'value': this.placeCount
               }
             ]
-          };
+        };
+          this.loading = false;
+
         },
         (err) => {
           console.log(err);

@@ -12,11 +12,17 @@ import {environment} from "../../config/environment";
 })
 export class UserHeaderComponent implements OnInit {
   token; role;
-  constructor(private dialogService: DialogService) { }
+  constructor(private dialogService: DialogService) {
+    debugger
+    this.token = localStorage.getItem('token');
+    const r = localStorage.getItem('role');
+    if (r) {
+      this.role = jwt.decode(r, environment.secret);
+      console.log(this.role);
+    }
+  }
 
   ngOnInit() {
-    this.token = localStorage.getItem('token');
-    this.role = jwt.decode(localStorage.getItem('role'), environment.secret);
   }
 
   addSignIn() {
