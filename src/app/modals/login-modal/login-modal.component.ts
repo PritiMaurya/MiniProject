@@ -4,7 +4,8 @@ import {ApiService} from "../../services/api.service";
 import {Router} from "@angular/router";
 import jwt = require('angular2-jwt-simple');
 import {environment} from "../../config/environment";
-
+import {MessageService} from "../../services/message.service";
+import 'rxjs/add/operator/map';
 export interface LoginModal {
   title: String;
 }
@@ -18,7 +19,8 @@ export class LoginModalComponent extends DialogComponent<LoginModal, null> imple
   role: String;
   data;
   loading = false;
-  constructor(dialogService: DialogService, private apiService: ApiService, private router: Router) {
+  constructor(dialogService: DialogService, private apiService: ApiService, private router: Router,
+              private messageService: MessageService) {
     super(dialogService);
     apiService.errorMsg = false;
   }
@@ -39,6 +41,7 @@ export class LoginModalComponent extends DialogComponent<LoginModal, null> imple
           localStorage.setItem('token', token);
           const role = jwt.encode(this.apiService.d.role, environment.secret);
           localStorage.setItem('role', role);
+          this.messageService.broadcast('receiver', {login: true});
           if (this.apiService.d.role === 'user') {
             this.loading = false;
             this.router.navigate(['/home']);

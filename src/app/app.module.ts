@@ -57,6 +57,7 @@ import { LoadingModule } from 'ngx-loading';
 import { UserHomeComponent } from './user/user-home/user-home.component';
 import { ChangeBlurDirective } from './directives/change-blur.directive';
 import { HotelBookingComponent } from './modals/hotel-booking/hotel-booking.component';
+import {MessageService} from "./services/message.service";
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 
@@ -125,7 +126,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     DisplayImgComponent,
     AddRoomComponent
   ],
-  providers: [ApiService, AuthService, ManageHotelService, UserDataService, AdminGuard, RoleGuard, {
+  providers: [ApiService, AuthService, ManageHotelService, UserDataService, AdminGuard, RoleGuard, MessageService, {
     provide: HTTP_INTERCEPTORS,
     useClass: MyInterceptor,
     multi: true,
