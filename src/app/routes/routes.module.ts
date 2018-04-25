@@ -5,13 +5,11 @@ import {AdminLoginComponent} from "../admin/admin-login/admin-login.component";
 import {DashboardComponent} from "../admin/dashboard/dashboard.component";
 import {HomeComponent} from "../home/home.component";
 import {DisplayPlaceComponent} from "../admin/display-place/display-place.component";
-import {AdminGuard} from "../guards/admin.guard";
 import {AddImageComponent} from "../modals/place/add-image/add-image.component";
 import {AddPlaceComponent} from "../modals/place/add-place/add-place.component";
 import {HeaderComponent} from "../admin/header/header.component";
 import {LeftPanelComponent} from "../admin/left-panel/left-panel.component";
 import {AdminHomeComponent} from "../admin/admin-home/admin-home.component";
-import {DashBodyComponent} from "../admin/dash-body/dash-body.component";
 import {DisplayUserComponent} from "../admin/display-user/display-user.component";
 import {ChangePasswordComponent} from "../admin/change-password/change-password.component";
 import {AddHotelComponent} from "../modals/hotel/add-hotel/add-hotel.component";
@@ -19,15 +17,12 @@ import {DemoComponent} from "../demo/demo.component";
 import {DisplayHotelsComponent} from "../admin/display-hotels/display-hotels.component";
 import {DiplayImagesComponent} from "../modals/diplay-images/diplay-images.component";
 import {UnauthComponent} from "../unauth/unauth.component";
-import {UserBodyComponent} from "../user/user-body/user-body.component";
 import {DetailsComponent} from "../user/details/details.component";
 import {RoleGuard} from "../guards/role.guard";
-import {UserHomeComponent} from "../user/user-home/user-home.component";
 
 const appRoutes: Routes = [
-  {path: 'userHome', component: HomeComponent},
-  {path: '', redirectTo: 'userHome', pathMatch: 'full'},
-  {path: 'home', component: UserHomeComponent},
+  {path: 'home', component: HomeComponent},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'detail/:id', component: DetailsComponent},
   {path: 'demo', component: DemoComponent},
   {path: 'login', component: AdminLoginComponent},

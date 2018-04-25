@@ -55,6 +55,8 @@ import {RoleGuard} from "./guards/role.guard";
 
 import { LoadingModule } from 'ngx-loading';
 import { UserHomeComponent } from './user/user-home/user-home.component';
+import { ChangeBlurDirective } from './directives/change-blur.directive';
+import { HotelBookingComponent } from './modals/hotel-booking/hotel-booking.component';
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 
@@ -93,6 +95,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     UserBodyComponent,
     DetailsComponent,
     UserHomeComponent,
+    ChangeBlurDirective,
+    HotelBookingComponent,
   ],
   imports: [
     BrowserModule,

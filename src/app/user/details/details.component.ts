@@ -19,6 +19,7 @@ export class DetailsComponent implements OnInit {
         res1.data.map(d => {
           if (id === d.hotelId) {
             this.result = d;
+            console.log('result ', this.result);
           }
         });
       }

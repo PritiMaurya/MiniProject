@@ -12,7 +12,10 @@ export class RoleGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     const role = localStorage.getItem('role');
-    const decodedRole = jwt.decode(role, environment.secret);
+    let decodedRole
+    if (role !== null) {
+       decodedRole = jwt.decode(role, environment.secret);
+    }
     if ((decodedRole === route.data.expectedRole) && this.auth.isAuthenticate()) {
       return true;
     } else {

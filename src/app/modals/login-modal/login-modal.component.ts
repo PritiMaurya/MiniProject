@@ -16,6 +16,7 @@ export interface LoginModal {
 export class LoginModalComponent extends DialogComponent<LoginModal, null> implements LoginModal {
   title: String;
   role: String;
+  data;
   loading = false;
   constructor(dialogService: DialogService, private apiService: ApiService, private router: Router) {
     super(dialogService);
@@ -23,9 +24,9 @@ export class LoginModalComponent extends DialogComponent<LoginModal, null> imple
   }
 
   onLogin(f) {
-    const data = {email: f.value.email, password: f.value.password};
+    this.data = {email: f.value.email, password: f.value.password};
     this.loading = true;
-    this.apiService.signIn(data).subscribe(
+    this.apiService.signIn(this.data).subscribe(
       (res) => {
         this.apiService.d = res;
         console.log(res);
@@ -44,6 +45,7 @@ export class LoginModalComponent extends DialogComponent<LoginModal, null> imple
           } else {
             this.router.navigate(['/admin/dashboard']);
           }
+          this.apiService.blur = false;
           this.close();
         }
       }, (err) => {
@@ -52,4 +54,5 @@ export class LoginModalComponent extends DialogComponent<LoginModal, null> imple
       }
     );
   }
+
 }

@@ -4,6 +4,7 @@ import {LoginModalComponent} from "../../modals/login-modal/login-modal.componen
 import {UserRegistrationComponent} from "../../modals/user-registration/user-registration.component";
 import jwt = require('angular2-jwt-simple');
 import {environment} from "../../config/environment";
+import {ApiService} from "../../services/api.service";
 
 @Component({
   selector: 'app-user-header',
@@ -12,8 +13,7 @@ import {environment} from "../../config/environment";
 })
 export class UserHeaderComponent implements OnInit {
   token; role;
-  constructor(private dialogService: DialogService) {
-    debugger
+  constructor(private dialogService: DialogService, private service: ApiService) {
     this.token = localStorage.getItem('token');
     const r = localStorage.getItem('role');
     if (r) {
@@ -26,6 +26,7 @@ export class UserHeaderComponent implements OnInit {
   }
 
   addSignIn() {
+    this.service.blur = true;
     this.dialogService.addDialog(LoginModalComponent);
   }
 

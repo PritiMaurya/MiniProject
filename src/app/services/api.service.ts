@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http';
 export class ApiService {
   errorMsg;
   d;
-  token; blur;
+  token; blur = false;
   constructor(private http: HttpClient) {
     // console.log('check expire ', tokenNotExpired());
   }

@@ -1,28 +1,41 @@
 <app-user-header></app-user-header>
-<div class="col-md-6">
-  <h1 align="left">{{result?.hotelName}}</h1>
-  <div id="container">
-    <div
-      ng2-carouselamos
-      class="slides-wrapper"
-      [items]="items"
-      [width]="900"
-      [$prev]="prev"
-      [$next]="next"
-      [$item]="item"
-    >
-    </div>
-    <ng-template #prev>
-      <img src="../../../assets/arrow_left_48px-128.png" height="50" width="50"/>
-    </ng-template>
-    <ng-template #next>
-      <img src="../../../assets/images.png" height="50" width="50"/>
-    </ng-template>
-    <ng-template #item let-item let-i="index">
-
-      <div class="items">
-        <img src="http://localhost:3003/static/{{item.imageName}}" width="900" height="auto"/>
+<div class="row">
+  <div class="container-fluid">
+    <h1 align="left">{{result?.hotelName}}</h1>
+    <div class="col-md-6">
+      <div id="container">
+        <div
+          ng2-carouselamos
+          class="slides-wrapper"
+          [items]="items"
+          [width]="900"
+          [$prev]="prev"
+          [$next]="next"
+          [$item]="item"
+        >
+        </div>
+        <ng-template #prev>
+          <img src="../../../assets/arrow_left_48px-128.png" height="50" width="50"/>
+        </ng-template>
+        <ng-template #next>
+          <img src="../../../assets/images.png" height="50" width="50"/>
+        </ng-template>
+        <ng-template #item let-item let-i="index">
+          <div class="items">
+            <img src="http://localhost:3003/static/{{item.imageName}}" height="auto" width="900"/>
+          </div>
+        </ng-template>
       </div>
-    </ng-template>
+    </div>
+    <div class="col-md-6" style="margin-top: 70px">
+      <div class="panel-default">
+        <div class="panel-heading">
+          <b>Detail</b>
+        </div>
+        <div class="panel-body">
+          This is {{result?.type}}
+        </div>
+      </div>
+    </div>
   </div>
 </div>
