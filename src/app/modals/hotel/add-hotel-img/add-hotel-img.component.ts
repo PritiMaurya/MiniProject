@@ -30,8 +30,6 @@ export class AddHotelImgComponent extends DialogComponent<AddHotelImgModal, null
   }
 
   onHotelImgAdd() {
-    console.log('on Image');
-    // console.log(this.data);
     const formData: any = new FormData();
     const files: Array<File> = this.filesToUpload;
     console.log(files);

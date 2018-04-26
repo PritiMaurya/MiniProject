@@ -16,7 +16,7 @@
                      readonly
                      class="form-control">
             </div>
-            <div class="form-group">
+            <div class="form-group tooltip1">
               <label>Room Number</label>
               <input type="text"
                      name="num"
@@ -26,28 +26,27 @@
                      class="form-control"
                      pattern="[1-9][0-9]*"
               >
-              <div *ngIf="num.invalid && (num.dirty || num.touched)"
-                   class="alert alert-danger">
+              <div *ngIf="num.invalid"
+                   class="tooltiptext">
                 <div *ngIf="num.errors.required">
                   Total no of Rooms is required.
                 </div>
                 <div *ngIf="num.errors.pattern">
-                  Please Enter Number.
+                  Text is not allow here
                 </div>
               </div>
             </div>
 
             <div class="form-group">
                 <label>Room Type</label>
-                <select name="roomType" class="form-control" #roomType (change)="selectType(roomType.value)" ngModel>
+                <select name="roomType" class="form-control" #roomType>
                   <option value="Single">Single</option>
                   <option value="Double">Double</option>
                   <option value="Single(Ac)">Single(Ac)</option>
                   <option value="Double(Ac)">Double(Ac)</option>
-
                 </select>
               </div>
-              <div class="form-group">
+              <div class="form-group tooltip1">
                 <label>Rate</label>
                 <input type="text"
                        name="rate"
@@ -56,18 +55,21 @@
                        #rate = "ngModel"
                        class="form-control"
                        pattern="[1-9][0-9]*"
-                       [(ngModel)]="rate1"
                 >
-                <div *ngIf="rate.invalid && (rate.dirty || rate.touched)"
-                     class="alert alert-danger">
+                <div *ngIf="rate.invalid"
+                     class="tooltiptext">
                   <div *ngIf="rate.errors.required">
-                    Total no of Rooms is required.
+                    Rate is required.
                   </div>
                   <div *ngIf="rate.errors.pattern">
-                    Please Enter valid Number.
+                    wrong input.
                   </div>
                 </div>
               </div>
+            <div class="form-group">
+              <label>Add Image</label>
+              <input  name="roomImg" type="file" (change)="fileChangeEvent1($event)" class="form-control" placeholder="Upload a room image"  required/>
+            </div>
             <button class="btn btn-success btn-block" type="submit" [disabled]="addRoomForm.invalid">Add</button>
           </form>
         </div>

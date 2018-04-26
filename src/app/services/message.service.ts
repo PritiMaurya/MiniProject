@@ -17,6 +17,8 @@ export class MessageService {
   }
 
   subscribe(data: string, callback: MessageCallback): Subscription {
+    console.log('subscrition ');
+    console.log(data);
     return this.handler
       .subscribe(callback);
   }

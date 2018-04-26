@@ -16,25 +16,26 @@ export class AddRoomComponent extends DialogComponent<AddRoomModel, null> implem
   title: String;
   hotelId;
   hotelName;
-  rate1;
+  fileToUpload;
   constructor(dialogService: DialogService, private hotelService: ManageHotelService) {
     super(dialogService);
-    this.selectType('Single');
   }
-  selectType(type) {
-    if (type === 'Single') {
-      this.rate1 = 500;
-    } else {
-      this.rate1 = 1000;
-    }
+  fileChangeEvent1(fileInput: any) {
+    this.fileToUpload = fileInput.target.files[0];
+    console.log(this.fileToUpload);
+    // this.product.photo = fileInput.target.files[0]['name'];
   }
   onAddRoom(f) {
     console.log(f.value);
     console.log('hotel Id', this.hotelId);
     let res1;
-    // {num: "12", Room Type: "Single", rate: 500}
-    console.log({no: f.value.num, rate: f.value.rate, roomType: f.value.roomType});
-    this.hotelService.addRoom({no: f.value.num, rate: f.value.rate, roomType: f.value.roomType}, this.hotelId).subscribe(
+    const formData: any = new FormData();
+    formData.append('uploadRoom', this.fileToUpload, this.fileToUpload['name']);
+    console.log('form Data');
+    formData.append('no', f.value.num);
+    formData.append('rate', f.value.rate);
+    formData.append('roomType', f.value.roomType);
+    this.hotelService.addRoom(formData, this.hotelId).subscribe(
       (res) => {
         res1 = res;
         if (res1.error) {

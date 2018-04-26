@@ -8,4 +8,8 @@ export class UserDataService {
   getHotelImg() {
     return this.http.get(environment.baseUrl + 'getHotels');
   }
+
+  roomDetail(id) {
+    return this.http.get(environment.baseUrl + 'getRoom?id=' + id);
+  }
 }

@@ -27,7 +27,7 @@ export class AdminLoginComponent implements OnInit {
     } else {
       if (this.role === 'user') {
         this.router.navigate(['/']);
-      } else {
+      } else if (this.role === 'admin') {
         this.router.navigate(['/admin/dashboard']);
       }
     }
