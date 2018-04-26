@@ -27,6 +27,16 @@ var storage1 = multer.diskStorage({
 var uploadImg = multer({ storage: storage1 });
 
 
+var storage2 = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "./roomImages/")
+    },
+    filename: function (req, file, cb) {
+        cb(null, 'img'+Date.now()+file.originalname);
+    }
+});
+var uploadRoom = multer({ storage: storage2 });
+
 module.exports = (app, passport)=>{
     app.get('/', main.hello);
 
@@ -73,7 +83,8 @@ module.exports = (app, passport)=>{
     app.get('/displayHotelImg', hotel.displayImg);
     app.get('/deleteHotel',auth, hotel.deleteHotel);
     app.get('/findHotel', auth, hotel.findHotelById);
-    app.post('/addRoom', hotel.addRoom);
+    app.get('/getRoom', hotel.getRoom);
+    app.post('/addRoom', uploadRoom.single('uploadRoom'), hotel.addRoom);
 
     app.get('/countUser', user.totalRecord);
     app.get('/counthotel', hotel.totalRecord);

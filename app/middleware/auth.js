@@ -4,7 +4,7 @@ let environment = require('../environment');
 module.exports = (req,res, next)=>{
     let token = req.header('token');
     let response;
-    console.log('header', token);
+    // console.log('header', token);
     if(token){
         jwt.verify(token, environment.secret, (err)=>{
             if(err){

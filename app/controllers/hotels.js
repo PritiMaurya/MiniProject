@@ -3,8 +3,9 @@ var {con} = require('../db/connection');
 
 module.exports = {
     addHotel: (req,res)=>{
-        var sql = "insert into hotel (placeId, hotelName, hotelAdd, contactNo, city, state, hotelType, totalNoRoom, availRoom, date) values(?,?,?,?,?,?,?,?,?,?)";
-        con.query(sql, [req.body.placeId, req.body.hotelName, req.body.hotelAdd, req.body.contact, req.body.city, req.body.state, req.body.hotelType, req.body.total, req.body.total, new Date()], (err, data)=>{
+        const insertData = [req.body.placeId, req.body.hotelName, req.body.hotelAdd, req.body.contact, req.body.city, req.body.state, req.body.hotelType, req.body.total, req.body.services, req.body.total, new Date()];
+        var sql = "insert into hotel (placeId, hotelName, hotelAdd, contactNo, city, state, hotelType, totalNoRoom, services, availRoom, date) values(?,?,?,?,?,?,?,?,?,?,?)";
+        con.query(sql, insertData, (err, data)=>{
             if(err) {
                 console.log(err);
                 res.send({error: true, message: 'Error while insert Data'});
@@ -13,7 +14,6 @@ module.exports = {
                 con.query(sql, [data.insertId],(err, data1)=>{
                     res.send({error: false, message: 'Hotel successfully added', data: data1[0]});
                 });
-
             }
         });
     },
@@ -138,8 +138,8 @@ module.exports = {
     },
     addRoom: (req,res)=>{
         let hotelId = req.query.id;
-        let sql = "insert into hotelRoom (roomNumber, hotelId, rate, roomType) values(?, ?, ?, ?)";
-        con.query(sql, [req.body.no, hotelId, req.body.rate, req.body.roomType], (err)=>{
+        let sql = "insert into hotelRoom (roomNumber, hotelId, rate, roomType, roomImage, imageUrl) values(?, ?, ?, ?, ?, ?)";
+        con.query(sql, [req.body.no, hotelId, req.body.rate, req.body.roomType, req.file.filename, req.file.path], (err)=>{
             if(err) {
                 console.log(err);
                 res.send({"error": true, "message": "Error While inserting data"});
@@ -149,7 +149,7 @@ module.exports = {
         });
     },
     getHotels: (req,res)=>{
-        let sql =  "SELECT * FROM hotelImg, hotel where hotel.hotelId = hotelImg.hotelId GROUP by hotelImg.hotelId";
+        let sql =  "SELECT * FROM hotelImg, hotel where hotel.hotelId = hotelImg.hotelId && hotel.isDelete = 0 GROUP by hotelImg.hotelId";
         con.query(sql, (err, data)=>{
             if(err) {
                 console.log(err);
@@ -158,7 +158,19 @@ module.exports = {
                 res.send({"error": false, "data": data});
             }
         });
-    }
+    },
+    getRoom: (req,res)=>{
+        let hotelId = req.query.id;
+        let sql = "select * from hotelRoom where hotelId = ?";
+        con.query(sql, [hotelId], (err, data)=>{
+            if(err) {
+                console.log(err);
+                res.send({"error": true, "message": "Error While fatching data"});
+            } else {
+                res.send({"error": false, "data": data});
+            }
+        });
+    },
 }
 
 // getHotels: (req,res)=>{
