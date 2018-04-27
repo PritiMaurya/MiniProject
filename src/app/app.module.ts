@@ -124,7 +124,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     UserRegistrationComponent,
     AddHotelImgComponent,
     DisplayImgComponent,
-    AddRoomComponent
+    AddRoomComponent,
+    HotelBookingComponent
   ],
   providers: [ApiService, AuthService, ManageHotelService, UserDataService, AdminGuard, RoleGuard, MessageService, {
     provide: HTTP_INTERCEPTORS,

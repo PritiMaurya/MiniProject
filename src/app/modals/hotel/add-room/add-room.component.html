@@ -16,34 +16,14 @@
                      readonly
                      class="form-control">
             </div>
-            <div class="form-group tooltip1">
-              <label>Room Number</label>
-              <input type="text"
-                     name="num"
-                     required
-                     ngModel
-                     #num = "ngModel"
-                     class="form-control"
-                     pattern="[1-9][0-9]*"
-              >
-              <div *ngIf="num.invalid"
-                   class="tooltiptext">
-                <div *ngIf="num.errors.required">
-                  Total no of Rooms is required.
-                </div>
-                <div *ngIf="num.errors.pattern">
-                  Text is not allow here
-                </div>
-              </div>
-            </div>
 
             <div class="form-group">
                 <label>Room Type</label>
-                <select name="roomType" class="form-control" #roomType>
-                  <option value="Single">Single</option>
-                  <option value="Double">Double</option>
-                  <option value="Single(Ac)">Single(Ac)</option>
-                  <option value="Double(Ac)">Double(Ac)</option>
+                <select name="roomType" class="form-control" [(ngModel)]="roomType">
+                  <option value="Premier Room">Premier Room</option>
+                  <option value="Deluxe Room">Deluxe Room</option>
+                  <option value="Double Room">Double Room</option>
+                  <option value="Home Room">Home Room</option>
                 </select>
               </div>
               <div class="form-group tooltip1">

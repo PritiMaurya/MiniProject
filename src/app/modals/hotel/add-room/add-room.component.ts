@@ -17,6 +17,7 @@ export class AddRoomComponent extends DialogComponent<AddRoomModel, null> implem
   hotelId;
   hotelName;
   fileToUpload;
+  roomType = 'Premier Room';
   constructor(dialogService: DialogService, private hotelService: ManageHotelService) {
     super(dialogService);
   }
@@ -35,6 +36,7 @@ export class AddRoomComponent extends DialogComponent<AddRoomModel, null> implem
     formData.append('no', f.value.num);
     formData.append('rate', f.value.rate);
     formData.append('roomType', f.value.roomType);
+    console.log('roomType  ', f.value.roomType);
     this.hotelService.addRoom(formData, this.hotelId).subscribe(
       (res) => {
         res1 = res;

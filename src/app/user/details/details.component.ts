@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ManageHotelService} from "../../services/manage-hotel.service";
 import {UserDataService} from "../../services/user-data.service";
+import {DialogService} from "ng2-bootstrap-modal";
+import {HotelBookingComponent} from "../../modals/hotel-booking/hotel-booking.component";
 
 @Component({
   selector: 'app-details',
@@ -10,7 +12,7 @@ import {UserDataService} from "../../services/user-data.service";
 })
 export class DetailsComponent implements OnInit {
   items; result; roomData;
-  constructor(private routs: ActivatedRoute, private hotelService: ManageHotelService, private userService: UserDataService) {
+  constructor(private routs: ActivatedRoute, private hotelService: ManageHotelService, private userService: UserDataService, private dialogService: DialogService) {
     const id = +routs.snapshot.params['id'];
     let res1, res2;
     console.log('id  ', id);
@@ -42,7 +44,9 @@ export class DetailsComponent implements OnInit {
       }
     );
   }
-
+  AddBookingForm() {
+    this.dialogService.addDialog(HotelBookingComponent, {hotelData: this.result});
+  }
   ngOnInit() {
   }
 
