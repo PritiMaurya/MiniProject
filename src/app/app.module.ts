@@ -57,7 +57,15 @@ import { LoadingModule } from 'ngx-loading';
 import { UserHomeComponent } from './user/user-home/user-home.component';
 import { ChangeBlurDirective } from './directives/change-blur.directive';
 import { HotelBookingComponent } from './modals/hotel-booking/hotel-booking.component';
-import {MessageService} from "./services/message.service";
+import {MessageService} from './services/message.service';
+
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {
+  MatDatepickerModule, MatDialogModule, MatFormFieldModule, MatInputModule,
+  MatNativeDateModule
+} from '@angular/material';
+import {FormateDateService} from "./services/formate-date.service";
+import { Alert1Component } from './modals/alert1/alert1.component';
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 
@@ -98,9 +106,11 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     UserHomeComponent,
     ChangeBlurDirective,
     HotelBookingComponent,
+    Alert1Component,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     BootstrapModalModule,
@@ -111,7 +121,12 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     Ng2SearchPipeModule,
     AngularMultiSelectModule,
     Ng2CarouselamosModule,
-    LoadingModule
+    LoadingModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule
   ],
   entryComponents: [
     ConfirmModalComponent,
@@ -125,9 +140,10 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     AddHotelImgComponent,
     DisplayImgComponent,
     AddRoomComponent,
-    HotelBookingComponent
+    HotelBookingComponent,
+    Alert1Component
   ],
-  providers: [ApiService, AuthService, ManageHotelService, UserDataService, AdminGuard, RoleGuard, MessageService, {
+  providers: [ApiService, AuthService, ManageHotelService, UserDataService, AdminGuard, RoleGuard, MessageService, FormateDateService, {
     provide: HTTP_INTERCEPTORS,
     useClass: MyInterceptor,
     multi: true,

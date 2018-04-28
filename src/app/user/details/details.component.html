@@ -27,6 +27,8 @@
         </ng-template>
       </div>
     </div>
+    <!--<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>-->
+
     <div class="col-md-5" style="margin-top: 138px; border: 1px solid black; margin-left: 50px; height: 450px" >
       <div class="panel-default">
         <div>
@@ -78,7 +80,7 @@
         <div class="card-body" style="margin-left: 20px; margin-right: 20px;" *ngIf="data.roomType === 'Premier Room' || data.roomType === 'Home Room'">
           <h3 class="card-title">{{data.roomType}}</h3><hr>
           <h4>Price: {{data.rate}}</h4>
-          <div class="card-text">Room Size: 22 m<sup>2</sup> <br>Max Occupancy: 3 Adults + 2 Childs, Bathroom Amenities</div>
+          <div class="card-text">Room Size: 22 m<sup>2</sup> <br>Max Occupancy: 3 Adults + 2 Childs,  Amenities</div>
           <div class="row match-height" style="height: 86px;">
             <div class="col-12">
               <ul class="room_features">
@@ -94,7 +96,7 @@
         <div class="card-body" style="margin-left: 20px; margin-right: 20px;" *ngIf="data.roomType === 'Double Room' || data.roomType === 'Deluxe Room'">
           <h3 class="card-title">{{data.roomType}}</h3><hr>
           <h4>Price: {{data.rate}}</h4>
-          <div class="card-text">Room Size: 44 m<sup>2</sup> <br>Max Occupancy: 6 Adults + 4 Childs, Bathroom Amenities</div>
+          <div class="card-text">Room Size: 44 m<sup>2</sup> <br>Max Occupancy: 6 Adults + 4 Childs, Amenities</div>
           <div class="row match-height" style="height: 86px;">
             <div class="col-12">
               <ul class="room_features">
@@ -105,6 +107,7 @@
               </ul>
             </div>
           </div>
+
           <h4 align="right"><a class="btn btn-primary" style="border: none;" (click)="AddBookingForm()">Book Now</a></h4>
         </div>
       </div><br><br>

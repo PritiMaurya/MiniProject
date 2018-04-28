@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ManageHotelService} from "../../services/manage-hotel.service";
 import {UserDataService} from "../../services/user-data.service";
-import {DialogService} from "ng2-bootstrap-modal";
 import {HotelBookingComponent} from "../../modals/hotel-booking/hotel-booking.component";
+import {MatDialog} from "@angular/material";
+import {Alert1Component} from "../../modals/alert1/alert1.component";
 
 @Component({
   selector: 'app-details',
@@ -11,9 +12,14 @@ import {HotelBookingComponent} from "../../modals/hotel-booking/hotel-booking.co
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  items; result; roomData;
-  constructor(private routs: ActivatedRoute, private hotelService: ManageHotelService, private userService: UserDataService, private dialogService: DialogService) {
+  items; result; roomData; loading = false;
+  userToken;
+  constructor(private routs: ActivatedRoute,
+              private hotelService: ManageHotelService,
+              private userService: UserDataService,
+              private dialog: MatDialog) {
     const id = +routs.snapshot.params['id'];
+    this.userToken = localStorage.getItem('token');
     let res1, res2;
     console.log('id  ', id);
     userService.getHotelImg().subscribe(
@@ -40,14 +46,27 @@ export class DetailsComponent implements OnInit {
         } else {
           this.roomData = res2.data;
           console.log(this.roomData);
+          this.loading = false;
         }
       }
     );
   }
   AddBookingForm() {
-    this.dialogService.addDialog(HotelBookingComponent, {hotelData: this.result});
+    // this.dialogService.addDialog(HotelBookingComponent, {hotelData: this.result});
+    if (this.userToken) {
+      this.dialog.open(HotelBookingComponent, {
+        height: '700px',
+        data: this.result
+      });
+    } else {
+      this.dialog.open(Alert1Component, {
+        message: 'Please Login First'
+      });
+    }
   }
+
   ngOnInit() {
+    this.loading = true;
   }
 
 }

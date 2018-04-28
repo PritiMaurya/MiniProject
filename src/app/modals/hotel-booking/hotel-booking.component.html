@@ -1,19 +1,93 @@
-<div class="modal-dialog modal-md">
-  <div class="modal-content">
-    <div class="modal-header" id="backImg"  [ngStyle]="{'background-image': 'url(' + image + ')'}" style="background-size: 100%; height: 300px; opacity: 0.5px">
-      <button type="button" class="close" (click)="close()" >&times;</button>
-      <b style="margin-top: 200px; color: #f9f9f9; font-style: oblique; font-stretch: extra-condensed; font-size: 50px;">{{hotelData.hotelName}}</b><br>
-      <img src="../../../assets/1495574585-map-location-solid-style-21_84553.png" height="60px" width="70px"/>
-    </div>
-    <div class="modal-body">
-      <div class="panel-default">
-        <div class="panel-body">
-        </div>
-      </div>
+<div mat-dialog-title>
+  <div [ngStyle]="{'background-image': 'url(' + image + ')'}" style="background-size: 100%; height: 250px">
+    <div class="transbox" style="display: block">
+     <button type="button" class="close" mat-dialog-close >&times;</button>
+      <b style="margin-top: 200px; color: black; font-style: oblique; font-stretch: extra-condensed; font-size: 50px;">{{data.hotelName}}</b><br>
+     <img src="../../../assets/1495574585-map-location-solid-style-21_84553.png" height="60px" width="70px"/><br>
+      <b>
+      {{data.state}}
+      ,
+      {{data.city}}</b>
     </div>
   </div>
 </div>
-<!---->
-<!--{imgId: 47, hotelId: 8, -->
-<!--image: "uploads\img1524545236890holiday-inn-express-and-suites-desoto-4186278663-4x3.jpg",-->
-<!--imageName: "img1524545236890holiday-inn-express-and-suites-desoto-4186278663-4x3.jpg", isDelete: 0, …}-->
+<div mat-dialog-content>
+  <div class="panel-default">
+    <div class="panel-body">
+      <form  #bookingForm="ngForm" (ngSubmit)="addData(bookingForm)">
+        <table>
+          <tr>
+            <td>
+              <label>Check In: </label>
+            </td>
+            <td>
+              <mat-form-field>
+                <input matInput
+                       [min]="minDate"
+                       class="form-control display-block"
+                       [matDatepicker]="picker"
+                       ngModel
+                       name="inDate" required
+                      #inDate>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Check Out: </label>
+            </td>
+            <td>
+              <div class="tooltip1">
+                <mat-form-field>
+                  <input matInput
+                         [min]="minDate1"
+                         class="form-control"
+                         [matDatepicker]="picker1"
+                         ngModel
+                         #outDate
+                         name="outDate" required>
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+                <span *ngIf="inDate.value != '' && inDate.value === outDate.value" class="tooltiptext">
+                Check In and Check out date can not be same
+              </span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><label>Adult: </label></td>
+            <td>
+              <input matInput type="number" name="adult" ngModel min="1" class="form-control" required>
+            </td>
+          </tr><br>
+          <tr>
+            <td><label>child: </label></td>
+            <td>
+              <input matInput type="number" name="child" ngModel min="0" class="form-control" required>
+            </td>
+          </tr>
+          <tr>
+            <td><label>Special Request:</label></td>
+            <td>
+              <mat-form-field class="example-full-width">
+                <textarea matInput ></textarea>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td><label>No of Room:</label></td>
+            <td>
+              <mat-form-field class="example-full-width">
+                <input matInput type="number" name="totRoom" ngModel min="1" class="form-control" required>
+              </mat-form-field>
+            </td>
+          </tr>
+        </table>
+        <button class="btn btn-success" type="submit" [disabled]="bookingForm.invalid || inDate.value === outDate.value">Book Now</button>
+      </form>
+    </div>
+  </div>
+</div>
