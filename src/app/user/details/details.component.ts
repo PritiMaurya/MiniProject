@@ -60,7 +60,7 @@ export class DetailsComponent implements OnInit {
       });
     } else {
       this.dialog.open(Alert1Component, {
-        message: 'Please Login First'
+        data: {message: 'Please Login First'}
       });
     }
   }
