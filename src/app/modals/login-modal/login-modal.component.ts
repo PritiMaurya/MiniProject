@@ -6,6 +6,7 @@ import jwt = require('angular2-jwt-simple');
 import {environment} from "../../config/environment";
 import {MessageService} from "../../services/message.service";
 import 'rxjs/add/operator/map';
+import {UserDataService} from "../../services/user-data.service";
 export interface LoginModal {
   title: String;
 }
@@ -19,13 +20,16 @@ export class LoginModalComponent extends DialogComponent<LoginModal, null> imple
   role: String;
   data;
   loading = false;
-  constructor(dialogService: DialogService, private apiService: ApiService, private router: Router,
+  constructor(dialogService: DialogService, private apiService: ApiService,
+              private userService: UserDataService,
+              private router: Router,
               private messageService: MessageService) {
     super(dialogService);
     apiService.errorMsg = false;
   }
 
   onLogin(f) {
+    let res2;
     this.data = {email: f.value.email, password: f.value.password};
     this.loading = true;
     this.apiService.signIn(this.data).subscribe(
@@ -44,7 +48,16 @@ export class LoginModalComponent extends DialogComponent<LoginModal, null> imple
           this.messageService.broadcast('receiver', {login: true});
           if (this.apiService.d.role === 'user') {
             this.loading = false;
-            this.router.navigate(['/home']);
+            this.userService.findBookingData().subscribe(
+              (res1) => {
+                  res2 = res1;
+                  if (res2.data.length) {
+                    this.router.navigate(['/confirmBooking']);
+                  } else {
+                    this.router.navigate(['/home']);
+                  }
+              }
+            );
           } else {
             this.router.navigate(['/admin/dashboard']);
           }

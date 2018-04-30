@@ -19,6 +19,7 @@ import {DiplayImagesComponent} from "../modals/diplay-images/diplay-images.compo
 import {UnauthComponent} from "../unauth/unauth.component";
 import {DetailsComponent} from "../user/details/details.component";
 import {RoleGuard} from "../guards/role.guard";
+import {BookingPageComponent} from "../user/booking-page/booking-page.component";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
   {path: 'addHotel', component: AddHotelComponent, canActivate: [RoleGuard], data: { expectedRole: 'admin'}},
   {path: 'displayHotel', component: DisplayHotelsComponent, canActivate: [RoleGuard], data: { expectedRole: 'admin'}},
   {path: 'displayPlaceImage', component: DiplayImagesComponent, canActivate: [RoleGuard], data: { expectedRole: 'admin'}},
+  {path: 'confirmBooking', component: BookingPageComponent, canActivate: [RoleGuard], data: {expectedRole: 'user'}},
   {path: 'notAccess', component: UnauthComponent}];
 
 @NgModule({

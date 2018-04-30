@@ -7,6 +7,7 @@ import {environment} from '../../config/environment';
 import {ApiService} from '../../services/api.service';
 import {MessageService} from '../../services/message.service';
 import {Subscription} from 'rxjs/Subscription';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-header',
@@ -18,7 +19,10 @@ export class UserHeaderComponent implements OnDestroy, OnInit {
   isLogoutDisplay = false;
   private subscription: Subscription;
 
-  constructor(private dialogService: DialogService, private service: ApiService, private messageService: MessageService) {
+  constructor(private dialogService: DialogService,
+              private service: ApiService,
+              private messageService: MessageService,
+              private router: Router) {
     this.token = localStorage.getItem('token');
     const r = localStorage.getItem('role');
     if (r) {
@@ -55,6 +59,7 @@ export class UserHeaderComponent implements OnDestroy, OnInit {
     this.token = null;
     this.role = null;
     this.isLogoutDisplay = false;
+    this.router.navigate(['/home']);
   }
 
   unsubscribe() {

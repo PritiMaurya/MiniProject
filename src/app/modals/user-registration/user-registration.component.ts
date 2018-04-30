@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {AlertModalComponent} from '../alert-modal/alert-modal.component';
 import jwt = require('angular2-jwt-simple');
 import { environment } from '../../config/environment';
+import {MessageService} from "../../services/message.service";
 
 export interface RegisterModel {
   title: String;
@@ -14,9 +15,9 @@ export interface RegisterModel {
   templateUrl: './user-registration.component.html',
   styleUrls: ['./user-registration.component.css']
 })
-export class UserRegistrationComponent extends DialogComponent<RegisterModel, null> implements RegisterModel{
+export class UserRegistrationComponent extends DialogComponent<RegisterModel, null> implements RegisterModel {
   title: String
-  constructor(dialogService: DialogService, private apiService: ApiService, private router: Router) {
+  constructor(dialogService: DialogService, private apiService: ApiService, private router: Router, private messageService: MessageService) {
     super(dialogService);
   }
   onRes(f) {
@@ -32,6 +33,8 @@ export class UserRegistrationComponent extends DialogComponent<RegisterModel, nu
           console.log(res);
           localStorage.setItem('token', res1.token);
           const role = jwt.encode(res1.role, environment.secret);
+          this.messageService.broadcast('receiver', {login: true});
+
           localStorage.setItem('role', role);
           this.dialogService.addDialog(AlertModalComponent, {message: 'Registration Successful'});
           this.close();

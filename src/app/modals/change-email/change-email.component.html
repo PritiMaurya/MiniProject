@@ -1,0 +1,4 @@
+<div mat-dialog-content>
+  <input matInput type="text" ngModel #email="ngModel" required placeholder="New Email" email><br><br>
+  <button mat-raised-button (click)="changeEmail(email.value)" [disabled]="email.invalid" class="btn btn-primary">Change Email</button>
+</div>

@@ -5,6 +5,7 @@ import {UserDataService} from "../../services/user-data.service";
 import {HotelBookingComponent} from "../../modals/hotel-booking/hotel-booking.component";
 import {MatDialog} from "@angular/material";
 import {Alert1Component} from "../../modals/alert1/alert1.component";
+import {ApiService} from "../../services/api.service";
 
 @Component({
   selector: 'app-details',
@@ -55,7 +56,6 @@ export class DetailsComponent implements OnInit {
     // this.dialogService.addDialog(HotelBookingComponent, {hotelData: this.result});
     if (this.userToken) {
       this.dialog.open(HotelBookingComponent, {
-        height: '700px',
         data: this.result
       });
     } else {

@@ -1,6 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import {FormateDateService} from "../../services/formate-date.service";
+import {UserDataService} from "../../services/user-data.service";
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-hotel-booking',
   templateUrl: './hotel-booking.component.html',
@@ -17,20 +19,39 @@ export class HotelBookingComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<HotelBookingComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private formatDate: FormateDateService) {
+    private formatDate: FormateDateService,
+    private userService: UserDataService,
+    private router: Router) {
     this.image = 'http://localhost:3003/static/' + this.data.imageName ;
     this.minDate =  new Date(this.y, this.mm, this.d);
-    this.minDate1 = new Date(this.y, this.mm, this.d + 1);
   }
 
   ngOnInit() {
+    this.userService.findUser();
   }
 
+  changeDate(date) {
+    const newDate = this.formatDate.formatDate1(new Date(date));
+    this.minDate1 = new Date(newDate[0], newDate[1], newDate[2]);
+  }
 
   addData(f) {
-    const date = f.value.inDate;
-    console.log('service');
-    console.log(this.formatDate.formatDate(date));
-    this.dialogRef.close();
+    let res1;
+    const inDate = this.formatDate.formatDate(f.value.inDate);
+    const outDate = this.formatDate.formatDate(f.value.outDate);
+    this.userService.bookRoom(
+      {checkIn: inDate, checkOut: outDate, adult: f.value.adult, child: f.value.child, request: f.value.request, totRoom: f.value.totRoom})
+      .subscribe(
+      (res) => {
+        console.log('res', res);
+        res1 = res;
+        if (res1.error) {
+            console.log(res1.message);
+        } else {
+          this.dialogRef.close();
+          this.router.navigate(['/confirmBooking']);
+        }
+      }
+    );
   }
 }

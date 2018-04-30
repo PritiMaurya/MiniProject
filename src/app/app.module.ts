@@ -61,11 +61,16 @@ import {MessageService} from './services/message.service';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
+  MAT_DIALOG_DEFAULT_OPTIONS,
   MatDatepickerModule, MatDialogModule, MatFormFieldModule, MatInputModule,
   MatNativeDateModule
 } from '@angular/material';
 import {FormateDateService} from "./services/formate-date.service";
 import { Alert1Component } from './modals/alert1/alert1.component';
+import { BookingPageComponent } from './user/booking-page/booking-page.component';
+import { ChangeEmailComponent } from './modals/change-email/change-email.component';
+import { ConfirmModel1Component } from './modals/confirm-model1/confirm-model1.component';
+import { ChangeDateComponent } from './modals/change-date/change-date.component';
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 
@@ -107,6 +112,10 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     ChangeBlurDirective,
     HotelBookingComponent,
     Alert1Component,
+    BookingPageComponent,
+    ChangeEmailComponent,
+    ConfirmModel1Component,
+    ChangeDateComponent,
   ],
   imports: [
     BrowserModule,
@@ -141,7 +150,10 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     DisplayImgComponent,
     AddRoomComponent,
     HotelBookingComponent,
-    Alert1Component
+    Alert1Component,
+    ChangeEmailComponent,
+    ConfirmModel1Component,
+    ChangeDateComponent
   ],
   providers: [ApiService, AuthService, ManageHotelService, UserDataService, AdminGuard, RoleGuard, MessageService, FormateDateService, {
     provide: HTTP_INTERCEPTORS,

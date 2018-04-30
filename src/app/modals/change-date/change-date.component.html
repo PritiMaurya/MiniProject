@@ -1,0 +1,56 @@
+<div mat-dialog-content>
+  <div class="panel-default">
+    <div class="panel-body">
+      <form >
+        <table>
+          <tr>
+            <td>
+              <label>Check In: </label>
+            </td>
+            <td>
+              <mat-form-field>
+                <input matInput
+                       [min]="minDate"
+                       class="form-control display-block"
+                       [matDatepicker]="picker"
+                       ngModel
+                       name="inDate"
+                       [(ngModel)] = "checkInDate"
+                       required
+                       #inDate
+                       (ngModelChange)="changeDate(inDate.value)"
+                >
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Check Out: </label>
+            </td>
+            <td>
+              <div class="tooltip1">
+                <mat-form-field>
+                  <input matInput
+                         [min]="minDate1"
+                         class="form-control"
+                         [matDatepicker]="picker1"
+                         ngModel
+                         [(ngModel)] = "checkOutDate"
+                         #outDate
+                         name="outDate" required>
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1 ></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><button class="btn btn-success" (click)="updateDate()">Change Date</button></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>

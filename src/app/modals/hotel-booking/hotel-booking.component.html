@@ -1,5 +1,5 @@
 <div mat-dialog-title>
-  <div [ngStyle]="{'background-image': 'url(' + image + ')'}" style="background-size: 100%; height: 250px">
+  <div [ngStyle]="{'background-image': 'url(' + image + ')'}" style="background-size: 100%; height: 180px">
     <div class="transbox" style="display: block">
      <button type="button" class="close" mat-dialog-close >&times;</button>
       <b style="margin-top: 200px; color: black; font-style: oblique; font-stretch: extra-condensed; font-size: 50px;">{{data.hotelName}}</b><br>
@@ -28,7 +28,9 @@
                        [matDatepicker]="picker"
                        ngModel
                        name="inDate" required
-                      #inDate>
+                        #inDate
+                       (ngModelChange)="changeDate(inDate.value)"
+                       >
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
@@ -73,7 +75,7 @@
             <td><label>Special Request:</label></td>
             <td>
               <mat-form-field class="example-full-width">
-                <textarea matInput ></textarea>
+                <textarea matInput name="request" ngModel></textarea>
               </mat-form-field>
             </td>
           </tr>
