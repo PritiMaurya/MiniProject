@@ -9,7 +9,7 @@
         <div class="panel-body">
           <form #addHotelImageForm="ngForm" (ngSubmit)="onHotelImgAdd()">
             <div class="form-group">
-              <input id="cin" name="cin" type="file" (change)="fileChangeEvent1($event)" class="form-control" placeholder="Upload a file..." multiple required/>
+              <input type="file" (change)="fileChangeEvent1($event)" class="form-control" placeholder="Upload a file..." multiple name="hotelImage" ngModel required />
             </div>
             <div class="form-group">
               <button class="btn btn-success btn-block" type="submit" [disabled]="addHotelImageForm.invalid">Add</button>

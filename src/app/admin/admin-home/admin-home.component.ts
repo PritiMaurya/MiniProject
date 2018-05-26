@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ApiService} from "../../services/api.service";
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-admin-home',
@@ -8,11 +8,11 @@ import {ApiService} from "../../services/api.service";
 })
 
 export class AdminHomeComponent implements OnInit {
-  token;
-  constructor(private apiService: ApiService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.token = localStorage.getItem('token');
   }
-
+  needsLogin() {
+    return !this.authService.isAuthenticate();
+  }
 }

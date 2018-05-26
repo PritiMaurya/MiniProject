@@ -54,6 +54,8 @@ export class ChangeDateComponent implements OnInit {
         (res) => {
           res1 = res;
           this.dialog.open(Alert1Component, {data: {message: res1.message}});
+          this.userService.changeDate.next(
+            {checkIn: this.formatDate.formatDate(this.checkInDate), checkOut: this.formatDate.formatDate(this.checkOutDate)});
           // this.bookingCom.findData();
           this.router.navigate(['/confirmBooking']);
           this.dialogRef.close();

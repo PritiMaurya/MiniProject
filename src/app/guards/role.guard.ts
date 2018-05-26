@@ -16,7 +16,7 @@ export class RoleGuard implements CanActivate {
     if (role !== null) {
        decodedRole = jwt.decode(role, environment.secret);
     }
-    if ((decodedRole === route.data.expectedRole) && this.auth.isAuthenticate()) {
+    if (this.auth.isAuthenticate() && (decodedRole === route.data.expectedRole)) {
       return true;
     } else {
       this.router.navigate(['/login']);

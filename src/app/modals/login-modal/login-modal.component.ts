@@ -1,30 +1,30 @@
-import { Component } from '@angular/core';
-import {DialogComponent, DialogService} from "ng2-bootstrap-modal";
-import {ApiService} from "../../services/api.service";
-import {Router} from "@angular/router";
+import {Component} from '@angular/core';
+import {ApiService} from '../../services/api.service';
+import {Router} from '@angular/router';
 import jwt = require('angular2-jwt-simple');
 import {environment} from "../../config/environment";
 import {MessageService} from "../../services/message.service";
 import 'rxjs/add/operator/map';
 import {UserDataService} from "../../services/user-data.service";
-export interface LoginModal {
-  title: String;
-}
+import {MatDialog, MatDialogRef} from "@angular/material";
+import {Alert1Component} from "../alert1/alert1.component";
+
 @Component({
   selector: 'app-login-modal',
   templateUrl: './login-modal.component.html',
   styleUrls: ['./login-modal.component.css']
 })
-export class LoginModalComponent extends DialogComponent<LoginModal, null> implements LoginModal {
+export class LoginModalComponent  {
   title: String;
   role: String;
   data;
   loading = false;
-  constructor(dialogService: DialogService, private apiService: ApiService,
+  constructor(private apiService: ApiService,
               private userService: UserDataService,
               private router: Router,
-              private messageService: MessageService) {
-    super(dialogService);
+              private messageService: MessageService,
+              public dialogRef: MatDialogRef<LoginModalComponent>,
+              private dialog: MatDialog) {
     apiService.errorMsg = false;
   }
 
@@ -35,12 +35,11 @@ export class LoginModalComponent extends DialogComponent<LoginModal, null> imple
     this.apiService.signIn(this.data).subscribe(
       (res) => {
         this.apiService.d = res;
-        console.log(res);
         if (this.apiService.d.error) {
-          this.apiService.errorMsg = true;
           this.loading = false;
+          console.log('ssss')
+          this.dialog.open(Alert1Component, {data: {message: 'Invalid Username or Password'}});
         } else {
-          this.apiService.errorMsg = false;
           const token = this.apiService.d.token;
           localStorage.setItem('token', token);
           const role = jwt.encode(this.apiService.d.role, environment.secret);
@@ -61,8 +60,7 @@ export class LoginModalComponent extends DialogComponent<LoginModal, null> imple
           } else {
             this.router.navigate(['/admin/dashboard']);
           }
-          this.apiService.blur = false;
-          this.close();
+           this.dialogRef.close();
         }
       }, (err) => {
         console.log('err');
@@ -70,5 +68,4 @@ export class LoginModalComponent extends DialogComponent<LoginModal, null> imple
       }
     );
   }
-
 }

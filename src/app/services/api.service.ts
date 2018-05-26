@@ -9,6 +9,7 @@ export class ApiService {
   token; blur = false;
   constructor(private http: HttpClient) {
     // console.log('check expire ', tokenNotExpired());
+    this.errorMsg = false;
   }
 
   signIn(data) {

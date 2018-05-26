@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient} from '@angular/common/http';
 import { environment } from '../config/environment';
+import {Subject} from 'rxjs/Subject';
 @Injectable()
 export class UserDataService {
-  result;
   userData;
+  changeDate = new Subject<any>();
   constructor(private http: HttpClient) { }
   getHotelImg() {
     return this.http.get(environment.baseUrl + 'getHotels');

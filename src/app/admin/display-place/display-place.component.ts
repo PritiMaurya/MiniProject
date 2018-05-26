@@ -1,11 +1,11 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {ApiService} from "../../services/api.service";
-import {DialogService} from "ng2-bootstrap-modal";
-import {DiplayImagesComponent} from "../../modals/diplay-images/diplay-images.component";
-import {ConfirmModalComponent} from "../../modals/confirm-modal/confirm-modal.component";
-import {AlertModalComponent} from "../../modals/alert-modal/alert-modal.component";
-import {AddHotelComponent} from "../../modals/hotel/add-hotel/add-hotel.component";
-import {AddPlaceComponent} from "../../modals/place/add-place/add-place.component";
+import {ApiService} from '../../services/api.service';
+import {DialogService} from 'ng2-bootstrap-modal';
+import {DiplayImagesComponent} from '../../modals/diplay-images/diplay-images.component';
+import {ConfirmModalComponent} from '../../modals/confirm-modal/confirm-modal.component';
+import {AlertModalComponent} from '../../modals/alert-modal/alert-modal.component';
+import {AddHotelComponent} from '../../modals/hotel/add-hotel/add-hotel.component';
+import {AddPlaceComponent} from '../../modals/place/add-place/add-place.component';
 
 @Component({
   selector: 'app-display-place',

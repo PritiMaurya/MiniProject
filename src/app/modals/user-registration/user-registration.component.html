@@ -39,7 +39,7 @@
                      required
                      ngModel
                      #pass="ngModel"
-                     pattern="[A-z]*[@#*$]*[A-z0-9]*"
+                     pattern="[A-z]+[@#*$]+[A-z0-9]+"
                      class="form-control">
               <div *ngIf="pass.invalid && (pass.dirty || pass.touched)"
                    class="alert alert-danger">

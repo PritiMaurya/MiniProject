@@ -125,6 +125,8 @@ export class DisplayHotelsComponent implements OnInit {
   }
   onItemSelect(item: any) {
     console.log('onSelect  ', item);
+    debugger;
+    console.log('list ', this.dropdownList);
     if (item.itemName === this.dropdownList[0].itemName) {
       this.hideState = true;
     }
@@ -146,7 +148,6 @@ export class DisplayHotelsComponent implements OnInit {
     if (item.itemName === this.dropdownList[6].itemName) {
       this.hideTotal = true;
     }
-    console.log(this.selectedItems);
   }
   OnItemDeSelect(item: any) {
     console.log(item);

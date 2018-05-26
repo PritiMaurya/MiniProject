@@ -27,14 +27,13 @@ import { LeftPanelComponent } from './admin/left-panel/left-panel.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { DiplayImagesComponent } from './modals/diplay-images/diplay-images.component';
 import { DisplayUserComponent } from './admin/display-user/display-user.component';
-import {MyInterceptor} from "./interceptors/my-interceptor";
+import {MyInterceptor} from './interceptors/my-interceptor';
 import { ChangePasswordComponent } from './admin/change-password/change-password.component';
 import { DisplayHotelsComponent } from './admin/display-hotels/display-hotels.component';
 import { AddHotelComponent } from './modals/hotel/add-hotel/add-hotel.component';
 import { DemoComponent } from './demo/demo.component';
 import { AddHotelImgComponent } from './modals/hotel/add-hotel-img/add-hotel-img.component';
-import { ChangeTextDirective } from './change-text.directive';
-import {ManageHotelService} from "./services/manage-hotel.service";
+import {ManageHotelService} from './services/manage-hotel.service';
 import { DisplayImgComponent } from './modals/hotel/display-img/display-img.component';
 import { DashboardChartComponent } from './admin/dashboard-chart/dashboard-chart.component';
 
@@ -43,29 +42,27 @@ import * as Charts from 'fusioncharts/fusioncharts.charts';
 import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
 import {FusionChartsModule} from 'angular4-fusioncharts';
 import { AddRoomComponent } from './modals/hotel/add-room/add-room.component';
-import {Ng2SearchPipeModule} from "ng2-search-filter";
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { UnauthComponent } from './unauth/unauth.component';
-import {AngularMultiSelectModule} from "angular2-multiselect-dropdown";
+import {AngularMultiSelectModule} from 'angular2-multiselect-dropdown';
 import { UserBodyComponent } from './user/user-body/user-body.component';
-import {UserDataService} from "./services/user-data.service";
+import {UserDataService} from './services/user-data.service';
 import { DetailsComponent } from './user/details/details.component';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
-import {AuthService} from "./services/auth.service";
-import {RoleGuard} from "./guards/role.guard";
+import {AuthService} from './services/auth.service';
+import {RoleGuard} from './guards/role.guard';
 
 import { LoadingModule } from 'ngx-loading';
 import { UserHomeComponent } from './user/user-home/user-home.component';
-import { ChangeBlurDirective } from './directives/change-blur.directive';
 import { HotelBookingComponent } from './modals/hotel-booking/hotel-booking.component';
 import {MessageService} from './services/message.service';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MAT_DIALOG_DEFAULT_OPTIONS,
   MatDatepickerModule, MatDialogModule, MatFormFieldModule, MatInputModule,
   MatNativeDateModule
 } from '@angular/material';
-import {FormateDateService} from "./services/formate-date.service";
+import {FormateDateService} from './services/formate-date.service';
 import { Alert1Component } from './modals/alert1/alert1.component';
 import { BookingPageComponent } from './user/booking-page/booking-page.component';
 import { ChangeEmailComponent } from './modals/change-email/change-email.component';
@@ -101,7 +98,6 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     AddHotelComponent,
     DemoComponent,
     AddHotelImgComponent,
-    ChangeTextDirective,
     DisplayImgComponent,
     DashboardChartComponent,
     AddRoomComponent,
@@ -109,7 +105,6 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     UserBodyComponent,
     DetailsComponent,
     UserHomeComponent,
-    ChangeBlurDirective,
     HotelBookingComponent,
     Alert1Component,
     BookingPageComponent,

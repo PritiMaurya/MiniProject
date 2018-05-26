@@ -8,6 +8,7 @@ import {ApiService} from '../../services/api.service';
 import {MessageService} from '../../services/message.service';
 import {Subscription} from 'rxjs/Subscription';
 import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material";
 
 @Component({
   selector: 'app-user-header',
@@ -20,8 +21,8 @@ export class UserHeaderComponent implements OnDestroy, OnInit {
   private subscription: Subscription;
 
   constructor(private dialogService: DialogService,
-              private service: ApiService,
               private messageService: MessageService,
+              private dialog: MatDialog,
               private router: Router) {
     this.token = localStorage.getItem('token');
     const r = localStorage.getItem('role');
@@ -45,8 +46,7 @@ export class UserHeaderComponent implements OnDestroy, OnInit {
   }
 
   addSignIn() {
-    this.service.blur = true;
-    this.dialogService.addDialog(LoginModalComponent);
+    this.dialog.open(LoginModalComponent, { width: '400px'});
   }
 
   addSignUp() {

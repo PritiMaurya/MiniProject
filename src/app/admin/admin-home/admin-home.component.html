@@ -1,9 +1,9 @@
-<app-header *ngIf="token != null"></app-header>
+<app-header [hidden]="needsLogin()"></app-header>
 <div class="container-fluid">
   <div class="row content">
-    <app-left-panel *ngIf="token != null"></app-left-panel>
+    <app-left-panel [hidden]="needsLogin()"></app-left-panel>
     <div class="col-sm-9">
-      <app-dash-body></app-dash-body>
+      <app-dash-body [hidden]="needsLogin()"></app-dash-body>
     </div>
   </div>
 </div>

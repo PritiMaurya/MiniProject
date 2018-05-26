@@ -6,7 +6,7 @@ export class AuthService {
   constructor() {
   }
   isAuthenticate() {
-    const token = localStorage.getItem('token');
-    return token;
+    console.log('auth calling ', !!localStorage.getItem('token'));
+    return !!localStorage.getItem('token');
   }
 }

@@ -48,7 +48,7 @@ export class AddHotelImgComponent extends DialogComponent<AddHotelImgModal, null
             }
           );
         } else {
-          this.dialogService.addDialog(AlertModalComponent, { message: 'Place Images successfully added'}).subscribe(
+          this.dialogService.addDialog(AlertModalComponent, { message: 'Hotel Images successfully added'}).subscribe(
             (data) => {
               this.hotelService.displayHotelImages(this.data.hotelId).subscribe(
                 (resdata) => {
