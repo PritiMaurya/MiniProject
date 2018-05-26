@@ -138,8 +138,8 @@ module.exports = {
     },
     addRoom: (req,res)=>{
         let hotelId = req.query.id;
-        let sql = "insert into hotelRoom (roomNumber, hotelId, rate, roomType, roomImage, imageUrl) values(?, ?, ?, ?, ?, ?)";
-        con.query(sql, [req.body.no, hotelId, req.body.rate, req.body.roomType, req.file.filename, req.file.path], (err)=>{
+        let sql = "insert into hotelRoom ( hotelId, rate, roomType, roomImage, imageUrl) values(?, ?, ?, ?, ?)";
+        con.query(sql, [hotelId, req.body.rate, req.body.roomType, req.file.filename, req.file.path], (err)=>{
             if(err) {
                 console.log(err);
                 res.send({"error": true, "message": "Error While inserting data"});

@@ -2,11 +2,90 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3a60283e-a678-4447-a8e9-ba74da6f0384" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/hotels.js" afterPath="$PROJECT_DIR$/app/controllers/hotels.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/middleware/auth.js" afterPath="$PROJECT_DIR$/app/middleware/auth.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes.js" afterPath="$PROJECT_DIR$/app/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/hotels.js" afterPath="$PROJECT_DIR$/app/controllers/hotels.js" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524736299546Interior_Hotel_Room_033155_.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524736364878Hotelroom-Alamy.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524736575829superior-zimmer-flemings-selection-hotel-wien-city.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524736605718165688698.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524736623262Hotelroom-Alamy.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524736660814TS_Hotel_King_lowrez.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img152473668811346496-3.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524736709957Hotelroom-Alamy.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524736843645hotel-room-1447201_960_720.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524736872945Hotelroom-Alamy.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524736896309astoria-hotel-room-junior.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524736922166rouge-room.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524736949387120747263.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524736979964superior-zimmer-flemings-selection-hotel-wien-city.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524737135661hotel-room-1447201_960_720.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524737164051Interior_Hotel_Room_033155_.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524737345272rouge-room.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524737363260Hotelroom-Alamy.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524737389303TS_Hotel_King_lowrez.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524737418419superior-zimmer-flemings-selection-hotel-wien-city.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524737435805Hotelroom-Alamy.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524737473726165688698.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/roomImages/img1524737773452superior-zimmer-flemings-selection-hotel-wien-city.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1523867838040download (8).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1523871808368download (8).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1523873156896download (7).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1523873423403download.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1523873558963download (6).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1523876284915download (10).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1523876284916download (11).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1523876284916download.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1523941955532download (6).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1523941955533download (11).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524461859293download (10).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524461859293download (8).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524461859294download (11).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524461900412download (6).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524461900413download (11).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524461900413download (7).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524461900413download (8).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524545123277pool--v5946474-1280.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524545123280resorts-world-sentosa.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524545123280rock-pool-bar.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524545123281white-sandy-pool-at-hard.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img152454514990910-hotels-in-singapore-with-amazing-pools-for-a-relaxing-staycation_3.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img15245451499094_Hard-Rock-Hotel-RWS_-4-featured-shot2.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img152454514991730-05-2017-0.00017404556274414b12.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524545149917ae80ed26e8f819d64cfa58baa70451c2--hills-resort-palm-springs-california.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524545173859Bazen.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524545173860Capture_w.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524545173860clown-motel-sale-NEVADA0717.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524545208829HRH01.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524545208829download.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524545208829fcd7e5a8_z.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524545208829hard-rock-hotel.main.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524545236890holiday-inn-express-and-suites-desoto-4186278663-4x3.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524545236893hotel-sawera-grand (1).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524545236894hotel-sawera-grand.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524545236894rock-pool-bar.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img152454526473230-05-2017-0.00017404556274414b12.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img15245452647324_Hard-Rock-Hotel-RWS_-4-featured-shot2.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524545264733220l050000000hb3i5182_R_550_412.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img15245452647341555789hotel-sawera-grand-amritsar-business-room-34325581g.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524545264734Bazen.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524545264734Capture_w.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524723946167download (4).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524723946168download (5).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524723946168download (8).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524737211542download (4).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524737211542download (5).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524737211543download (6).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524737211543download (8).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploads/img1524737211543download.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploadsPlace/img1523869871632download (3).jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploadsPlace/img1523870301318img12.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploadsPlace/img1523873753757img9.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploadsPlace/img1523873771867img1.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploadsPlace/img1523873771867img2.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploadsPlace/img1523873771867img4.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploadsPlace/img1523873794162img10.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploadsPlace/img1523873794162img8.jpg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/uploadsPlace/img1523873794162img9.jpg" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,7 +102,7 @@
       <file leaf-file-name="user.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-952">
+            <state relative-caret-position="880">
               <caret line="40" column="32" lean-forward="false" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
               <folding />
             </state>
@@ -33,7 +112,7 @@
       <file leaf-file-name="passport.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/passport.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="308">
               <caret line="14" column="31" lean-forward="false" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
               <folding />
             </state>
@@ -43,18 +122,18 @@
       <file leaf-file-name="places.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/places.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
+            <state relative-caret-position="594">
               <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="924">
+              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -63,8 +142,8 @@
       <file leaf-file-name="connection.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/db/connection.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="5" lean-forward="false" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+            <state relative-caret-position="374">
+              <caret line="17" column="30" lean-forward="false" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -73,8 +152,8 @@
       <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/routes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="85" column="22" lean-forward="false" selection-start-line="85" selection-start-column="22" selection-end-line="85" selection-end-column="22" />
+            <state relative-caret-position="309">
+              <caret line="69" column="50" lean-forward="false" selection-start-line="69" selection-start-column="37" selection-end-line="69" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -83,7 +162,7 @@
       <file leaf-file-name="auth.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/middleware/auth.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
+            <state relative-caret-position="132">
               <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
               <folding />
             </state>
@@ -93,17 +172,17 @@
       <file leaf-file-name="hotels.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/hotels.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="169" column="57" lean-forward="true" selection-start-line="169" selection-start-column="57" selection-end-line="169" selection-end-column="57" />
+            <state relative-caret-position="3080">
+              <caret line="140" column="109" lean-forward="false" selection-start-line="140" selection-start-column="109" selection-end-line="140" selection-end-column="109" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="environment.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="environment.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/environment.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
+            <state relative-caret-position="132">
               <caret line="6" column="2" lean-forward="false" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
               <folding />
             </state>
@@ -133,8 +212,8 @@
         <option value="$PROJECT_DIR$/app/db/connection.js" />
         <option value="$PROJECT_DIR$/app/middleware/auth.js" />
         <option value="$PROJECT_DIR$/server.js" />
-        <option value="$PROJECT_DIR$/app/controllers/hotels.js" />
         <option value="$PROJECT_DIR$/app/routes.js" />
+        <option value="$PROJECT_DIR$/app/controllers/hotels.js" />
       </list>
     </option>
   </component>
@@ -154,7 +233,8 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
     <option name="x" value="289" />
     <option name="y" value="106" />
     <option name="width" value="1173" />
@@ -176,8 +256,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -185,10 +263,23 @@
               <item name="backend" type="b2602c69:ProjectViewProjectNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -196,7 +287,6 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
-    <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
   </component>
@@ -219,6 +309,9 @@
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -256,25 +349,32 @@
       <workItem from="1524629827764" duration="4635000" />
       <workItem from="1524649026528" duration="41000" />
       <workItem from="1524651922780" duration="1204000" />
-      <workItem from="1524715238873" duration="15380000" />
+      <workItem from="1524715238873" duration="15464000" />
+      <workItem from="1524801616938" duration="4608000" />
+      <workItem from="1524888578145" duration="1580000" />
+      <workItem from="1524893676810" duration="1649000" />
+      <workItem from="1524903072013" duration="2865000" />
+      <workItem from="1525167400840" duration="64000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="255645000" />
+    <option name="totallyTimeSpent" value="266495000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="289" y="106" width="1173" height="643" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1311787" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13297394" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24968314" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20945945" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20907298" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -617,19 +717,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/uploadsPlace/img1523869871632download (3).jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/environment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="2" lean-forward="false" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/uploadsPlace/img1523869871632download (3).jpg" />
     <entry file="file://$PROJECT_DIR$/node_modules/passport-local/lib/strategy.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
@@ -637,66 +725,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/middleware/auth.js">
+    <entry file="file://$PROJECT_DIR$/app/config/passport.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/db/connection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="5" lean-forward="false" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        <state relative-caret-position="308">
+          <caret line="14" column="31" lean-forward="false" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/places.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
+        <state relative-caret-position="594">
           <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/passport.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="31" lean-forward="false" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-952">
-          <caret line="40" column="32" lean-forward="false" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/hotels.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="169" column="57" lean-forward="true" selection-start-line="169" selection-start-column="57" selection-end-line="169" selection-end-column="57" />
+        <state relative-caret-position="3080">
+          <caret line="140" column="109" lean-forward="false" selection-start-line="140" selection-start-column="109" selection-end-line="140" selection-end-column="109" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes.js">
+    <entry file="file://$PROJECT_DIR$/app/middleware/auth.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="85" column="22" lean-forward="false" selection-start-line="85" selection-start-column="22" selection-end-line="85" selection-end-column="22" />
+        <state relative-caret-position="132">
+          <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="880">
+          <caret line="40" column="32" lean-forward="false" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="924">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/db/connection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" column="30" lean-forward="false" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="69" column="50" lean-forward="false" selection-start-line="69" selection-start-column="37" selection-end-line="69" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/environment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="2" lean-forward="false" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
           <folding />
         </state>
       </provider>
